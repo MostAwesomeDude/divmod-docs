@@ -1,5 +1,0 @@
-SQLite is an embedded object database.
-
-You can find a copy at http://sqlite.org/, and Python bindings at http://pysqlite.org/ or http://www.rogerbinns.com/apsw.html
-
-[wiki:DivmodAxiom Axiom] currently uses SQLite exclusively as its backend.
