@@ -1,3 +1,0 @@
-== Divmod Mail Help ==
-
-Divmod Mail (Dmail) is part of the Divmod service. The basic idea of Dmail is allow you to deal with your email as quickly and efficiently as possible. You can use Dmail can be used in TouchOnce, Classic or Enhanced modes. In TouchOnce mode was inspired by the story of a high ranking executive at an international conglomerate who dealt with his huge volume of paper mail with the simple rule of touching each piece of mail once. Similar in method to the Getting Things Done system he'd either respond to it right away, file it in his archive, put in the trash and in rare occasions he'd defer the next step putting the mail in a desk drawer for later action.
