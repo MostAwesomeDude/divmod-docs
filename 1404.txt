@@ -1,1 +1,0 @@
-We probably shouldn't put 'should' into test docstrings; that's what `test_` means, so it's redundant.
