@@ -1,7 +1,0 @@
-== Here to help out? ==
-
-[[Image(http://divmod.org/tracdocs/help_whtbck.png, right)]] 
-
-If you're looking for a way to contribute to our open source efforts, thanks a lot!
-
-[wiki:DivmodInc The Divmod company] would like our software to do anything and everything, but with a fledgling business to run, we have to make some tough choices with our time.  To ensure that our feature ideas don't get lost in the mists of time, we've created a page of [wiki:CommunityGoals community goals]: a highlighted collection of tickets that we would be grateful if some brave soul in the open source world would attempt to contribute a patch for.
