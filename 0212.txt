@@ -1,6 +1,0 @@
-Nevow is a web templating framework and AJAX application server.
-
-It is comprised of FormLess, StAn, and LivePage.
-
-Divmod uses it in MantissaProject for the web user-interface layer.
-
