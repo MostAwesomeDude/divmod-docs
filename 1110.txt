@@ -1,6 +1,0 @@
-= Tutorial: Using Storm with Nevow =
-
-This tutorial is forth-coming and planned for release sometime in the first half of August.
-
-Stay tuned!
-
