@@ -1,6 +1,0 @@
-I've begun work on this and when I post the patch I'll post up a small 'HOW-TO' about how to work this into an application, and what kind of behavior to expect from it. The basic idea is that it publishes INavigableElements from a certain URL to any user, authenticated or not. It could also function for the front page of applications. Any item in a store that can adapt as a resource can be published through this, the same way PrivateApplication works.
-
-Differences from PrivateApplication:
-- Serves from the same store, no matter who the user is
-- The store won't be a user store, so store.parent won't be what you expect it to be
-- Different prefixes for each PublicApplication, not one prefix that maps to the active user's store
