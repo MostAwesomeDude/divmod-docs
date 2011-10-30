@@ -1,1 +1,0 @@
-Write something snappy about user-contributed code.  Add links to cool things like user-contributed [wiki:DivmodNevow/Athena Athena] widgets.
