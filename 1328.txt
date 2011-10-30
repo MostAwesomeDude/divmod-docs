@@ -1,9 +1,0 @@
-= Ideas =
-
-[[Image(http://divmod.org/tracdocs/ideas_whtbck.png, right)]] 
-
- * [wiki:MantissaIsTheDeploymentTarget Mantissa is the deployment target], the web is not.
- * Here at Divmod we use [wiki:BranchBasedDevelopment branch based development] to ensure quality and freshness of our software at all times.
- * MantissaUserConfigurationAdministration
- * [wiki:DivmodAnvil Anvil] will one day be a task tracker that replaces trac.
- * [wiki:DemocracyServer Democracy Server]: a communications and commerce server for the developing world.
