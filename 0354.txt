@@ -1,5 +1,0 @@
-The META stack is a complete application server that uses 
- * Mantissa
- * Epsilon
- * Twisted
- * Axiom

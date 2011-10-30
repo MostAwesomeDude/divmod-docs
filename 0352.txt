@@ -1,5 +1,0 @@
-The Mantissa NEAT stack consists of:
- * Nevow
- * Epsilon
- * Axiom
- * Twisted
