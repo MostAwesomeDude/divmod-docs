@@ -1,7 +1,0 @@
-HTTP is just a protocol.
-
-It is popular, but it isn't magical.
-
-It isn't the best protocol; it makes it hard to build interactive applications.
-
-Other protocols deserve good implementations, too.
