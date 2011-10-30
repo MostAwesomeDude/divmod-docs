@@ -1,6 +1,0 @@
-Page for fiddling with Trac features.
-
-here's a TicketBox!
-
-
-[[TicketBox(245,217)]]
