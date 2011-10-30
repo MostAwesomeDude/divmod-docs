@@ -1,3 +1,0 @@
-=== People Using Divmod Softeware ===
- * [http://www.superleague.co.uk/ Rugby Super League] uses NevowProject.
- * [http://www.nunatak.com.au/ Nunatak Systems] use Atop.
