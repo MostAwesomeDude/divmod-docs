@@ -1,3 +1,0 @@
-== Divmod Applications ==
-
-All applications a listed on the '[DivmodProjects Complete Divmod]' wiki page.
