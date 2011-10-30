@@ -1,9 +1,0 @@
-Quotient's name lives on but the original ATOP-based Quotient is now known as Old Quotient.
-
-Glyph blogged this a little while ago: http://www.livejournal.com/users/glyf/42483.html
-
-The short version is: Quotient is being ported to Axiom and (the new) Mantissa.  There is a bit of code from JP available already that does mail.
-
-We don't have a timeline for the transition, since it depends heavily on external factors.  However, our existing customer base ''will'' be taken care of, and we will begin accepting new users shortly after the transition.
-
-There is no planned future development on the old Quotient or the old Mantissa.
