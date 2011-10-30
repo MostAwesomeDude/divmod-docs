@@ -1,3 +1,0 @@
-We need to write a DNS server which can support Mantissa.  It will be called 'polynomial', i.e. 'many names'.
-
-No code has yet been checked in...
