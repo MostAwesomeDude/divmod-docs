@@ -1,7 +1,0 @@
-= Transition mini-HOWTO =
-
-A few bullet points with stuff to do transitioning from pre-dependency code to the new API(s).
-
- * Don't mix {{{axiom.item.InstallableMixin}}} in anymore, it is unnecessary, as is the {{{installedOn}}} attribute that was on subclasses thereof.
- * {{{powerup.installOn(target)}}} is now spelled {{{axiom.dependency.installOn(powerup, target)}}}.
- * Instead of explicitly powering the target up in {{{installOn}}}, set the {{{powerupInterfaces}}} class attribute to a sequence of interfaces, or of {{{(interface, priority)}}} tuples.
