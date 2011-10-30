@@ -1,7 +1,0 @@
-Anvil is Divmod's planned issues tracker.
-
-
-We have tried Roundup, RT and now Trac and while each of them is great in some ways but they each have some shortcommings. Anvil will be tailored for Divmod's development process and will integrate with QuotientProject so team members have a unified view of their tasks and messages.
-
-
-Anvil will be built on MantissaProject.
