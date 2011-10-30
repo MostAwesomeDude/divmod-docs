@@ -1,0 +1,3 @@
+= DivmodAxiom : Glossary =
+ Powerup::
+  A type of Axiom plugin. See [wiki:DivmodAxiom/Powerups Powerups]

@@ -1,0 +1,22 @@
+= Imaginary =
+
+Imaginary numbers are so named not because they are fictitious, but because
+they are along a different axis from real numbers.
+
+Divmod Imaginary is a simulationist's take on the realm of role playing,
+interactive fiction, and multiplayer dungeons.  It incorporates gameplay
+features from each area while attempting to provide a richer environment
+than is generally available from existing systems.
+
+== Imagination ==
+
+A simulation core.  Currently very raw.  Browse the [browser:trunk/Imaginary/imagination the source] or [query:status=new|assigned|reopened&component=Imaginary tickets].
+
+== Pottery ==
+
+Another simulation core.  Attempts to accomplish the same goals as Imagination.  These two will probably merge some day.  [browser:trunk/Imaginary/pottery Browse source]
+
+== Radical ==
+
+See DivmodRadical.
+

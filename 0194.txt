@@ -1,0 +1,7 @@
+Radical is an interactive, 2D, isometric client/server game platform, delivered using nothing but a web browser, written using MantissaProject and LivePage.
+
+Seriously.  It actually does that.  You can move your little guy around on the screen, talk, and pick up items (there are even walls!)
+
+It is still in the very early stages of development; there is a mostly-working demonstration in SVN, but there is no release, and it is not being actively maintained due to lack of time.
+
+If you find this interesting, please contribute!

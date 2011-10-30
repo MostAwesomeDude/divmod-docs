@@ -1,0 +1,17 @@
+== Here to help out? ==
+
+[[Image(http://divmod.org/tracdocs/help_whtbck.png, right)]] 
+
+If you're looking for a way to contribute to our open source efforts, thanks a lot!
+
+[wiki:DivmodInc The Divmod company] would like our software to do anything and everything, but with a business to run, we have to make some tough choices with our time.  To ensure that our feature ideas don't get lost in the mists of time, we've created a page of [wiki:CommunityGoals community goals]: a highlighted collection of tickets that we would be grateful if some brave soul in the open source world would attempt to contribute a patch for.
+
+==== Contributing Code ====
+
+If after look at those (or other) tickets, are you are ready to start writing code for inclusion into one or more of our projects, we ask that you take the time to read and ask questions about the following:
+ * Branch management with [DivmodCombinator Combinator]
+ * The [CombinatorTutorial Combinator Tutorial]
+ * [UltimateQualityDevelopmentSystem UQDS] - our development process: the Ultimate Quality Development System
+ * The [CodingStandard Coding Standard]
+ * The [CodeReview Code Review Process]
+Adhering to our 'Best Practices', standards, and following the established process will give your patches the best opportunity for inclusion. Though most patches are not immediately accepted, take heart: even code from our lead developers is not immediately accepted! None of us are perfect :-)

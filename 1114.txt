@@ -1,0 +1,63 @@
+= Nevow Tutorial =
+
+== Preamble ==
+
+Whenever I don't do any Nevow stuff for a while I always forget everything. I'm going to try and document the basics in an accessible way here so I can always bring myself up to speed quickly each time. I'm also going to make it into a simple 'quickstart' document for those who want to use Nevow.
+
+This is a work in progress, by someone who is not a Nevow guru. Do not rely on it until a guru has cast His eye on it. I'm also simultaneously learning the wiki formatting, so have patience.
+
+== About Nevow ==
+
+Nevow is a relatively low-level framework for constructing web applications. It is built on top of Twisted's HTTP server, twisted.web, and a compatibility layer will probably be made available when twisted.web2 is released. The reader is assumed to have at least a basic understanding of Twisted.
+
+Writing documentation for Nevow and Twisted in general can be hard because so much needs to be explained before anything can be seen to work. This tutorial attempts to avoid that and wade right in with complete, runnable code snippets. This will mean additional verbosity, and it will also mean that certain concepts will be introduced The Wrong Way first, before The Right Way is introduced.
+
+== Getting Started ==
+
+{{{
+#!python
+######################################################################
+# Run using 'twistd -noy file.tac', then point your browser to
+# http://localhost:8080
+# A very simple Nevow site.
+# Don't do it this way. Better ways are coming.
+######################################################################
+
+from twisted.application import service, internet
+
+from nevow               import appserver
+from nevow               import rend
+
+class MyPage ( rend.Page ):
+
+    def renderHTTP ( self, ctx ):
+        html = \
+             '<html>' + \
+             '<head><title>'Nevow Tutorial'</title></head>' + \
+             '<body>Hi there</body></html>'
+        return html
+
+######################################################################
+# Nevow Boilerplate
+######################################################################
+
+application = service.Application ( 'nevowdemo1' )
+port        = 8080
+res         = MyPage()
+site        = appserver.NevowSite ( res )
+webService  = internet.TCPServer ( port, site )
+webService.setServiceParent ( application )
+}}}
+
+Note that this is technically a {{{tac}}} file; that is, it should conventionally be save as {{{file.tac}}} rather than {{{file.py}}}.
+
+A few points about this simple program:
+
+  * {{{rend.Page}}} is probably the most basic building block of Nevow;
+  * {{{rend.Page}}} has a method, {{{renderHTTP()}}} the renders a request for a page into the result of that request.
+  * There are simpler ways of doing the boilerplate, but this is more or less the right way. You can ignore how it works for the time being.
+
+For those thirsty for extra knowledge, {{{rend.Page}}} implements the {{{IResource}}} interface. You can read about it at
+http://www.python.net/crew/mwh/nevowapi/nevow.rend.Page.html and at http://www.python.net/crew/mwh/nevowapi/nevow.inevow.IResource.html
+
+Once you're happy with this, proceed onto DivmodNevow/TutorialTwo

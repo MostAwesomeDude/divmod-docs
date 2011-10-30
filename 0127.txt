@@ -1,0 +1,17 @@
+{{{
+#!python
+@partial(partial,partial)
+def merger( merge, seq, *args, **kw ):
+    '''Feed the given generator a stream of pairs to merge, and return the
+    final result.
+    '''
+    seq = iter(seq)
+    merged = seq.next()
+    for merged in merge( ((merged,item) for item in seq), *args, **kw):
+        pass
+    return merged
+}}}
+
+This decorator helps you write sequence reductions in the PotatoProgramming / ExternalIteration style.
+
+''In other words - a bad idea.  Please don't use it - especially don't think that Divmod code would use such a thing!  -glyph ''

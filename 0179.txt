@@ -1,0 +1,7 @@
+=== 25 October 2005 II ===
+ * Added new preferences system.
+ * UI tweaks.
+
+=== 25 October 2005 ===
+ * Ability to view clickchronicle.com home page and recent clicks when logged in.
+ * Added a preference to stop clicks being anonymously shared on clickchronilce.com front page.

@@ -1,0 +1,9 @@
+== Some of the software and services we depend on ==
+ * [http://python.org Python] our language of choice.
+ * [http://twistedmatrix.com Twisted] the multiprotocol framework that makes Python usable for complex, multi-protocol applications.
+ * [http://pylucene.osafoundation.org PyLucene] wrapper for the excellent full text indexer [http://lucene.apache.org Lucene].
+ * [http://www.zope.org/Products/ZopeInterface Zope Interface] our favorite interface definition and adaptation library.
+ * [http://www.ubuntulinux.org/ Ubuntu] our favorite Linux distribution.
+ * [http://tummy.com/ Tummy] our fantastic hosting service. The hostess with the mostest.
+ * [http://sqlite.org/ SQLite] the little database that could. Fast. Embedded. Low maintenance.
+ * [http://feedparser.org/ Universal Feed Parser] parses feeds for us.

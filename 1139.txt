@@ -1,0 +1,14 @@
+= FAQ =
+
+== Testing ==
+=== How do I make fake context objects? ===
+Divmod contains a testutil module that contains a set of ready made classes like !FakeRequest, !FakeSession etc. Use these. 
+Example:
+
+{{{
+ctx = context.WebContext(tag=page)
+ctx.remember(testutil.AccumulatingFakeRequest())
+}}}
+
+
+

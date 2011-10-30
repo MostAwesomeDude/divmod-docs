@@ -1,0 +1,39 @@
+= Mantissa Plugin Notes =
+
+== Overview ==
+
+This page is a collection of notes based on my adventures with the following tickets:
+ * #911
+ * #2530
+ * #2531
+
+As such, you can imagine the following about these notes:
+ * they are based on one specific aspect of Mantissa/Axiom plugins;
+ * they are written from a relative Noob perspective; and
+ * are most certainly not complete.
+
+The plugin under scrutiny here (well, under rewrite, actually) is {{{axiomatic project}}} which has been (until some time in the near future) called in the following manner:
+{{{
+axiomatic project -n MyApp
+}}}
+This creates a Divmod™-approved directory structure populated by minimally functional code stubs, ready for the project dev to start making '!MyApp' a software reality.
+
+== Quick Glance ==
+
+The code that is responsible for this {{{axiomatic}}} subcommand is distributed over a few files. Here's the breakdown:
+ * {{{axiomatic}}} itself lives in a bin dir somwhere, or if you are using Combinator, a bincache dir;
+ * the contents of that script are the same as in most of the other Mantissa scripts: a {{{remain()}}} call;
+ * {{{combinator.chameleon.remain}}} is a function which 
+   * determines the original script name, in this case {{{axiomatic}}},
+   * searches the paths in {{{sys.path}}} and locates the script itself,
+   * passes the appropriate arguments, and call the actual script with the original script name
+ * {{{Axiom/bin/axiomatic}}} gets called, which runs {{{axiom.scripts.axiomatic.main()}}}, which:
+   * parses subcommands/options and fires off {{{subCommands()}}} method which iterates plugins
+   * ?
+   * ?
+   * {{{Generate.postOptions()}}} opens {{{template.txt}}} and 
+
+Things to look up next:
+ * Where does {{{Generate}}} get instantiated?
+ * examine template.txt
+ * source for {{{epsilon.asplode.splode}}}

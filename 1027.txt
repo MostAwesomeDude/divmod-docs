@@ -1,0 +1,5 @@
+= Powerups = 
+
+This information is now part of the Axiom reference documentation.
+
+See DivmodAxiom/Reference#Powerups

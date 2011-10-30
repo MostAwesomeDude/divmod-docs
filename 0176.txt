@@ -1,0 +1,2 @@
+=== 25 October 2005 ===
+ * Ability to view clickchronicle.com home page and recent clicks when logged in

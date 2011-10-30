@@ -1,0 +1,37 @@
+{{{
+#!rst
+
+Pre-conditions
+==============
+First, apply the patch from #529. This makes zomne actually work.
+
+Shared host with Apache
+=======================
+Then, if you are, like me, on a shared server with Apache, you've probably got Python, Twisted and Nevow installed locally.  Therefore, zomne will fail to start twistd. Change the the line in zomne.c that says::
+
+    sprintf(scratch, 'twistd -oy %s &> %s/twistd.log', tacfile, basedir);
+
+to::
+
+    sprintf(scratch, '/path/to/twistd -oy %s &> %s/twistd.log', tacfile, basedir);
+
+Build zomne and place it somewhere::
+
+    gcc zomne.c -o /path/to/zomne
+
+Furthermore, PYTHONPATH is probably not set either, so you'll have to make sure to set that manually. I do that in a shell script that wraps the zomne.cgi binary. You could also write a small C application for speed. Either way, place this shell script in your webroot's cgi-bin directory, as nevow.cgi::
+
+    #!/bin/sh
+    export PYTHONPATH=$PYTHONPATH:/home/myself/local/lib/python2.3/site-packages
+    exec /path/to/zomne
+
+If you have access to mod_rewrite in your .htaccess, place the following lines in webroot/.htaccess::
+
+    RewriteEngine On
+    RewriteRule ^$ nevow.cgi [L]
+
+Now you should be able to access your Nevow application as http://domain.tld
+
+If using the included zomne.tac to test your installation, remember to add ``addSlash=True``, or Nevow will give you a 404. While that hows the install was successful, it's also nice to see that your HelloWorld outputs what's expected. :)
+
+}}}

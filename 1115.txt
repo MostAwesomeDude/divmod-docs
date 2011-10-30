@@ -1,0 +1,47 @@
+= Nevow Tutorial =
+
+== Better HTML Generation using Stan ==
+
+{{{
+#!python
+######################################################################
+# Run using 'twistd -noy file.py', then point your browser to
+# http://localhost:8080
+# A very simple Nevow site.
+# Don't do it this way yet. Even better ways are coming.
+######################################################################
+
+from twisted.application import service, internet
+
+from nevow               import appserver
+from nevow               import rend
+from nevow               import loaders
+from nevow               import tags as T
+from nevow               import flat
+
+class MyPage ( rend.Page ):
+
+    def renderHTTP ( self, ctx ):
+        s = T.html [ T.head ( title = 'Nevow Tutorial' ),
+                     T.body [ 'Hi there' ] ]
+        return flat.flatten ( s )
+
+######################################################################
+# Nevow Boilerplate
+######################################################################
+
+application = service.Application ( 'nevowdemo2' )
+port        = 8080
+res         = MyPage()
+site        = appserver.NevowSite ( res )
+webService  = internet.TCPServer ( port, site )
+webService.setServiceParent ( application )
+}}}
+
+This introduces Stan, a way of expressing HTML as a series of nested python expressions. It has the advantage of generating well-formed HTML, in that it guarantees that closing tags are correctly generated.
+
+It is well worth playing around with Stan to see some of its features. In general, stan is structured as follows:
+
+  * Square brackets transform to content surrounded by a tag;
+  * Parentheses transform to attributes within the tags;
+

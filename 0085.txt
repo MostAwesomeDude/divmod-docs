@@ -1,0 +1,20 @@
+= Welcome To Divmod's Trac Installation =
+
+== Ticket Queries ==
+ * [query:?status=new&status=assigned&status=reopened&groupdesc=1&group=type&component=Mantissa&order=priority Mantissa tickets]
+ * [query:?status=new&status=assigned&status=reopened&groupdesc=1&group=type&component=Axiom&order=priority Axiom tickets]
+ * [query:?status=new&status=assigned&status=reopened&groupdesc=1&group=type&component=ClickChronicle&order=priority ClickChronicle tickets] ([query:?status=new&status=assigned&status=reopened&groupdesc=1&group=milestone&component=ClickChronicle&order=priority grouped by milestone])
+
+== Starting Points ==
+
+ * TracGuide --  Built-in Documentation
+ * [http://projects.edgewall.com/trac/ The Trac project] -- Trac Open Source Project
+ * [http://projects.edgewall.com/trac/wiki/TracFaq Trac FAQ] -- Frequently Asked Questions
+ * TracSupport --  Trac Support
+
+For a complete list of local wiki pages, see TitleIndex.
+
+Trac is brought to you by [http://www.edgewall.com/ Edgewall Software],
+providing professional Linux and software development services to clients
+worldwide. Visit http://www.edgewall.com/ for more information.
+

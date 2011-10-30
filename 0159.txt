@@ -1,0 +1,6 @@
+= Vertex =
+is Divmod's implementation of [wiki:QuotientToQuotient Q2Q].
+
+== Links ==
+ * [http://divmod.org/projects/vertex Divmod project page for Vertex]
+ * [http://www.swik.net/vertex Vertex on swik]

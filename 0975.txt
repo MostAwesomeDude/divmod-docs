@@ -1,0 +1,28 @@
+[http://www.microsoft.com/technet/scriptcenter/hubs/msh.mspx PowerShell (previously called Monad or MSH)] is a new command shell being designed by Microsoft as a replacement for the aging cmd.exe shell. This page is about how to use [wiki:DivmodCombinator Combinator] with MSH to do your development. It may also include some other, general windows development tips for setting up your build enviroment.
+
+= Configuring Your Environment =
+
+One thing you'll need to do is open up your filewall. I was able to do this by adding python.exe to my list of exceptions on the Firewall, but I do wonder if there is a better, more precise way to do this. If anyone has an idea, let me know please. Of course, you can try not using any firewall at all, but I don't recommend that.
+
+By default, MSH will not run any scripts. This is a security measure, and there are several policies it can follow in this reguard. [http://thelazyadmin.com/index.php?/archives/351-MSH-Profiles.html This] page tells you the details of how to configure the Execution Policy, but I'll give you the command that will just make things run. Remember, though, this method lets all scripts run and you may want to look into signing them, so that only trusted scripts are allowed to be run.
+
+
+{{{
+set-property HKLM:\SOFTWARE\Microsoft\Msh\1\ShellIds\Microsoft.Management.Automation.msh -property ExecutionPolicy -value Unrestricted
+}}}
+
+= Dependancies =
+
+We'll want to find as many prebuild Windows packages as possible, so I'll try to link to all of them here. If I missed any, please let me know.
+
+ * PySQLite2
+   * [http://initd.org/pub/software/pysqlite/releases/2.1/2.1.3/pysqlite-2.1.3.win32-py2.4.exe pySQLite2 2.1.3 Windows Installer for Python 2.4]
+   * [http://initd.org/pub/software/pysqlite/releases/2.1/2.1.3/pysqlite-2.1.3.win32-py2.3.exe for Python 2.4]
+ * PyOpenSSL and OpenSSL
+   * [http://webcleaner.sourceforge.net/pyOpenSSL-0.6.win32-py2.4.exe pyOpenSSL 0.6 for Python 2.4]
+   * [http://www.slproweb.com/products/Win32OpenSSL.html OpenSSL Windows Installer is available here]
+ * [http://pytz.souravaceforge.net/ PyTZ] is available [http://sourceforge.net/project/showfiles.php?group_id=79122&package_id=80455 here]
+ * [http://www.python.org/windows/win32/ Win32 Extensions] are needed. You can get them [http://sourceforge.net/project/showfiles.php?group_id=78018 here].
+ * [http://www.pythonware.com/products/pil/ Pil] can be downloaded from its website.
+
+WORKING ON THE REST OF THIS

@@ -1,0 +1,67 @@
+== !JavaScript mode ==
+
+  * Install the [http://divmod.org/trac/attachment/wiki/DivmodNevow/Athena/Emacs/Files/javascript-mode.el?format=raw preferred javascript-mode library].
+
+  * Define a new {{{c-style}}}:
+{{{
+(setq c-style-alist
+      (append c-style-alist
+              '(('actual-python'
+                 (indent-tabs-mode . nil)
+                 (fill-column . 79)
+                 (c-basic-offset . 8)
+                 (c-offsets-alist
+                  (substatement-open . 0)
+                  (inextern-lang . 0)
+                  (arglist-intro . +)
+                  (knr-argdecl-intro . +))
+                 (c-hanging-braces-alist
+                  (brace-list-open)
+                  (brace-list-intro)
+                  (brace-list-close)
+                  (brace-entry-open)
+                  (substatement-open after)
+                  (block-close . c-snug-do-while))
+                 (c-block-comment-prefix . '')))))
+}}}
+
+  * Customize {{{c-default-style}}} to {{{'actual-python'}}}.
+  * Customize {{{c-basic-offset}}} to {{{4}}}.
+
+If you sometimes use Emacs 22, this incantation will be required instead:
+
+{{{
+(if (condition-case nil
+        (symbol-function 'c-block-in-arglist-dwim)
+      (error nil))
+    (defun javascript-fixed-c-lineup-arglist (langelem)
+      (save-excursion
+        (if (c-block-in-arglist-dwim (c-langelem-2nd-pos c-syntactic-element))
+            0
+          (c-lineup-arglist langelem))))
+  (defun javascript-fixed-c-lineup-arglist (langelem)
+    (c-lineup-arglist langelem)))
+
+(setq c-style-alist
+      (append c-style-alist
+              '(('actual-python'
+                 (indent-tabs-mode . nil)
+                 (fill-column . 78)
+                 (c-basic-offset . 4)
+                 (c-offsets-alist
+                  (substatement-open . 0)
+                  (inextern-lang . 0)
+                  (knr-argdecl-intro . +)
+                  (arglist-cont-nonempty . javascript-fixed-c-lineup-arglist))
+                 (c-hanging-braces-alist
+                  (brace-list-open)
+                  (brace-list-intro)
+                  (brace-list-close)
+                  (brace-entry-open)
+                  (substatement-open after)
+                  (block-close . c-snug-do-while))
+                 (c-block-comment-prefix . '')))))
+
+(custom-set-variables  '(c-default-style 'actual-python')
+                       '(c-basic-offset 4))
+}}}

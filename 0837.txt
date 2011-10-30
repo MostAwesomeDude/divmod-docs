@@ -1,0 +1,5 @@
+Divmod has 2 logos:
+ https://divmod.com/ximages/anonymous_logo.png is for the corporate, commercial entity. This is exclusively for the use of Divmod Inc. and should not be used by any other entity. 
+ 
+
+ http://divmod.org/trac/chrome/common/divmod.png is for our open-source community. This is for the community and can freely be used in the context of Divmod's open-source work, for instance in a 'powered by Divmod' context.

@@ -1,0 +1,35 @@
+= ClickChronicle Alpha =
+  Welcome interpid alpha tester and Divmod fan!
+  We hope you enjoy our latest offering.
+
+== Disclaimer ==
+  This is alpha software and it may break. We have tested the software, but during the alpha period we may have to restart the service erasing your account and data. We will do our best to avoid this but you have been warned.
+
+= Overview =
+
+From the ClickChronicle [http://clickchronicle.com/faq FAQ]
+
+  1. What is ClickChronicle?
+  ClickChronicle keeps a record of your web browsing and allows you to search all the web pages that you have visited.
+
+  We are staring Alpha testing and would appreciate your help in shaking down any bugs and enhancing the product.
+
+  The service is ''Firefox only'' and  has 2 parts: a click recorder and the clickchronicle.com service. The click recorder is currently a [http://greasemonkey.mozdev.org/ Greasemonkey] script, so you'll have to download and install the Greasemonkey extension; restart your browser and then install the [http://clickchronicle.com/static/js/clickchronicle.user.js ClickChronicle Greasemonkey script]. Instructions follow.
+
+= Getting started =
+
+ * Go to http://clickchronicle.com/signup
+ * Enter your email address
+ * Check your email for registration confirmation
+ * Follow the link in the email to activate your account
+ * Select a password
+ * Make sure [http://greasemonkey.mozdev.org/ Greasemonkey] is installed and running (e.g. install it and restart Firefox)
+ * View the script on [http://clickchronicle.com/static/js/clickchronicle.user.js this page]. Yes, it's yuck Javascript - sorry!
+ * While viewing the javascript go to the Firefox 'Tools' menu and select 'Install this user script'
+ * Click OK on the subsequent dialog to install the script
+ * Open a new browser window or tab
+ * Notice the small ClickChronicle on/off button at the bottom right hand corner of the browser window. This shows the current state of the click recorder and allows you toggle recording on and off.
+ * When recording is off (clicks not recorded to clickchronicle.com) the button display 'CC Off' and is grey: http://divmod.org/users/amir/screenshots/ccoff.png
+ * Clicking on the button starts recording clicks to clickchronicle.com and displays 'CC On' on a dark blue background: http://divmod.org/users/amir/screenshots/ccon.png
+ * In order for clicks to be succesffully recorded to your account, you must be logged in to clickchronicle.com. The easiest way to ensure that you are always logged in is to logout (!) and the login again and check the 'Remember me' box. This sets a 2 week cookie. You don't want to check this box if you are using someone else's machine or a public machine in a library or internet cafe since it will allow others to see you clicks.
+ * Once you have switched click recording on you should visit a few sites and then go to clickchronicle to ensure that the clicks have got through.

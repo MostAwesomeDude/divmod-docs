@@ -1,0 +1,7 @@
+Anvil is Divmod's planned issues tracker.
+
+We have tried Roundup, RT and now Trac and while each of them is great in some ways but they each have some shortcomings. Anvil will be tailored for Divmod's development process and will integrate with QuotientProject so team members have a unified view of their tasks and messages.
+
+Anvil will be built on MantissaProject.
+
+Anvil is a collaborative issue tracker.  Anvil places high value on person-oriented interactions.  It understands ownership, relationships, and the concept that a particular task may have different priorities to different people.  Anvil understands that time passes.  It provides deadlines that loom and alter task priority.  It can summarize and report on task completion over time.  It expects estimates from owners of tasks and can provide feedback for the estimation process based on past performance for individuals.  Anvil understands perspectives.  Tasks are shared among team members, with different views given onto them based on each member's role with respect to that task.  Similarly, plans are shared and merged, and overall or individual schedules can be created from tasks in Anvil.

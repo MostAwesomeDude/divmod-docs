@@ -1,0 +1,149 @@
+
+= Sharing Objects in Mantissa =
+
+== Prerequisites ==
+
+You should have all the Divmod code installed and runnable.
+
+You should also have read the [DivmodAxiom/Tutorial axiom tutorial], because the Mantissa sharing system is all about sharing axiom items, and you will need to know how to create and manipulate them.
+
+== Introduction ==
+
+Since you have ready the [DivmodAxiom/Tutorial axiom tutorial] (you didn't skip the prerequisites section, did you?) you already know how to create items in a database and manipulate them directly.  Items in a database are much more interesting, however, when they can be created and accessed by different people.  Even more interesting when you can provide different levels of access to different people so that your data is safe even when it's shared.
+
+Mantissa is a multi-protocol application server.  This means that unlike many web frameworks, mantissa's access control is not specific to HTTP.  Nowhere in sharing will you find a request, or headers, or even usernames and passwords.  The Mantissa 'sharing' system is about abstractly declaring what operations are allowed by what people, and it should be usable by any protocol.  So, much of this tutorial will be couched in very general terms.
+
+Don't worry, though: in this web 2.0 world, we know that HTTP is a very interesting protocol.  The sharing system was very definitely designed with the web in mind, and this tutorial will discuss how to use the sharing system to expose your items over HTTP.
+
+=== The General Idea ===
+
+You have an item in a database and you want to share it with someone.
+
+The first thing you have to decide is what you want to share.  This is any `Item`.
+
+Here's a simple one.
+
+{{{
+#!py
+# sharestuff.py
+from axiom.item import Item
+from axiom.attributes import text
+
+class Post(Item):
+    contents = text()
+
+    def read(self):
+        return self.contents
+
+    def write(self, contents):
+        self.contents = contents
+}}}
+
+It's a simple item with two methods; one for reading and one for writing.
+
+Next, we need to decide what operations we're going to allow on this object.  For determining what is and is not allowed, the sharing system uses `Interface` objects, so we need to declare some interfaces that this class implements.
+
+{{{
+# sharestuff.py
+from zope.interface import implements, Interface
+
+from axiom.item import Item
+from axiom.attributes import text
+
+class IRead(Interface):
+    def read(self):
+        'Read this object.'
+
+class IWrite(Interface):
+    def write(self, contents):
+        'Write to this object.'
+
+class Post(Item):
+    implements(IRead, IWrite)
+    contents = text()
+
+    def read(self):
+        return self.contents
+
+    def write(self, contents):
+        self.contents = contents
+}}}
+
+Now, we need to create the actual post so we can share it.  Let's open up an interactive interpreter and make one.
+
+{{{
+$ python
+>>> from axiom.store import Store
+>>> s = Store('sharestuff.axiom')
+>>> from sharestuff import Post
+>>> post = Post(store=s)
+}}}
+
+Let's say our post is an article entitled 'man bites dog'.  So we'll give it some contents.
+
+{{{
+>>> post.write(u'A local man bit a dog today.')
+}}}
+
+In order to share this post, we need to decide three things: what it will be called, who will be able to access it, and what those people will be able to do with it once they've got it.
+
+Abstractly, we'd like to allow everyone to read this article.  We've already declared that this post provides 2 interfaces - `IRead` and `IWrite`, so we will share it as an `IRead` provider only.
+
+{{{
+>>> from sharestuff import IRead
+}}}
+
+Then we need to decide who to share it with.  In the sharing system, both individual people and groups are referred to as `Role` objects.  We'd like to allow everyone to read this object, so we need to get a `Role` object which refers to everyone.  There are a few special roles; `sharing.getEveryoneRole` is a function which will return the role that represents everyone.
+
+{{{
+>>> from xmantissa.sharing import getEveryoneRole
+>>> everybody = getEveryoneRole(s)
+}}}
+
+Finally, we need to decide what they're going to call it when we share it.  When someone views an item that was shared, they have to get to it somehow.  That is usually through a web browser.  For example, if bob at mantissa.example.com shared an item called 'frisbee', you would access that in your web browser by typing <`http://mantissa.example.com/users/bob/frisbee`>.  We'll get to exactly how that actually gets hooked up to a web page in a moment, but the need for a name holds true for other protocols too.  For example - although mantissa does not currently support this - you might be able to send an email to `bob+frisbee@mantissa.example.com` to address the same object.
+
+So here's how we share the post with everybody as a thing that can be read, named u'man-bites-dog':
+
+{{{
+>>> everybody.shareItem(post, u'man-bites-dog', [IRead])
+}}}
+
+This small sample database is not actually connected to anything.  In order for an item to actually be accessed, it needs to be shared by a user in a running Mantissa instance.  We'll get to that in a moment, but for now, let's look at what a Mantissa protocol would do in order to access this item.
+
+First Mantissa would decide who you're logged in as.  If you're logged in anonymously, then that will be the 'everyone' role, which we've already retrieved, above.  Then, as I've already described, it will determine from the request what the name of the shared thing you're looking for is.  It will then call the `getShare` method on the appropriate `Role` object.
+
+{{{
+>>> publicPost = everybody.getShare(u'man-bites-dog')
+}}}
+
+The object that comes back from this call is a `SharedProxy`.  This is an access-controlled version of the original `Post` item.  Whatever code interacts with it should treat it as a provider of the interfaces it was shared with - in this case `sharestuff.IRead`.  For example, we can read it:
+
+{{{
+>>> publicPost.read()
+u'A local man bit a dog today.'
+}}}
+
+Importantly, however, this post object is ''not'' an actual `Post` and therefore does not do things like provide the `IWrite` interface.  If just anyone came along and tried to write to this object:
+
+{{{
+>>> publicPost.write(u'No dogs were bitten today.')
+Traceback (most recent call last):
+  File '<stdin>', line 1, in <module>
+  File 'Mantissa/xmantissa/sharing.py', line 449, in __getattribute__
+    raise AttributeError('%r has no attribute %r' % (self, name))
+AttributeError: SharedProxy(Post(contents=u'A local man bit a dog today.', storeID=7)@0x87A66CC, [<InterfaceClass sharestuff.IRead>], u'man-bites-dog') has no attribute 'write'
+}}}
+
+The security model in Mantissa's sharing system is designed to make it difficult to make mistakes.  In many other permission systems, you need to explicitly check permission before doing something, or ask which user is accessing stuff.
+
+When using sharing, by the time your application code is running, the server has already decided what user is logged in, what permissions they are allowed to have and has given you a model object that can perform only those operations.  If you make a mistake and forget to check permissions for a certain operation, attempting that operation will generate an error rather than do something that would break your security rules.
+
+=== Checking Permissions ===
+
+Of course, you don't always want to get an ugly exception.
+
+=== Different Permissions for Different People ===
+
+=== Querying for Shared Stuff ===
+
+=== Putting a Shared Item on the Web ===

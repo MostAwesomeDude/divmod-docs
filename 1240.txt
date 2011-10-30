@@ -1,0 +1,22 @@
+= Mantissa Plugin Notes =
+
+== Overview ==
+
+This page is a collection of notes based on my adventures with the following tickets:
+ * #911
+ * #2530
+ * #2531
+
+As such, you can imagine the following about these notes:
+ * they are based on one specific aspect of Mantissa/Axiom plugins;
+ * they are written from a relative Noob perspective; and
+ * are most certainly not complete.
+
+The plugin under scrutiny here (well, under rewrite, actually) is {{{axiomatic project}}} which has been (until some time in the near future) called in the following manner:
+{{{
+axiomatic project -n MyApp
+}}}
+This creates a Divmod™-approved directory structure populated by minimally functional code stubs, ready for the project dev to start making '!MyApp' a software reality.
+
+== Quick Glance ==
+

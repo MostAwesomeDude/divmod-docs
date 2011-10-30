@@ -1,0 +1,84 @@
+= Branch Based Development =
+
+Divmod uses branches for all development.  The lifetime of a task looks something like this:
+
+  * A  ticket is created in the issue tracker.
+  * For features, a specification is attached to the ticket
+  * A branch is created in Subversion.  The branch is named with the convention <descriptive word>-<issue number>[-<branch number>].  For the first branch of any feature, the branch number is omitted.
+{{{
+#!sh
+$ mkbranch Divmod sprocket-123
+}}}
+  * Development occurs on the feature in the branch.
+  * When the feature is deemed ready by the developer, it is given to another developer for review. The ticket should be moved to the Reviews component, assigned to the reviewer and the priority set to high.
+  * When the reviewer is satisfied, the branch is merged into trunk.
+{{{
+#!sh
+$ unbranch Divmod
+$ cd Divmod/trunk
+$ svn ci
+}}}
+
+Branch lifetimes should be short.  If trunk moves very far from the branch, the branch should be MergedForward to pick up bug fixes and feature enhancements which might be useful.  Doing this also makes the final merge easier, by keeping conflicts small and bringing them to the developer's attention before they become unmanageable.
+
+= Why Branches? =
+
+The most recent version of source code in the repository should always be working.  That makes it a lot easier to deploy fixes and tweaks quickly.  However, sometimes you need to check in code to test it on a different machine, or show it to a different developer.  A version control system is useful in many ways, and if you only have one branch, these purposes conflict.
+
+While we have only tried branch-based development with Subversion, other systems like Perforce and Bazaar will probably work just fine.
+
+Here at Divmod we think this is a ''really good'' methodology: here are some of its features.
+
+== Keep {{{trunk}}} Working ==
+
+The most recent revision of a piece of software, that is, {{{trunk@HEAD}}} should always work.  Any new developer should be able to check out the most recent version and immediately start working, without worrying that the build is broken this week.
+
+With branch-based development, features are only merged to trunk after they have been tested and reviewed by at least one other developer.
+
+== Switch Developers Mid-Feature ==
+
+If a developer gets stuck because it turns out that part of a feature is outside his expertise, he project can easily put code that he knows is broken into a branch, then indicate that branch to another developer and reassign the ticket, without breaking trunk.
+
+== Provide Useful Progress Information to Management ==
+
+Branches directly correspond to user-facing tasks.  A quick look at [browser:/branches the list of branches] should indicate to managers (or throngs of adoring [wiki:DivmodFanClub fans]) indicates what is actually going on.  Trac helpfully provides a view which shows how long it has been since someone committed to a branch.  If there are a lot of branches (more than twice the number of developers, let's say), that means that the team's efforts are getting diffuse and they need to focus more and get branches merged.  If branches are being turned over quickly, it means that tasks are being completed quickly.
+
+== Mechanism for Code Review ==
+
+Usually code review is done by module, and only after the fact.  While this practice is useful, it only raises problems that already exist, it doesn't prevent them.
+
+By reviewing each branch as a change, rather than a module, problems are spotted earlier on, and developers can work on any modules that are necessary for a particular task, with no worries that the maintainer won't notice - on a larger team, any module maintainers should be asked for review.
+
+This is also a low-friction review process.  Rather than submitting a branch for review and discussing it interactively, a developer may accept a ticket, start a branch, commit a few times, finish, put the ticket into review, move on to an unrelated branch, repeat, put that branch into review, then check their assigned tickets at the end of the day and merge any branches which have been accepted before finishing for the day.
+
+== Generate a Meaningful Changelog ==
+
+Often, source control logs are riddled with nonsensical, tiny changes.  'twiddled whitespace', 'added a few docstrings', etc.  Because it's good to commit frequently to avoid losing too much work or generating monolithic changes, this is hard to avoid.  Commit messages generate a bottleneck to getting work into the repository, which is bad.
+
+If every branch has a clear purpose, then only ''merges'' need have useful, descriptive commit messages, and since no code is changing when a developer is doing a merge to trunk, they can take all the time they need to come up with a good message.  This means that the changelog generated directly from a revision log of trunk (as opposed to the whole repository) is likely to be useful as a changelog.
+
+Tangentially related, commit messages for merges should include at least three pieces of information:
+
+  * The author of the branch.
+  * The reviewer of the branch.
+  * The tickets which the branch resolves or relates to.
+
+== Revert Useful Units ==
+
+If something ''does'' break trunk, you can revert it with one command, rather than sifting through piles of related commit messages and trying to assemble a useful revert.  It's 'revision 1234', not 'revision 1232, 1237, 1239, 1246, and I think maybe 1255 too, you should run the tests both ways'.
+
+== Merge When You're Merging, Not When You're Hacking ==
+
+If you are working directly in trunk, any update may cause conflicts which you have to immedaitely resolve before you can continue working.  With branches, a smaller number of developers can work on a branch, knowing that their changes won't conflict, and update regularly.
+
+That means you are never interrupted with an unpleasant required merge.  Your code is always in the repository ''before'' you worry about merging it with other people's changes, so there is no concern that although your code was working before you were ready to commit, the merge went badly and you never committed in a working state.
+
+== Some Thoughts on Things I Don't Know Anything About ==
+
+While this process works very well for us on Python code, more heavyweight development environments might find it even more valuable.  For example, if it takes an hour-long build process and 20 minutes of testing to determine whether trunk is in a good state, branch-based development could be even more valuable.
+
+Even if you already have awesome automated tests, branches can speed things up immensely.  Let's say Foo Co. has 30 developers and an hour long build and 20 minutes of unit tests.  Jethro checks in some broken core header file to trunk and goes to lunch.  The automated tests start building and running.  Alice, preparing to commit, updates.  She receives Jethro's broken changes.  Alice, being a better developer than Jethro, runs the tests.  She waits 20 minutes.  The build is broken!  She can't commit, since she doesn't want to break trunk.  (All this while, precious hours of work are sitting on Alice's disk, not backed up in the repository...)
+
+Meanwhile, everyone else in the company has updated, and jethro returns from his early lunch.  Thus far, 30 developers * (1 hour of build + 20 minutes of tests) = 40 man days have been wasted.  Everyone knows it was Jethro when he gets back because the build indicates failure on a revision he checks in, but now all 30 developers are standing behind his desk, waiting for him to get trunk back into a working state and test the fix so they can get back to work.  That requires ''at least'' another 1:20 of time waiting for the automated tests before Alice can commit her changes.
+
+Much of this waiting could have been circumvented if Jethro had checked his changes into a branch, and then asked the automated test system to run tests for him, and maybe had one other developer review it for him.  By the way, Buildbot has this feature, and [http://jade.code-bear.com:8010/q-linux Divmod's tests use it] - feel free to request a build of any branch :).

@@ -1,0 +1,10 @@
+== Divmod Sine ==
+
+A voice over IP application server.
+
+Sine provides:
+ * SIP Registrar
+ * SIP Proxy
+ * Third party call control (3PCC)
+ * Voice-mail
+ * [wiki:DivmodMantissa Divmod Mantissa] integration

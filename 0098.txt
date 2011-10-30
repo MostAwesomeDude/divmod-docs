@@ -1,0 +1,27 @@
+= Overview =
+
+From the ClickChronicle [http://clickchronicle.com/faq FAQ]
+
+  1. What is ClickChronicle?
+  ClickChronicle keeps a record of your web browsing and allows you to search all the web pages that you have visited.
+
+  We are staring Alpha testing and would appreciate your help in shaking down any bugs and enhancing the product.
+
+  The service is ''Firefox only'' and  has 2 parts: a click recorder and the clickchronicle.com service. The click recorder is currently a [http://greasemonkey.mozdev.org/ Greasemonkey] script, so you'll have to download and install the Greasemonkey extension; restart your browser and then install the [http://clickchronicle.com/static/js/clickchronicle.user.js ClickChronicle Greasemonkey script]. Instructions follow.
+
+= Getting started =
+
+ * Go to http://clickchronicle.com/signup
+ * Enter your email address
+ * Check your email for registration confirmation
+ * Follow the link in the email to activate your account
+ * Select a password
+ * Make sure [http://greasemonkey.mozdev.org/ Greasemonkey] is installed and running (e.g. install it and restart Firefox)
+ * View the script on [http://clickchronicle.com/static/js/clickchronicle.user.js this page]. Yes, it's yuck Javascript - sorry!
+ * While viewing the javascript go to the Firefox 'Tools' menu and select 'Install this user script'
+ * Click OK on the subsequent dialog to install the script
+ * Open a new browser window or tab
+ * Notice the small ClickChronicle on/off button at the bottom right hand corner of the browser window. This shows the current state of the click recorder and allows you toggle recording on and off.
+ * When recording is off the button display 'CC Off' and is grey: http://divmod.org/users/amir/screenshots/ccoff.png
+ * Clicking on the button switches on recording and displays 'CC On' on a dark blue background: http://divmod.org/users/amir/screenshots/ccon.png
+ 

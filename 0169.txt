@@ -1,0 +1,10 @@
+Divmod uses branches for all development.  The lifetime of a task looks something like this:
+
+  * A  ticket is created in an IssueTracker
+  * For features, a specification is attached to the ticket
+  * A branch is created in Subversion.  The branch is named with the convention <descriptive word>-<issue number>[-<branch number>].  For the first branch of any feature, the branch number is omitted.
+  * Development occurs on the feature in the branch.
+  * When the feature is deemed ready by the developer, it is given to another developer for review. The ticket should be moved to the Reviews component, assigned to the reviewer and the priority set to high.
+  * When the reviewer is satisfied, the branch is merged into trunk.
+
+Branch lifetimes should be short.  If trunk moves very far from the branch, the branch should be MergedForward to pick up bug fixes and feature enhancements which might be useful.  Doing this also makes the final merge easier, by keeping conflicts small and bringing them to the developer's attention before they become unmanageable.

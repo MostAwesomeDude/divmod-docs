@@ -1,0 +1,4 @@
+=== People Using Divmod Software ===
+ * [http://www.superleague.co.uk/ Rugby Super League] uses DivmodNevow.
+ * [http://www.nunatak.com.au/ Nunatak Systems] use Atop and DivmodNevow.
+ * [http://www.cpushare.com/ CPUShare] and [http://klive.cpushare.com/ KLive] use DivmodNevow.

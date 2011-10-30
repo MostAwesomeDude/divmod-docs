@@ -1,0 +1,15 @@
+There was much discussion at #divmod about this after the ticket was posted. Mostly amberite, idnar, and myself were discussing the idea, and exarkum made some comments towards the end, reluctantly.
+
+The concensus ammounts to a few positives:
+ * Should be outside of Axiom, and Mantissa is the best place for it.
+ * The default should be simple and basic, but customization should be just as easy.
+ * Making an item editable in such a way should be explicit, not implicit (every item shouldnt magically be editable with this system)
+
+Countering these points, there were some points of what we should ''not'' do:
+ * Add anything to the Item subclasses
+ * Allow editing of the item a reference points to within the containing item
+ * Possibly, allow editing of references at all, by default
+
+It became generally agreed upon that for each CRUD action, an item would be adapted to some CRUD interface, such as ICreatable, IEditable, IViewable, and IDeletable. Most of the talk revolved around IEditable, where we talked about how the item would be adapted to this, where a basic adapter would be provided to edit fields in very basic ways, mostly with just text boxes and basic validation based on the attribute types. The IEditable would generate the LiveForm, although there was some talk about how web-independant LiveForm really is, even though it is apparently meant to one day be usable for non-web UI. Making any type of item editable with the system would be a simple matter of registering the default IEditable adapter for the type.
+
+Also to note, ICreatable would need to work differently than others, because it would not be adapted from an item but from an item class.

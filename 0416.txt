@@ -1,0 +1,20 @@
+== A place to capture some of the next coarse chunks of work ==
+ * Performance measurement
+ * Usage stats
+ * Tech stats - coverage
+ * Backup
+
+=== Quotient ===
+ * Compose
+ * Addressbook
+ * Threading
+ * Spam filtering
+ * Search
+ * Grabbers
+ * Servers
+ * Reader
+ * Mailing lists
+ * Later
+   * Rules
+   * Gallery
+

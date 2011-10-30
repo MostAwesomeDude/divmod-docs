@@ -1,0 +1,24 @@
+= Nevow Tutorial =
+
+== Preamble ==
+
+Whenever I don't do any Nevow stuff for a while I always forget everything. I'm going to try and document the basics in an accessible way here so I can always bring myself up to speed quickly each time. I'm also going to make it into a simple 'quickstart' document for those who want to use Nevow.
+
+This is a work in progress, by someone who is not a Nevow guru. Do not rely on it until a guru has cast His eye on it. I'm also simultaneously learning the wiki formatting, so have patience.
+
+== About Nevow ==
+
+Nevow is a relatively low-level framework for constructing web applications. It is built on top of Twisted's HTTP server, twisted.web, and a compatibility layer will probably be made available when twisted.web2 is released. The reader is assumed to have at least a basic understanding of Twisted.
+
+Writing documentation for Nevow and Twisted in general can be hard because so much needs to be explained before anything can be seen to work. This tutorial attempts to avoid that and wade right in with complete, runnable code snippets. This will mean additional verbosity, and it will also mean that certain concepts will be introduced The Wrong Way first, before The Right Way is introduced.
+
+== Getting Started ==
+
+{{{
+#!python
+class Test:
+    def __init__(self):
+        print 'Hello World'
+if __name__ == '__main__':
+   Test()
+}}}

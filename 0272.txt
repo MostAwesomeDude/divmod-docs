@@ -1,0 +1,42 @@
+= Future Plans =
+
+== Switch to new Components System ==
+
+Nevow currently uses nevow.compy which supports twisted.python.components. Nevow will be switching to either zope.interface (as Twisted did in its 2.0 release) or use an alternative, simpler implementation that looks like PEP 246 (Object Adaptation).
+
+
+== Session Management Overhaul ==
+
+Session management in Nevow and twisted.web is OK but not great.
+
+Goals:
+
+  * Create a session server interface.
+  * Provide in-memory and file system (and maybe SQL) session server implementations.
+
+It will probably be necessary to review the ISession interface too.
+
+For more details read SessionServer.
+
+
+== Formless and HTML Form Generation ==
+
+My initial thoughts go something like this ...
+
+Formless can be a great tool for exposing objects and other application interfaces on the web but it does have limitations. Right now, the only real choice is to write the form in HTML and handle all POST, validation etc manually. Yuck!
+
+Goals:
+
+  * Extract/steal formless.webform into a more general purpose nevow.form (?) package with the sole purpose of generating and validating HTML forms.
+  * Simplify formless.webform to generate forms using the new nevow.form package.
+
+
+== Context-specific Adaption ==
+
+Provide PEP 246-like adaption and adapter registration facilities on the context so that instead of doing ISomething(someObj) you do ctx.adapt(someObj, ISomething). That would allow site- or resource- specific adaption to take place; resorting to the normal adaption mechanism if there is nothing in the context's registry.
+
+There are a couple of use cases for this:
+
+  * ''Overide'' standard Nevow/Formless adapters, i.e. change the default HTML renderer for formless Typed subclasses.
+  * Allow multiple instances of an application's root resource to be deployed within a single site. If the application makes extensive use of adaption to locate resources and renderers for objects, the ctx.adapt trick will allow the instance to be customised. i.e. the abc root resource's context tree adapts a Foo to IBar using the FooBar adapter; the xyz root resource adapts Foo to IBar using
+the XYZFooBar adapter.

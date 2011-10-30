@@ -1,0 +1,20 @@
+= Downloads =
+
+== Live Code ==
+
+You can have the entire open source Divmod code base in one go with the following:
+{{{
+svn co http://divmod.org/svn/Divmod/trunk/ Divmod
+}}}
+
+If you're going to be using [DivmodCombinator Combinator], then you might want to leave a place for branches:
+{{{
+svn co -N http://divmod.org/svn/Divmod 
+cd Divmod
+svn co -N branches
+svn co trunk
+}}}
+
+== Individual Releases ==
+
+If you'd like to download our projects individually (as releases) then please head over to the [DivmodProjects Projects] page and follow the links for the projects in which you are interested.

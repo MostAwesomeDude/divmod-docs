@@ -1,0 +1,20 @@
+== Nevow Documentation ==
+A seed page for now for common usage strategies. 
+
+=== Basic tasks ===
+ * Basic pages
+ * Stan
+ * XML Templates 
+ * Using render patterns
+ * Forms
+
+=== Athena ===
+ * Athena intro
+ * Deployment
+
+=== Guarded authentication ===
+ * Credential Checkers
+ * The Guarded Realm
+ * Guarding pages
+ * Anonymous avatars
+ * Persistent sessions 

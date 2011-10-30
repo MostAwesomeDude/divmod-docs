@@ -1,0 +1,11 @@
+= Divmod Xapwrap =
+
+Enhancements to the Python bindings for the [http://www.xapian.org Xapian] full-text indexing library.
+
+While Xapian comes with bindings, they are hard to work with, and being SWIG'd, a literal translation of a C++ API.  Xapwrap simplifies working with Xapian databases in Python.
+
+This is implemented as a second layer of wrapping, so Xapian's bindings are still required.
+
+Divmod uses Xapian (and Xapwrap) for of our products' full-text indexing needs.
+
+[http://divmod.org/trac/attachment/wiki/SoftwareReleases/Xapwrap-0.3.1.tar.gz?format=raw Get the most recent release - 0.3.1!]

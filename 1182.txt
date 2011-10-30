@@ -1,0 +1,17 @@
+= DuncanMcGreggor: Demo Blog Feeds =
+
+{{{
+#!html
+
+<script src='http://feeds.feedburner.com/Divmod?format=sigpro' type='text/javascript' ></script>
+<noscript><p>Subscribe to RSS headline updates from: 
+<a href='http://feeds.feedburner.com/Divmod'></a><br/>Powered by FeedBurner</p> 
+</noscript>
+
+}}}
+
+{{{
+#!html
+<p><a href='http://feeds.feedburner.com/Divmod' rel='alternate' type='application/rss+xml'>
+<img src='http://www.feedburner.com/fb/images/pub/feed-icon16x16.png' alt='' style='vertical-align:middle;border:0'/></a>&nbsp;<a href='http://feeds.feedburner.com/Divmod' rel='alternate' type='application/rss+xml'>Subscribe to Divmod Blogs</a></p>
+}}}

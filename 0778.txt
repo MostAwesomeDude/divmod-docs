@@ -1,0 +1,13 @@
+== Unit Testing ==
+
+Divmod uses the stand-alone !JavaScript interpreter [http://www.mozilla.org/js/spidermonkey/ SpiderMonkey] to run unit tests on some portions of our !JavaScript sources.  You can find [browser:trunk/Nevow/nevow/test/test_object.js several] [browser:trunk/Nevow/nevow/test/test_deferred.js examples] in the Divmod repository.
+
+These unit tests are valuable: they reveal simple errors, provide a kind of documentation as to the purpose of various functions, and ensure that the code is exercised in as much isolation as is possible.  However, they are not all-encompassing.  After all, they aren't even executed by the same runtime that will be used by ''any'' user to execute them.
+
+{{{nit}}} can also be used for unit testing (see below).
+
+== Functional Testing ==
+
+To account for this, Nevow provides {{{nit}}}, a runner for tests which are designed to be run by an actual browser.  Nit tests are placed in Python source files named with the {{{livetest_}}} prefix.  There are [browser:trunk/Nevow/nevow/test/livetest_athena.py several] [browser:trunk/Mantissa/xmantissa/test/livetest_forms.py examples] [browser:trunk/Mantissa/xmantissa/test/livetest_people.py of this] kind of test in the Divmod repository as well.
+
+However, you might want to look at this walkthrough on [http://blackjml.livejournal.com/21602.html how to write tests for Athena].

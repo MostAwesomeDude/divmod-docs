@@ -1,0 +1,12 @@
+== Imagination ==
+
+A simulation core.  Currently very raw.  [browser:trunk/Imaginary/imagination Browse source]
+
+== Pottery ==
+
+Another simulation core.  Attempts to accomplish the same goals as Imagination.  These two will probably merge some day.  [browser:trunk/Imaginary/pottery Browse source]
+
+== Radical ==
+
+See DivmodRadical.
+

@@ -1,0 +1,22 @@
+{{{
+#!python
+@partial(partial,partial)
+def merger( merge, seq, *args, **kw ):
+    '''Merge seq using the given merger.
+
+    The merger is handed an iterator of values to merge, and is expected to
+    yield a sequence of merged values.
+
+    The merging iterator yields two values at a time: the previously merged
+    result (initially None), and an item from seq.
+    '''
+    merged = None
+    merging = ( (merged,item) for item in seq )
+    for merged in merge( merging, *args, **kw ):
+        pass
+    return merged
+}}}
+
+This decorator is useful as a PotatoProgramming alternative to {{{reduce}}}.
+
+''In other words - a bad idea.  Please don't use it - especially don't think that Divmod code would use such a thing!  -glyph ''

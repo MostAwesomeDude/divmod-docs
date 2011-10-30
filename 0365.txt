@@ -1,0 +1,15 @@
+=== 4 November 2005 ===
+ * Remove reporting of repeated visits to same urls on the front page
+ * Add paging summary to click browser
+ 
+=== 26 October 2005 ===
+ * Page loading speedups
+ * Behind the scenes indexing goodness
+
+=== 25 October 2005 II ===
+ * Added new preferences system under 'My Account'.
+ * UI tweaks.
+
+=== 25 October 2005 ===
+ * Ability to view clickchronicle.com home page and recent clicks when logged in.
+ * Added a preference to stop clicks being anonymously shared on clickchronilce.com front page.

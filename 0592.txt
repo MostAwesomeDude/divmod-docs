@@ -1,0 +1,33 @@
+= Divmod Fan Club Mithril Membership =
+
+Mithril membership is designed for corporations and opens the door to Divmod's professional services:
+
+ * Support
+ * Training
+ * Consulting
+
+Mithril should be viewed as a retainer and engagements are priced on a
+case-by-case basis.
+
+== Support ==
+
+Divmod offers in-depth support for our products that can be escalated
+to the original developers. Divmod support is priced according to the
+level of support needed and the expected response-time.
+
+== Training ==
+
+Divmod offers training workshops for software engineers and architects
+interested in a hands-on experience with our products. Classes can
+range for one-day single-product overviews to multi-day classes
+covering the whole Divmod and Twisted software stack.
+
+== Consulting ==
+
+Divmod consulting will help you to design, build, tune and deploy
+reliable, high-performance Divmod-based solutions. Our consulting team
+offers technical assistance in consulting engagements that can provide
+the knowledge transfer and expertise to allow you to complete your
+projects on-time and on-budget. Our team is extremely productive with
+our software and can deliver non-trivial applications in a matter of
+weeks.

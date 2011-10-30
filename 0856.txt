@@ -1,0 +1,3 @@
+= Divmod Help =
+
+The Divmod Service is an online service that provides you with an always-on computer in the Internet. Your Divmod computer is secure, private and personal. It runs applications, stores your data and allows you to share it. Initially Divmod provides [wiki:DivmodMailHelp Email], Phone and Address Book applications. Over time we will add Calendar, To-do, Word Processing, Blogging, Music, Games and more.

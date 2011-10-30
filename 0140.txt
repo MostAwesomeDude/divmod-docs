@@ -1,0 +1,4 @@
+Divmod is PeopleCentric.
+Mantissa's Person object allows functionality to be added to people over time.
+A person may have many facets such as their home address and their amazon wishlist.
+A person may have zero, one or more of any field.

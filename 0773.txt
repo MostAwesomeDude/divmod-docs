@@ -1,0 +1,4 @@
+= Mantissa : Glossary =
+
+ Offering::
+  A set of configuration including powerups for a site store, an application store, and a user store.  An Offering represents a discrete set of functionality for a Mantissa server.  For example, an email service might be an offering.

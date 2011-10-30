@@ -1,0 +1,8 @@
+
+ * Testing takes too long
+   * Can we migrate partial mailboxes to speed up test cycle?
+   * New erin account with small number of messages covering all necessary states, test migration on that
+ * Migrated instance should be as close to erin as possible
+   * No spam processing
+     * Creates too many false positives
+     * Need to work out exactly how to deliver messages into the system without invoking normal processing

@@ -1,0 +1,16 @@
+= Community =
+
+[[Image(http://divmod.org/tracdocs/community_whtbck.png, right)]] 
+
+== Need Help? ==
+ * '''Mailing list''': [/users/mailman.twistd/listinfo/divmod-dev The divmod-dev mailing list page] has subscription instructions and a link to the web based archives.
+ * '''IRC''': You will find Divmod developers, contributors and users hanging out on [http://freenode.net/ Freenode] in #divmod, #twisted and #twisted.web.
+ * '''Blogs''': The general [http://community.livejournal.com/divmod/ Divmod blog]; personal blogs: [http://www.livejournal.com/users/amiramir amiramir], [http://www.livejournal.com/users/jcalderone exarkun], [http://www.livejournal.com/users/glyf glyph], and [http://oubiwann.blogspot.com/ oubiwann]. You may also like to checkout these developers' weblogs for release announcements etc.
+ * '''Buildbot''': See the [http://bb.divmod.org/ latest build and test results] for the code in trunk.
+
+== Wamt to help? ==
+ * Check out our [wiki:HereToHelp Here to Help?] section
+ * Get excited about [wiki:DivmodIdeas how we're thinking]!
+
+== Love Divmod? ==
+You can also contribute and show your appreciation by joining the [wiki:DivmodFanClub Divmod Fan Club].

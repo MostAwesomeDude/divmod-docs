@@ -1,0 +1,34 @@
+= [wiki:WikiStart Divmod] : Reverend =
+Reverend is a general purpose Bayesian classifier, named after Rev. Thomas Bayes. Use the Reverend to quickly add Bayesian smarts to your app. To use it in your own application, you either subclass Bayes or pass it a tokenizing function. Bayesian fun has never been so quick and easy. Many thanks for [http://christophe.delord.free.fr/ Christophe Delord] for his well written PopF. [http://magix.fri.uni-lj.si/orange/ Orange] also looks good. If you are looking for a spam filter take a look at SpamBayes and POPFile.
+
+The Reverend package requires Python 2.3 or later. [http://www.advogato.org/person/leonardr/ Leonard Richardson] has back-ported Reverend for use with Python 1.5.2. You can find his version [http://newsbruiser.tigris.org/source/browse/newsbruiser/nb/lib/reverend/ here].
+
+Some fun stuff is starting to pop up that uses the Reverend: http://jrhicks.net/reverend and [http://newsbruiser.tigris.org/ Newsbruiser].
+
+[http://matt.blogs.it/ Matt Mower] has ported Reverend to Ruby and named it [http://rubyforge.org/projects/bishop/ Bishop].
+
+Stuff you can do with the Reverend:
+ * classify RSS stories
+ * classify recipes by cuisine
+ * who do you write like? Shakespeare, Dickens or Austen
+ * detect the language of a document
+ * is your code more like Guido's or Peter's
+
+Think about how you want your data tokenized! You can write a custom tokenizer and pass it to Bayes at instance creation. The default tokenizer is named Splitter and is like a glorified version of string.split(): it breaks words/tokens on space and other non-alphanumeric characters. This is fine for many apps, particularly apps around texts in western languages. However, if characters like #!$&, or Unicode are important to your application, you may want to provide you own tokenizer. Also, by default the Reverend expects a string for both training and guessing. If you want to pass it an object, you need to write a tokenizer that knows how to get the tokens out of your object.
+
+Here's some code:
+{{{
+from reverend.thomas import Bayes
+guesser = Bayes()
+guesser.train('french', 'le la les du un une je il elle de en')
+guesser.train('german', 'der die das ein eine')
+guesser.train('spanish', 'el uno una las de la en')
+guesser.train('english', 'the it she he they them are were to')
+guesser.guess('they went to el cantina')
+guesser.guess('they were flying planes')
+guesser.train('english', 'the rain in spain falls mainly on the plain')
+guesser.save('my_guesser.bay')
+}}}
+
+== Download ==
+ * Trunk: svn co http://divmod.org/svn/Divmod/trunk/Reverend

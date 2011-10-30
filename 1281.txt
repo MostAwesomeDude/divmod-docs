@@ -1,0 +1,47 @@
+= The Complete Divmod Project List =
+
+== Frameworks ==
+
+ '''[wiki:DivmodNevow Divmod Nevow]'''::
+  A web templating framework that provides [wiki:DivmodNevow/Athena Athena], a two-way AJAX toolkit.
+ '''[wiki:DivmodAxiom Divmod Axiom]'''::
+  An pythonic embedded object database implemented on top of [wiki:SqLite SQLite].
+ '''[wiki:DivmodMantissa Divmod Mantissa]'''::
+  An extensible, multi-protocol, multi-user, interactive application server built on top of Axiom and Nevow.
+ '''[wiki:DivmodSine Divmod Sine]'''::
+  A voice over IP framework built on Mantissa and our audio handling code.
+ '''[wiki:DivmodQuotient Divmod Quotient]'''::
+  A messaging platform for email and more.
+
+== Tools ==
+
+ '''[wiki:DivmodCombinator Divmod Combinator]'''::
+  A branch-management tool to assist with the [wiki:UltimateQualityDevelopmentSystem Ultimate Quality Development System] ([wiki:UltimateQualityDevelopmentSystem UQDS]), useful to keep your PYTHONPATH short and avoid having to restart your terminal or log out and log back in when you update your Python path environment.
+ '''[wiki:DivmodPyflakes Divmod Pyflakes]'''::
+  A lint-like tool for quickly checking your Python code for sanity.
+ '''[wiki:DivmodEpsilon Divmod Epsilon]'''::
+  A Python utilities package, most famous for its [wiki:ExtimeDotTime Time] class.
+
+== Unmaintained ==
+
+These are projects that could be revived if they were to benefit from a dedicated champion to maintain them.
+
+ '''[wiki:DivmodVertex Divmod Vertex]'''::
+  An implementation of the Q2Q protocol, for connecting directly between two endpoints anywhere including mobile users and users behind Network Address Translators (NAT).
+ '''[wiki:ShtoomProject Shtoom]'''::
+  A voice over IP client and server.
+ '''[wiki:DivmodReverend Divmod Reverend]'''::
+  A general purpose Bayesian classifier, named after Rev. Thomas Bayes.
+
+== Retired ==
+
+These projects are now longer being developed.
+
+ [wiki:WhitherAtop What happened to Atop?]::
+   One of earlier OODB projects; see also [wiki:WhitherQuotient What happened to 'Old' Quotient?]
+ [wiki:WhitherLupy What happened to Lupy?]::
+    A port of Lucene to Python
+ [wiki:WhitherPyndex What happened to Pyndex?]::
+    An early attempt at a full-text indexer in Python
+ [wiki:DivmodXapwrap Divmod Xapwrap]::
+   A wrapper around the Python bindings for the Xapian Probabilistic Information Retrieval library.

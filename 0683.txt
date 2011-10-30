@@ -1,0 +1,15 @@
+Divmod uses code review for just about every change to any project.  The exceptions to this are generally extremely new code which isn't seeing any use yet where the consequences of breaking things are minimal and don't outweigh the cost of developer time required by the review.
+
+Code review is a pretty simple process: at its heart, it is little more than reading some code written by someone else.  Nevertheless, it can be useful to have a set of things on which to focus during a review:
+
+  * Does the branch merge or the diff apply cleanly?
+  * Are there unit tests for the code being changed or added?
+  * Do the unit tests pass for you?
+  * Do the unit tests pass for buildbot?
+  * Is there documentation for new code?
+  * Where appropriate, has existing documentation been updated (including ChangeLog/NEWS files)?
+  * Does the code adhere to the coding style?
+
+There's the easy list.  Most are mechanical checks.  Don't feel bad about rejecting a branch if the answer to any of these questions is no: the problems may seem minor in isolation, but each contributes to overall poor code quality.  Moreover, sometimes apparently minor problems can be hiding larger issues.
+
+Taking a look at the bigger picture can be a little bit harder, but it's just as important.

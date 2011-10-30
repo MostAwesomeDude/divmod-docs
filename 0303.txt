@@ -1,0 +1,3 @@
+= DivmodAxiom : Examples =
+ * [source:trunk/Axiom/axiom/examples Axiom's builtin examples]
+ * [wiki:DivmodAxiom/Examples/Shop Very Simple Shop]: An example of how axiom might be used to track stock and orders in a shopping app. (Work in progress, demonstrates one aspect of the powerup mechanism)

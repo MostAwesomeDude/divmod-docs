@@ -1,0 +1,3 @@
+Q) When I reload a page, the server logs a traceback ending with {{{exceptions.AssertionError: Cannot render a LivePage more than once}}}
+
+A) LivePage instances maintain server-side state that corresponds to the connection to the browser.  Because of this, each LivePage instance can only be used to serve a single client.  When you serve LivePages, make sure that you create a new instance for each render pass.

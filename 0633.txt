@@ -1,0 +1,1 @@
+Athena is a two-way communication channel for Nevow applications.  Peruse [browser:trunk/Nevow/examples/athenademo the examples].  Or make this page better.

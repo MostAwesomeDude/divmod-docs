@@ -1,0 +1,216 @@
+= Combinator Tutorial =
+
+[http://divmod.org/trac/wiki/DivmodCombinator Combinator] is a tool to help
+developers use and manage multiple branches of software hosted in a
+[http://subversion.tigris.org/ Subversion] (SVN from now on) repository.
+
+== Let's Play ==
+
+The last thing you want to do while following this tutorial is scatter files
+all over your disk and make changes to a real SVN repository so we'll start by
+creating a directory on your disk to play in and a test SVN repository.
+
+Combinator expects the trunk/branches/tags repository structure recommended by the
+[http://svnbook.red-bean.com/ Version Control with Subversion] book.
+
+{{{
+$ mkdir CombinatorTutorial
+$ cd CombinatorTutorial
+$ svnadmin create repository
+$ svn mkdir -m 'trunk/branches/tags structure' file://`pwd`/repository/trunk file://`pwd`/repository/branches file://`pwd`/repository/tags
+$
+}}}
+
+== Install Combinator (sort of) ==
+
+Combinator is current only available from Divmod's Subversion repository but
+you've already got Subversion installed so it's easy to fetch.
+
+{{{
+$ pwd
+/home/matt/CombinatorTutorial
+$ mkdir -p Divmod/trunk
+$ cd Divmod/trunk
+$ svn co -q http://divmod.org/svn/Divmod/trunk/Combinator
+$ cd ../..
+$
+}}}
+
+{{{
+$ pwd
+/home/matt/CombinatorTutorial
+$ eval `python Divmod/trunk/Combinator/environment.py`
+[...]
+$ ls
+combinator_paths  Divmod repository
+$
+}}}
+
+The eval line installs Combinator into your environment. If you like
+Combinator you'll probably want to add that line to your shell's startup file
+but it's a bit early for that right now ;-).
+
+combinator_paths is a directory that Combinator uses to record what branches
+you're working on and any binaries/scripts the branch provides.
+
+(You may be wondering why I created the Divmod/trunk directory. The truth is I
+don't know but Combinator seems to need those directories to work out where
+your project directory is. Perhaps Combinator's environment.py will accept a
+project directory argument one day.)
+
+== Starting work on the Project ==
+
+If you're still with me then this is where we actually start using Combinator.
+We need to fetch the project trunk from the SVN repository and register it
+with Combinator.
+
+{{{
+$ chbranch Project trunk file://`pwd`/repository/trunk
+C: Checked out revision 1.
+$ ls
+combinator_paths  Divmod  Project  repository
+$ ls Project/
+trunk
+$
+}}}
+
+Using all the powers my imagination can muster on a Friday evening, I called
+the project Project. As you can hopefully see Combinator created the main
+directory for Project development and checked out trunk.
+
+Obviously, this is going to be a Twisted project ;-) so we'll get Twisted from
+SVN too. (Don't worry, I just want another respository checked out really.)
+
+{{{
+$ pwd
+/home/matt/CombinatorTutorial
+$ chbranch Twisted trunk svn://svn.twistedmatrix.com/svn/Twisted/trunk
+[...]
+$ ls
+combinator_paths  Divmod  Project  repository  Twisted
+$ ls Twisted/
+trunk
+}}}
+
+I mentioned above that Combinator records what branches you're currently
+working on. Let's find out what Combinator thinks I'm working on.
+
+{{{
+$ whbranch
+Project: trunk
+Twisted: trunk
+$
+}}}
+
+== Create a Development Branch ==
+
+At some point we decide to add a substantial new feature to Project.
+Obviously, we'd never work directly on trunk so we need a branch to work in.
+
+{{{
+$ mkbranch Project say-hello
+[...]
+$ ls Project/
+branches  trunk
+$ ls Project/branches/
+say-hello
+$ whbranch
+Project: say-hello
+Twisted: trunk
+$
+}}}
+
+Let's add the exciting new feature.
+
+{{{
+$ pwd
+/home/matt/CombinatorTutorial
+$ cd Project/branches/say-hello/
+$ echo 'print 'Hello, Combinator.'' > test.py
+$ svn add test.py
+$ svn commit -m ''
+$
+}}}
+
+Hurray, done already! Merge back to trunk so we can roll this out to our eager
+customers.
+
+{{{
+$ unbranch Project
+[...]
+$ 
+}}}
+
+That actually merges to the local copy of trunk. Check the changes look sane
+and then commit.
+
+{{{
+$ cd ../../trunk/
+$ svn status
+A  +   test.py
+$ svn commit -m 'Merged say-hello to trunk.'
+$ whbranch
+Project: trunk
+Twisted: trunk
+$
+}}}
+
+== Merging Forward ==
+
+A new feature means a new branch.
+
+{{{
+$ pwd
+/home/matt/CombinatorTutorial/Project
+$ mkbranch Project another-feature
+[...]
+$ whbranch
+Project: another-feature
+Twisted: trunk
+$ cd branches/another-feature/
+$ echo 'print 'Hello, Bloatware.'' > test.py
+$ svn commit -m ''
+[...]
+$
+}}}
+
+Half way through development someone merges new code to trunk that would be
+really useful to this branch too.
+
+{{{
+$ cd ../../trunk/
+$ touch another.py
+$ svn add another.py
+$ svn commit -m ''
+$ cd ../branches/another-feature/
+$
+}}}
+
+We can pick up the changes to trunk and continue development on the branch by
+'merging forward'.
+
+{{{
+$ unbranch Project; mkbranch Project another-feature-2
+$ whbranch
+Project: another-feature-2
+Twisted: trunk
+$ cd ../another-feature-2/
+$ svn status
+M      test.py
+$ ls
+another.py  test.py
+$
+}}}
+
+We complete the development of the new feature, commit and merge to trunk as
+before.
+
+{{{
+$ svn commit -m ''
+$ unbranch Project
+$ cd ../../trunk/
+$ svn status
+M      test.py
+$ svn commit -m 'Merged another-feature-2'
+$
+}}}

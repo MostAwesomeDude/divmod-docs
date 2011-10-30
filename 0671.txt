@@ -1,0 +1,18 @@
+DivmodRadical is an interactive, 2D, isometric client/server game platform, delivered using nothing but a web browser, written using DivmodMantissa and DivmodAthena.
+
+Seriously.  It actually does that.  You can move your little guy around on the screen, talk, and pick up items (there are even walls!)
+
+It is still in the very early stages of development; there is a mostly-working demonstration in SVN, but there is no release, and few developer resources are being spent on it due to time and financial constraints.
+
+If you find this interesting, please contribute!
+
+= Running instructions =
+
+Using an SVN checkout, run the following commands:
+
+{{{
+$ axiomatic -d radical.axiom mantissa
+$ axiomatic -d radical.axiom start -n
+}}}
+
+then point your browser at <http://localhost:8080/>.  Log in as admin@localhost with the password you just specified.  Visit the 'Offerings' page and click the Radical area.  Visit the 'Signup' page and create a signup mechanism with the Radical benefactor.  Then signup for a Radical account using a working email address, follow the link that is emailed to your account, and start playing!

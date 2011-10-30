@@ -1,0 +1,23 @@
+= Divmod, Inc. =
+
+http://divmod.org/trac/chrome/common/divmod.png Divmod.org is a community dedicated to producing high quality, open source Python code.
+
+http://divmod.com/ximages/anonymous_logo.png [wiki:DivmodInc Divmod, Inc.] is the company that substantially funds divmod.org, employs many of the programmers writing code on these projects, and created these projects to support our applications.
+
+Here at Divmod (both of them) we strongly believe in honesty and transparency.  Our code and our tasks are right here for you to see.  We are gearing up to provide several different online services, some of which will be free and some of which will be subscription-based, but all of which will place a premium on user satisfaction.  Here is where you can see how we're doing it and know that we really mean it when we say that we value your privacy and security.
+
+If you're an open source programmer and also a Divmod customer or user, contribute some patches!  If you can make the service better we will include your patches and include them on the live service.
+
+Our team:
+ * [wiki:People/AmirBakhtiar Amir Bakhtiar], irc: amiramir, [http://www.livejournal.com/users/amiramir blog]
+ * [wiki:People/GlyphLefkowitz Glyph Lefkowitz], irc: glyph, [http://www.livejournal.com/users/glyf blog]
+ * [wiki:People/JeanPaulCalderone JP Calderone], irc: exarkun, [http://www.livejournal.com/users/jcalderone blog]
+ * [wiki:People/AllenShort Allen Short], irc: dash
+ * [wiki:People/MoeAboulkheir Moe Aboulkheir], irc: moea
+
+Alumni:
+ * [wiki:People/DonovanPreston Donovan Preston], irc: fzZzy, [http://ulaluma.com/pyx/ blog]
+ * [wiki:People/MikeSalib Mike Salib], irc: msalib
+ * [wiki:People/MarkWittner Mark Wittner], irc: token
+ * [wiki:People/JonathanSimms Jonathan Simms], irc: slyphon
+

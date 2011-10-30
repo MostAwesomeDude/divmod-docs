@@ -1,0 +1,24 @@
+= Nevow Tutorial =
+
+== Accessing Page Children ==
+
+URLs resemble a hierarchy; for example, in the URL {{{http://example.com/foo/bar/baz.html}}}, the HTML page {{{baz.html}}} can be considered to be a child of the path {{{/foo/bar}}}.
+
+Note that Nevow gurus will point out that many other things other than HTML pages can exist at a particular URI and that the correct term is actually a 'resource', but we will gloss over that fact for the time being.
+
+As it happens, {{{childFactory()}}} is only one of several methods for accessing page children. We will now examine these in turn; the details are available at http://starship.python.net/crew/mwh/nevowapi/nevow.rend.ChildLookupMixin.html#locateChild
+
+The main ways of accessing children of a Page are:
+
+  * defining a class attribute called {{{children}}}, a dict of names to page objects;
+  * defining a method called {{{child_}}}''name''{{{()}}} that returns a page object;
+  * defining a method called {{{childFactory()}}} that returns a page object;
+
+These approaches are implemented in the default implementation of {{{locateChild()}}}; this gives rise to a further method of accessing children:
+
+  * redefining {{{locateChild()}}}
+
+However, it is usually possible to get the result you want using the default implementation and using one of the other methods.
+
+''Examples to follow''
+

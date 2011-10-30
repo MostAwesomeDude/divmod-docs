@@ -1,0 +1,5 @@
+== DivmodNevow's 'LivePage' ==
+
+A client/server asynchronous communication mechanism that is embedded in a web page.  It consists of a Twisted server component written in Python and a client component written in javascript.
+
+A two-way real-time chat application is an example of something that might take advantage of LivePage's capabilities.

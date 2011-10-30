@@ -1,0 +1,7 @@
+=== People Using Divmod Software ===
+ * [http://www.superleague.co.uk/ Rugby Super League] uses [wiki:DivmodNevow Divmod Nevow].
+ * [http://www.nunatak.com.au/ Nunatak Systems] use Atop and [wiki:DivmodNevow Divmod Nevow].
+ * [http://www.cpushare.com/ CPUShare] and [http://klive.cpushare.com/ KLive] use [wiki:DivmodNevow Divmod Nevow].
+ * [http://www.hess.com.tw/en/ Hess Educational Organization] use [wiki:DivmodNevow Divmod Nevow] and [wiki:DivmodMantissa Divmod Mantissa].
+ * [http://www.organizedflirting.com/ Organized Flirting] use [wiki:DivmodMantissa Divmod Mantissa]and [wiki:DivmodAxiom Divmod Axiom].
+ * [http://jotlive.com/ JotSpot Live] use [wiki:DivmodNevow Divmod Nevow]and LivePage.

@@ -1,0 +1,16 @@
+== Offerings ==
+
+The primary way in which application developers supply new functionality to be exposed by Mantissa is via the ''offering'' interface.  Mantissa loads offering plugins and uses them to provide new network services, web pages, themes, and a number of other things.
+
+=== Site Powerups ===
+
+An offering can provide any number of ''site powerups''.  These are `Item` subclasses with which the ''site store'' will be powered up when the offering is installed.  These can be powerups for any interface, but a number of interfaces are of particular interest.
+
+==== IProtocolFactoryFactory ====
+
+''Site powerups'' for the `IProtocolFactoryFactory` interface will be discovered by `axiomatic port` and the administrative web interface for port configuration and presented as options for which to create ''port'' bindings.  `IProtocolFactoryFactory` site powerups which are have port bindings will be available for inspection and removal via these interfaces as well.
+
+== Ports ==
+
+As a network server, Mantissa primarily exposes its functionality over TCP (and SSL/TLS) and UDP sockets.  A listening TCP (or SSL/TLS) or UDP socket is a ''port''.  TCP (and SSL/TLS) ports can be inspected, created, and deleted using the command line tool `axiomatic port` or with the administrative web interface available at ''Admin -> Ports''.
+

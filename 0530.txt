@@ -1,0 +1,41 @@
+= [wiki:WikiStart Divmod] : [wiki:DivmodNevow Nevow] : Authentication and Authorisation = 
+TODO
+ * Introduction to authentication and authorisation in nevow
+== Misc Recipes ==
+ '''Using Formless to Render a Guarded Login Page'''::
+  {{{
+#!python
+class LoginPage(rend.Page):
+    docFactory = loaders.stan(
+        T.html[
+            T.head[T.title['Login Please']],
+            T.body[
+                webform.renderForms()
+            ]
+        ]
+    )
+    
+    def bind_login(self, ctx):
+        return [
+            ('ctx', annotate.Context()),
+            ('username', annotate.String(required=True)),
+            ('password', annotate.PasswordEntry(required=True)),
+        ]
+    
+    def login(self, ctx, username, password):
+        sess = inevow.ISession(ctx)
+        req = inevow.IRequest(ctx)
+        credentials = UsernamePassword(username, password)
+        
+        def errorHandler(error):
+            #error.trap(UnauthorizedLogin)
+            raise annotate.ValidateError(
+                {}, 
+                formErrorMessage='Your username and / or password were not recognised.', 
+                partialForm={'username':username})
+        
+        def successHandler(pageAndRemainingSegments):
+            return url.root
+        
+        return sess.guard.login(req, sess, credentials, []).addCallback(successHandler).addErrback(errorHandler)
+}}}

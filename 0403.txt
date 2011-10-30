@@ -1,0 +1,10 @@
+=== Axiom Tutorial ===
+JP Calderone's occasional series on Axiom and Mantissa usage. Via [http://www.livejournal.com/users/jcalderone/ JP's blog].
+
+ * [http://www.livejournal.com/users/jcalderone/15217.html How to create a Mantissa Server]
+ * [http://www.livejournal.com/users/jcalderone/15551.html Configuring HTTP and HTTPS ports, and static content]
+ * [http://www.livejournal.com/users/jcalderone/15928.html Configuring Static Resources on a Mantissa Server]
+ * [http://www.livejournal.com/users/jcalderone/16249.html Redirecting HTTP request logs]
+ * [http://www.livejournal.com/users/jcalderone/16404.html Adding Axiomatic plugins]
+ * [http://www.livejournal.com/users/jcalderone/16888.html Axiom Queries]
+ * [http://www.livejournal.com/users/jcalderone/17138.html Axiom Powerups]

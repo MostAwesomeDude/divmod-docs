@@ -1,0 +1,22 @@
+= Transition mini-HOWTO =
+
+A few bullet points with stuff to do transitioning from pre-dependency code to the new API(s).
+
+ * {{{axiom.item.InstallableMixin}}} has been removed since it is unnecessary, as is the {{{installedOn}}} attribute that was on subclasses thereof. {{{powerup.installedOn()}}} is now spelled {{{axiom.dependency.installedOn(powerup)}}}.
+ * {{{powerup.installOn(target)}}} is now spelled {{{axiom.dependency.installOn(powerup, target)}}}. See also {{{axiom.dependency.uninstallFrom(powerup, target)}}}.
+ * Instead of explicitly powering the target up in {{{installOn}}}, set the {{{powerupInterfaces}}} class attribute to a sequence of interfaces, or of {{{(interface, priority)}}} tuples.
+ * If you are implementing {{{INavigableElement}}}, you need something like:
+{{{
+#!python
+privateApplication = dependsOn(PrivateApplication)
+}}}
+ * Declare other dependencies of your powerups as appropriate.
+ * Get rid of your {{{Benefactor}}} / {{{BenefactorFactory}}} classes, and instead pass an {{{installablePowerups}}} sequence when constructing your offering. For example:
+{{{
+#!python
+installablePowerups = [
+    (u'Operator admin', u'Operator administration', OperatorAdmin),
+    (u'Reports', u'Data reporting functionality', Reports),
+    ]
+}}}
+ * TODO: writing upgraders

@@ -1,0 +1,18 @@
+= Mantissa Axiomatic Project Notes =
+
+After the notes taken [wiki:People/DuncanMcGreggor/MantissaPluginNotes here], we're now ready to look more closely at the {{{project}}} subcommand of the Mantissa {{{axiomatic}}} plugin.
+
+Related tickets:
+ * #911
+ * #2530
+ * #2531
+
+== Current State ==
+
+=== template.txt ===
+
+=== Rewrite Goals ===
+
+==== Generating Models and Views ====
+
+==== Testing Generated Code ====

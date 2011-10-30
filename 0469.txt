@@ -1,0 +1,16 @@
+= [wiki:WikiStart Divmod] : Mantissa =
+
+Mantissa is an application server.
+
+It provides integration between the AxiomProject object database, and the TwistedFramework, as well as web user-interface utilities.
+
+MantissaIsTheDeploymentTarget.
+
+The goal of Mantissa is to provide a common platform that open-source contributors can use to help us build customized additions to the Divmod service.  Divmod is going to offer a variety of different services (starting with ClickChronicleAlpha), and if you want to write something that hooks into our network, Mantissa is how you do it.
+== Download ==
+ * Stable: [http://divmod.org/trac/attachment/wiki/SoftwareReleases/Mantissa-0.4.1.tar.gz?format=raw Get the most recent release - 0.4.1!] ([http://www.livejournal.com/users/jcalderone/18622.html Release Announcement])
+ * Trunk: svn co http://divmod.org/svn/Divmod/trunk/Mantissa Mantissa (Requires DivmodVertex (+ [http://pyopenssl.sourceforge.net/ pyOpenSSL]) and [http://pytz.sourceforge.net/ PyTZ])
+
+== See Also ==
+ * Several of the Axiom docs on the DivmodAxiom page are also Mantissa docs.
+ * [wiki:DivmodMantissa/Sharing /Sharing]: description of sharing functionality

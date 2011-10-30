@@ -1,0 +1,119 @@
+= DivmodAxiom/Examples : Shop =
+{{{
+#!python
+from axiom.attributes import AND, OR
+from axiom import item, attributes, sequence
+from epsilon.extime import Time
+
+class Person(item.Item):
+    '''A person here is assumed to be a purchaser. 
+    In a real app though a person might be more generic eg having registered for an enquiries system. 
+    Would this be a good use case for powerups, adding the purchaser interface only when the person
+    completes a purchase. Or am I confused?
+    Eg IPurchaser(person) why not just registerAdaptor(Purchaser, Person, IPurchaser)
+    '''
+    
+    typeName = 'Person'
+    schemaVersion = 1
+
+    name = attributes.text(allowNone=False)
+    dob = attributes.timestamp(allowNone=False)
+
+    def getProductsOrdered(self):
+        # An example of an inner join query
+        return self.store.query(
+            ShopProduct,
+            AND(
+                ShopOrder.person == self,
+                ShopProductOrdered.order==ShopOrder.storeID,
+                ShopProductOrdered.product==ShopProduct.storeID
+            )
+        )
+    
+    def getOrders(self):
+        return self.store.query(
+            ShopOrder,
+            ShopOrder.person == self
+        )
+    
+    def __repr__(self):
+        return '<Person name='%s' dob='%s'>' % (self.name, self.dob.asISO8601TimeAndDate())
+
+class ShopProduct(item.Item):
+    typeName = 'ShopProduct'
+    schemaVersion = 1
+
+    name = attributes.text(allowNone=False)
+    price = attributes.integer(allowNone=False)
+    stock = attributes.integer(default=0)
+    
+    def __repr__(self):
+        return '<ShopProduct name='%s' price='%d' stock='%d'>' % (self.name, self.price, self.stock)
+
+class ShopProductOrdered(item.Item):
+    typeName = 'ShopProductOrdered'
+    schemaVersion = 1
+
+    order = attributes.reference(allowNone=False)
+    product = attributes.reference(allowNone=False)
+    quantity = attributes.integer(default=1)
+
+class ShopOrder(item.Item):
+    typeName = 'ShopOrder'
+    schemaVersion = 1
+    
+    person = attributes.reference(allowNone=False)
+    purchaseDate = attributes.timestamp(allowNone=False)
+    
+    def addProduct(self, product, quantity=1):
+        po = self.store.findOrCreate(
+            ShopProductOrdered, 
+            order=self,
+            product=product)
+        po.quantity = quantity
+    
+    def getProducts(self):
+        return self.store.query(ShopProductOrdered, ShopProductOrdered.order == self)
+    
+    def getTotalPrice(self):
+        #XXX: This could be done in one SQL query. Is there a way to issue such a query?
+        total = 0
+        for p in self.getProducts():
+            total += p.product.price*p.quantity
+        return total
+    
+    def __repr__(self):
+        return '<ShopOrder owner='%s' purchaseDate='%s' items='%s'>' % (self.owner.name, self.purchaseDate.asISO8601TimeAndDate(), self.items)
+
+def populateStore(s):
+    customers = [
+        Person(store=s, name=u'Joe Bloggs', dob=Time.fromISO8601TimeAndDate('1977-05-08')),
+        Person(store=s, name=u'Jane Doe', dob=Time.fromISO8601TimeAndDate('1959-05-22')),
+    ]
+    products = [
+        ShopProduct(store=s, name=u'Tea Bags', price=2),
+        ShopProduct(store=s, name=u'Cornflakes', price=3),
+        ShopProduct(store=s, name=u'Lemonade', price=4),
+        ShopProduct(store=s, name=u'Peanuts', price=5),
+    ]
+    
+    quantities = [1,2,4]
+    
+    for c in customers:
+        o = ShopOrder(store=s, person=c, purchaseDate=Time())
+        o.addProduct(random.choice(products), random.choice(quantities))
+        o.addProduct(random.choice(products), random.choice(quantities))
+        
+if __name__ == '__main__':
+    import random
+    from axiom import store
+    
+    s = store.Store(debug=False)
+    populateStore(s)
+    p = s.findFirst(Person)
+    print '%s has ordered the following products since registering:' % p.name
+    print [x.name for x in p.getProductsOrdered()]
+    print 'A breakdown of %s's orders' % p.name
+    print ['Items: %s, Total: %d'%(['%s X %d'%(y.product.name, y.quantity) for y in x.getProducts()], x.getTotalPrice()) for x in p.getOrders()]
+
+}}}

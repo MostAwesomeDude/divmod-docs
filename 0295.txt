@@ -1,0 +1,2 @@
+= DivmodAxiom : Examples =
+ * [wiki:DivmodAxiom/Examples/Shop Shop]: A simple example of how axiom might be used to track stock and orders in a shopping app. (Work in progress)

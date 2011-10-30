@@ -1,0 +1,65 @@
+= DivmodAxiom : Why use Axiom? =
+
+Because it's great, of course!  More specifically, it's an object-relational database that's ...
+
+== Actually Relational ==
+
+Axiom imposes an ''extremely'' straightforward mapping between tables and classes: 1 to 1.  Your tables get behavior.  They can refer to each other.  If you're familiar with the relational model but are learning OO and want some of its features, Axiom won't explode your brain with a million new concepts.  After learning how a few simple Python expressions work, you can get up and running.
+
+Axiom also respects the relational model and allows you to perform queries (and before 1.0, also updates and deletes) on groups of items at once, without loading them first.  You don't need to resort to writing your own 'for' loops or your own SQL code in order to load a joined query.  No PotatoProgramming.
+
+== Actually Object-Oriented ==
+
+Tables have behavior.  You can have a reference to an arbitrary item.  Items can exist outside the database.  You can mix in code from utility classes to give your items additional methods, without affecting its schema.  Simple database types like strings and integers can be mapped into complex, rich Python values, such as email addresses or a fixed-point decimal class.
+
+== Extensible ==
+
+Axiom's '[wiki:DivmodAxiom/Reference Powerup]' mechanism allows you enhance a database, or ''any row'' within a database, with additional functionality.
+
+== Active ==
+
+Axiom isn't a static database.  It is dynamic, it contains behaviors.
+
+You can, for example, install a scheduler which will run tasks at specific times when the database is open.
+
+== Twisted-friendly ==
+
+The aforementioned scheduler is implemented using Twisted's reactor.  Axiom was explicitly designed for use with events and integrates nicely into a Twisted-based environment. 
+
+== Future-Proof ==
+
+Axiom applications can keep running while they're being upgraded from one schema to another (with a partial dataset available).  Upgrades are handled automatically, and the code for upgrading can be kept separate from your application code.  You can even write upgraders which involve complex relationships between multiple rows.
+
+== Simple ==
+
+Axiom gives you the power of an SQL database without the hassle of generating code from within code.
+
+Working with Axiom databases is easy.  The underlying SQLite engine is pretty simple to use already, but Axiom doesn't add layers of complexity that get in your way.  Compare loading a row and manipulating it with a Python class:
+
+{{{
+#!python
+from axiom.store import Store
+s = Store('store.axiom')
+x = s.getItemByID(0)
+}}}
+
+{{{
+#!python
+from pysqlite2 import dbapi2
+from mymodule import MyClass
+con = dbapi2.connect('store.sqlite')
+cur = con.cursor()
+cur.execute('select * from my_table where oid = 0')
+row = con.fetchall()[0]
+x = MyClass(row)
+}}}
+
+In this case the Axiom example is actually quite a lot shorter!
+
+== Safe ==
+
+Axiom keeps your in-memory objects up to date with what's happening in the database, even when transactions have to be rolled back.  No need to manage connections of your own.  No more forgetting to commit a transaction, or forgetting to roll back in an error handler.
+
+Axiom doesn't expose ''any'' SQL to the application developer.  Internally Axiom is also very careful about SQL generation: it doesn't use string concatenation except where absolutely necessary, and instead uses {{{?}}} interpolation.  This means that your site will be completely secure against SQL injection attacks.
+
+Axiom also makes sure that your objects in memory correspond to what's in the database.  If a transaction fails, Axiom will log the error and revert all the Python objects involved in the transaction to the state they are in after reverting.  This brings the safety of database transactions into your Python code.

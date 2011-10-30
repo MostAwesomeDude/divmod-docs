@@ -1,0 +1,14 @@
+= [wiki:WikiStart Divmod] : Democracy Server =
+
+In keeping with our commitment to the Open in Open Source, Divmod is
+readying our Quotient conversation server to be the foundation for another
+important application-- the Democracy Server. The Democracy Server is a
+piece of open source software that can be deployed in cities, small towns and
+villages to provide email, telephony, publishing, voting, auction and
+[http://www.nexuspub.com/articles/2003/july2003/interview.htm complementary currency] facilities for the community. We believe that our tool will
+encourage participatory democracy and facilitate beneficial markets and provide the
+transparency needed to keep markets open and democracies viable.
+
+Using our Quotient to Quotient protocol (Q2Q) we can network Democracy
+Servers and provide a mechanism for trading, communicating and voting
+on regional and/or national levels.

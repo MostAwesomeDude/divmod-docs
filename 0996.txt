@@ -1,0 +1,76 @@
+= Divmod : Nevow: Context Removal =
+
+1. The {{{Page}}} class is now imported form {{{nevow.page}}} instead of {{{nevow.rend}}}. {{{class}}} declarations change as indicated below.
+
+ '''From:'''
+ {{{
+class Root(rend.Page):
+...
+ }}}
+ '''To:'''
+ {{{
+class Root(page.Page):
+...
+ }}}
+
+2. Class {{{child_*}}} class attributes change in that the prefixe is no longer needed.
+ '''From:'''
+ {{{
+...
+  child_foo = RendPageInstance()
+...
+ }}}
+ '''To:'''
+ {{{
+  children = { 
+    'foo': PagePageInstance,
+  ...
+  ...}  
+ }}}
+
+3. The {{{context}}} object is no longer passed in the method signatures. Passed parameters changes as indicated below.
+ '''From:'''
+ {{{
+...
+  def child_foo(self, context, data):
+  ...
+ }}}
+ '''To:'''
+ {{{
+...
+  def child_foo(self, request, data):
+  ...
+ }}}
+
+4. The {{{method}}} names no longer need to contain {{{render_}}} and {{{child_}}}. Method names change as indicated below.
+ '''From:'''
+ {{{
+...
+  def render_foo(self, context, data):
+  ...
+...
+  def child_bar(self, context):
+  ...
+ }}}
+ '''To:'''
+ {{{
+...
+  def foo(self, request, data):
+  ...
+  page.renderer(foo)
+...
+  def bar(self, request):
+  ...
+  page.child(bar)
+ }}}
+ Or, for a version of python that supports decorators:
+ {{{
+...
+  @page.renderer
+  def foo(self, request, data):
+  ...
+...
+  @page.child
+  def bar(self, request):
+  ...
+ }}}

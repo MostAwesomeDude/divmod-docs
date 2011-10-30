@@ -1,0 +1,77 @@
+== Using Templates ==
+
+Stan is a great tool however it should be used sparingly to maintain proper separation of logic and presentation.
+
+Nevow uses XML templates with the Nevow XML namespace. An example of such a template would be
+{{{
+<?xml version='1.0' encoding='iso-8859-1'?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en' xml:lang='en' xmlns:n='http://nevow.com/ns/nevow/0.1'>
+    <head>
+        <title>Hello World Page</title>
+    </head>
+    <body>
+        <div n:render='myContent'/>
+    </body>
+</html>
+}}}
+
+Using this template with a page is done simply as follows 
+
+{{{
+#!python
+class APage(rend.Page):
+    addSlash = True
+
+    docFactory = loaders.xmlfile('template.xml')
+
+    def render_myContent(self, ctx, data):
+        return ctx.tag[ tags.div(id='hello', _class='helloicator')['Hello World']]
+}}}
+
+== Page Fragments ==
+A common query is why one can't use multiple templates to render a header and footer for example. This is entirely possible but the method is not intuitive coming from other common frameworks or languages. 
+
+We start with a standard page and create render methods for returning our fragment instance. 
+
+{{{
+#!python
+class AFragment(rend.Fragment):
+    docFactory = loaders.xmlfile('fragment.xml', ignoreDocType=True)
+
+    def render_fragmentContent(self, ctx, data):
+        return ctx.tag['Pretend this is some dynamic content']
+
+class APage(rend.Page):
+    addSlash = True
+
+    docFactory = loaders.xmlfile('template.xml')
+
+    def render_myContent(self, ctx, data):
+        return ctx.tag[ tags.div(id='hello', _class='helloicator')['Hello World']]
+
+    def render_myFragment(self, ctx, data):
+        frag = AFragment()
+        return ctx.tag[frag]
+}}}
+
+Our template.xml then looks as follows
+{{{
+<?xml version='1.0' encoding='iso-8859-1'?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en' xml:lang='en' xmlns:n='http://nevow.com/ns/nevow/0.1'>
+    <head>
+        <title>Hello World Page</title>
+    </head>
+    <body>
+        <div n:render='myContent'/>
+        <div n:render='myFragment'/>
+    </body>
+</html>
+}}}
+
+Our fragment.xml simply looks like this 
+{{{
+<?xml version='1.0' encoding='iso-8859-1'?>
+<div xmlns:n='http://nevow.com/ns/nevow/0.1' n:render='fragmentContent'></div>
+}}}

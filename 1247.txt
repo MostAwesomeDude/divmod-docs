@@ -1,0 +1,57 @@
+= Mantissa Plugin Notes =
+
+== Overview ==
+
+This page is a collection of notes based on my adventures with the following tickets:
+ * #911
+ * #2530
+ * #2531
+
+As such, you can imagine the following about these notes:
+ * they are based on one specific aspect of Mantissa/Axiom plugins;
+ * they are written from a relative Noob perspective; and
+ * are most certainly not complete.
+
+The plugin under scrutiny here (well, under rewrite, actually) is {{{axiomatic project}}} which has been (until some time in the near future) called in the following manner:
+{{{
+axiomatic project -n MyApp
+}}}
+This creates a Divmod™-approved directory structure populated by minimally functional code stubs, ready for the project dev to start making '!MyApp' a software reality.
+
+== Quick Glance ==
+
+The code that is responsible for this {{{axiomatic}}} subcommand is distributed over a few files. Here's the breakdown:
+ * {{{axiomatic}}} itself lives in a bin dir somwhere, or if you are using Combinator, a bincache dir;
+ * the contents of that script are the same as in most of the other Mantissa scripts: a {{{remain()}}} call;
+ * {{{combinator.chameleon.remain}}} is a function which 
+   * determines the original script name, in this case {{{axiomatic}}},
+   * searches the paths in {{{sys.path}}} and locates the script itself,
+   * passes the appropriate arguments, and call the actual script with the original script name
+ * {{{Axiom/bin/axiomatic}}} gets called, which runs {{{axiom.scripts.axiomatic.main()}}}, which:
+   * parses subcommands/options and fires off {{{subCommands()}}} method which iterates plugins (see the '''Plugins In-depth''' section below)
+   * ?
+   * {{{Generate}}}, the class associated with the 
+   * {{{Generate.postOptions()}}} opens {{{template.txt}}} and 
+
+Things to look up next:
+ * Where does {{{Generate}}} get instantiated?
+ * examine template.txt
+ * source for {{{epsilon.asplode.splode}}}
+
+== Subcommands In-depth ==
+
+== Plugins In-depth ==
+
+The big mover and shaker behind the plugin scene is {{{twisted.plugin.getPlugins()}}}. This guy first gets all 'dropins' (twisted plugin folders' or pickled data about plugin folders that are represented as objects and stored in a dict). Dropins can have potentially-many plugins, so they are iterated in the {{{getPlugins}}} function. Each plugin is then adapted to the passed interface, which results in {{{getPlugins()}}} returning ({{{yield}}}ing, actually) XXX
+
+==== Interfaces ====
+
+For our example, we have the {{{axiom/plugins/mantissacmd.py}}} plugin. The class is {{{mantissacmd.Generate}}}, which is a subclass of {{{axiom.scripts.axiomatic.AxiomaticCommand}}}, which in turn has a metaclass that (for our case) sets {{{Generate}}} as providing both the {{{twisted.plugin.IPlugin}}} and {{{axiom.iaxiom.IAxiomaticCommand}}} interfaces.
+
+==== Adaptation ====
+
+Due to {{{Generate}}} implementing {{{IAxiomaticCommand}}}, when {{{getPlugins}}} (called from {{{Options.subCommands}}}) finds our {{{axiom/plugins/mantissacmd.py}}} file and adds the 
+
+== Template In-depth ==
+
+Hrm, actually, I'm gonna put the template stuff in [wiki:People/DuncanMcGreggor/MantissaAxiomaticProject another wiki page].

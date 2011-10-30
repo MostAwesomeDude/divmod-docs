@@ -1,0 +1,22 @@
+= Imaginary =
+
+Imaginary numbers are so named not because they are fictitious, but because
+they are along a different axis from real numbers.
+
+Divmod Imaginary is a simulationist's take on the realm of role playing,
+interactive fiction, and multiplayer dungeons.  It incorporates gameplay
+features from each area while attempting to provide a richer environment
+than is generally available from existing systems.
+
+Imaginary is in active development. 
+
+ * [browser:trunk/Imaginary/imaginary Browse the source]. 
+ * [query:status=new|assigned|reopened&component=Imaginary View the tickets].
+
+
+Instructions for starting an Imaginary server are here: [source:/trunk/Imaginary/doc/RUNNING?format=raw doc/RUNNING]
+
+== Radical ==
+
+See DivmodRadical.
+

@@ -1,0 +1,97 @@
+= Hello =
+[[PageOutline(2-3,Contents)]]
+Welcome to the open-source outlet for [wiki:DivmodInc Divmod Inc.] and the Divmod open-source community. divmod.org is supported by Divmod Inc. and our generous [wiki:DivmodFanClub fans].
+
+{{{
+#!html
+<div style='float: right; clear: right; padding: 4px; text-align: center'>
+  <h2>Featured Divmod Users</h2>
+  <a href='http://python.org'><img src='http://divmod.org/users/moe/people-using-divmod/python-logo.gif' /></a>
+  <p />
+  <a href='http://www.who.int/en'><img src='http://divmod.org/users/moe/people-using-divmod/who-logo.gif' /></a>
+  <p />
+  <a href='http://jotlive.com'><img src='http://divmod.org/users/moe/people-using-divmod/jotlive-logo.gif' /></a>
+  <p />
+  <a href='http://snipshot.com'><img src='http://divmod.org/users/moe/people-using-divmod/snipshot-logo.gif' /></a>
+  <p />
+  <a href='http://numbler.com'><img src='http://divmod.org/users/moe/people-using-divmod/numbler-logo.gif' /></a>
+  <p />
+  <a href='http://test.stiq.it'><img src='http://divmod.org/users/moe/people-using-divmod/stiq-logo.gif' /></a>
+</div>
+}}}
+
+Learn about [wiki:PeopleUsingDivmod these and others using Divmod products].
+
+== Build your next great application more quickly using Divmod tools and infrastructure ==
+
+We have a variety of [http://python.org Python] open source projects to share with you. You can access our code using SVN on http://divmod.org/svn/Divmod/trunk/.
+
+ '''[wiki:DivmodQuotient Divmod Quotient]'''::
+  A multiprotocol communication (email, voip) server.
+ '''[wiki:DivmodSine Divmod Sine]'''::
+  A voice over IP framework built on Mantissa and using Shtoom's audio handling.
+ '''[wiki:DivmodMantissa Divmod Mantissa]'''::
+  An extensible, multi-protocol, multi-user, interactive application server built on top of Axiom and Nevow.
+ '''[wiki:DivmodAxiom Divmod Axiom]'''::
+  An object database implemented on top of [wiki:SqLite SQLite].
+ '''[wiki:DivmodVertex Divmod Vertex]'''::
+  An implementation of the Q2Q protocol, for connecting directly between two endpoints anywhere, even mobile users, or users behind Network Address Translators (NAT).
+ '''[wiki:DivmodNevow Divmod Nevow]'''::
+  A web templating framework that provides [wiki:DivmodNevow/Athena Athena], a two-way AJAX toolkit.
+ '''[wiki:DivmodEpsilon Divmod Epsilon]'''::
+  A Python utilities package, most famous for its [wiki:ExtimeDotTime Time] class.
+ '''[wiki:DivmodCombinator Divmod Combinator]'''::
+  A branch-management tool to assist with [wiki:BranchBasedDevelopment branch based development], useful to keep your PYTHONPATH short and avoid having to restart your terminal or log out and log back in when you update your Python path environment.
+ '''[wiki:DivmodPyflakes Divmod Pyflakes]'''::
+  A lint-like tool for quickly checking your Python code for sanity.
+ '''[wiki:DivmodReverend Divmod Reverend]'''::
+  A general purpose Bayesian classifier, named after Rev. Thomas Bayes.
+ '''[wiki:DivmodXapwrap Divmod Xapwrap]'''::
+  A wrapper around the Python bindings for the Xapian Probabilistic Information Retrieval library.
+ '''[wiki:ShtoomProject Shtoom]'''::
+  A voice over IP client and server.
+
+== Here to help out? ==
+If you're looking for a way to contribute to our open source efforts, thanks a lot!
+
+[wiki:DivmodInc The Divmod company] would like our software to do anything and everything, but with a fledgling business to run, we have to make some tough choices with our time.  To ensure that our feature ideas don't get lost in the mists of time, we've created a page of [wiki:CommunityGoals community goals]: a highlighted collection of tickets that we would be grateful if some brave soul in the open source world would attempt to contribute a patch for.
+
+You can also contribute and show your appreciation by joining the [wiki:DivmodFanClub Divmod Fan Club].
+
+== Applications using Divmod infrastructure ==
+ '''[wiki:ClickChronicle Divmod ClickChronicle]'''::
+ Sign up for the ClickChronicleBeta ''now''! The best way to store, search and share all the web pages that you visit.
+ '''[wiki:DivmodRadical Divmod Radical]'''::
+  A web-based, interactive, 3rd-person, isometric role-playing game.
+
+== Help and Support ==
+ * '''Mailing list''': [/users/mailman.twistd/listinfo/divmod-dev The divmod-dev mailing list page] has subscription instructions and a link to the web base
+ * '''IRC''': You will find Divmod developers, contributors and users hanging out on [http://freenode.net/ Freenode] in #divmod, #twisted and #twisted.web.
+ * '''Blogs''': [http://www.livejournal.com/users/amiramir amiramir], [http://www.livejournal.com/users/jcalderone exarkun], [http://www.livejournal.com/users/glyf glyph] You may also like to checkout these developers' weblogs for release announcements etc.
+ * '''Buildbot''': See the [http://jade.code-bear.com:8010/ latest build and test results] for the code in trunk
+
+== Ideas ==
+ * [wiki:MantissaIsTheDeploymentTarget Mantissa is the deployment target], the web is not.
+ * Here at Divmod we use [wiki:BranchBasedDevelopment branch based development] to ensure quality and freshness of our software at all times.
+ * MantissaUserConfigurationAdministration
+ * [wiki:DivmodAnvil Anvil] will one day be a task tracker that replaces trac.
+ * [wiki:DemocracyServer Democracy Server]: a communications and commerce server for the developing world.
+
+== Old Stuff ==
+ * [wiki:WhitherAtop What happened to Atop?]
+ * [wiki:WhitherQuotient What's happening with Quotient?]
+ * [wiki:WhitherLupy What's happening with Lupy?]
+ * [wiki:WhitherPyndex What's happening with Pyndex?]
+
+== Some of the software and projects we depend on ==
+ * [http://python.org Python] our language of choice.
+ * [http://twistedmatrix.com Twisted] the multiprotocol framework that makes Python usable for complex, multi-protocol applications.
+ * [http://pylucene.osafoundation.org PyLucene] wrapper for the excellent full text indexer [http://lucene.apache.org Lucene].
+ * [http://www.zope.org/Products/ZopeInterface Zope Interface] our favorite interface definition and adaptation library.
+ * [http://www.ubuntulinux.org/ Ubuntu] our favorite Linux distribution.
+
+== Legal Stuff ==
+
+Please see this [wiki:DivmodLogos important note on the usage of our trademark images].
+
+All pages on this domain copyright 2006 Divmod, Inc., unless explicitly noted otherwise.  All rights reserved.

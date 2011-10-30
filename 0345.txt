@@ -1,0 +1,9 @@
+= [wiki:WikiStart Divmod] : Vertex =
+Divmod's implementation of [wiki:QuotientToQuotient Q2Q].
+
+== Exits ==
+ * [http://divmod.org/projects/vertex Divmod project page for Vertex]
+ * [http://www.swik.net/vertex Vertex on swik]
+
+== Download ==
+ * svn co http://divmod.org/trac/browser/trunk/Vertex Vertex

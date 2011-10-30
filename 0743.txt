@@ -1,0 +1,270 @@
+This is work in progress. Don't read it, yet!
+
+== Part 1: Creating an Offering and Running it in a Mantissa Server ==
+
+This is much like in the MantissaWikiTutorial, but this time we will use both a public and a private page.
+=== Create Skeleton ===
+
+{{{
+axiomatic project -n blog
+cd blog
+axiomatic -d blogtut.axiom mantissa
+axiomatic -d blogtut.axiom web --static static/blog:blog/static/
+}}}
+
+The private page already exists in the skeletion, so let's add a public page.
+
+=== Add Public Page ===
+
+{{{
+appPowerups = (
+    blog_model.BlogStart,
+    blog_model.BlogPublicPage,
+)
+}}}
+
+Create the file 'blog/themes/base/blog-public.html' with the following content:
+{{{
+<div xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:nevow='http://nevow.com/ns/nevow/0.1'>
+	<h1>Blog Test</h1>
+</div>
+}}}
+
+{{{
+from nevow import loaders, inevow
+from nevow.rend import Page
+
+class BlogPublicView(Page):
+
+    docFactory = loaders.xmlfile('blog/themes/base/blog-public.html')
+
+    def __init__(self, original):
+        Page.__init__(self)
+        self.original = original
+
+    def customizeFor(self, avatar):
+        return self
+}}}
+
+{{{
+class BlogPublicPage(Item, InstallableMixin):
+    # This object can be browsed from the web
+    # From the mantissa perspective this is the model in the MVC pattern
+    implements(ixmantissa.IPublicPage)
+
+    schemaVersion = 1                  # First version of this object.
+    typeName = 'blog_public_page'      # Database table name.
+
+    name = text()               # We must have at least one attribute - model
+                                # objects must store data.
+    installedOn = reference()
+
+    def installOn(self, other):
+        super(BlogPublicPage, self).installOn(other)
+        other.powerUp(self, ixmantissa.IPublicPage)
+
+    def getResource(self):
+        from blog.blog_view import BlogPublicView
+        return BlogPublicView(self)
+}}}
+
+=== Install Offering ===
+
+The same way as in MantissaWikiTutorial
+
+=== Allow admin to view !BlogStart ===
+
+REPL:
+{{{
+from blog.blog_model import BlogStart
+BlogStart(store=s).installOn(s)
+}}}
+
+== Part 2: Editing Blog Posts ==
+
+=== Create Model for Blog Posts ===
+{{{
+class BlogPost(Item):
+    schemaVersion = 1           # First version of this object.
+    typeName = 'blog_post'      # Database table name.
+
+    title = text()
+    body = text()
+}}}
+
+=== Add some Fancy JavaScript Code ===
+Add this to your blog.js
+{{{
+
+var posts = {};
+var id_of_edited_post = null;
+
+function change_post(id, title, body) {
+    posts[id] = {
+        'id': id,
+        'title': title,
+        'body': body
+    };
+    show_post(id);
+}
+
+function edit_post(id) {
+    var edit_area = document.getElementById('edit_area');    
+    var title_area = document.getElementById('title_area');
+    var post = posts[id];
+    title_area.value = post.title;
+    edit_area.value = post.body;
+    id_of_edited_post = id;
+}
+
+function save_post() {
+    var edit_area = document.getElementById('edit_area');
+    var title_area = document.getElementById('title_area');
+    server.handle('save_post', id_of_edited_post, title_area.value, edit_area.value);
+}
+
+function delete_post(id) {
+    delete posts[id];
+    server.handle('delete_post', id);
+    var row = document.getElementById(id);
+    row.parentNode.removeChild(row);
+}
+
+function new_post(id) {
+    var edit_area = document.getElementById('edit_area');    
+    var title_area = document.getElementById('title_area');    
+    title_area.value = '';
+    edit_area.value = '';
+    id_of_edited_post = null;
+}
+
+function init() {
+    alert('a')
+}
+
+function show_post(id) {
+    var post = posts[id];
+/*    var new_row = '<tr id='' + post.id + ''><td>' + post.title + '</td></tr>';*/
+    var row = document.getElementById(id);
+    if (!row) {
+        row = document.createElement('tr');
+        row.setAttribute('id', post.id );
+        var post_table = document.getElementById('post_table');
+        post_table.insertBefore(row, post_table.firstChild);
+    }
+    row.innerHTML = '<td><a href='#' onclick='edit_post(' + post.id + '); return false;'>' + post.title + '</td>';
+    row.innerHTML += '<td style='text-align:center'><a href='#' onclick='delete_post(' + post.id + '); return false;'>x</td></td>';
+}
+}}}
+
+=== Enhance View with Editing Methods ===
+
+These will be called from JavaScript via Nevow's great Athena.
+
+{{{
+class BlogView(Fragment):
+    # This is a Fragment of a Page
+    implements(ixmantissa.INavigableFragment)
+
+    # This View will use the blog-start.html template
+    fragmentName = 'blog-start'
+
+    # We won't use LivePage or Athena
+    live = True
+
+    def goingLive(self, ctx, client):
+        self.client = client
+
+        from blog.blog_model import BlogPost
+        posts = self.original.store.query(BlogPost)
+        for post in posts:
+            client.call('change_post', post.storeID, post.title or 'No Title', post.body)
+            
+    # you can only call functions starting with 'handle_' from JavaScript
+    def handle_save_post(self, context, id, title, body):
+        from blog.blog_model import BlogPost
+        if id == 'null':
+            post = BlogPost(store=self.original.store)
+        else:
+            post = self.original.store.getItemByID(long(id))
+        post.title = unicode(title)
+        post.body = unicode(body)
+        self.client.call('change_post', id, title or 'No Title', body)
+
+    def handle_delete_post(self, context, id):
+        from blog.blog_model import BlogPost
+        post = self.original.store.getItemByID(long(id))
+        post.deleteFromStore()
+
+}}}
+
+=== Adapt Template ===
+
+blog-start.html should look like this:
+
+{{{
+<div xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:nevow='http://nevow.com/ns/nevow/0.1'>
+    Welcome to the Blog Application
+	<table id='post_table' style='border: 1px solid black'>
+		<tr><th>Topic</th><th>Delete Post</th></tr>
+	</table>
+	<form>
+		<input type='text' size='60' id='title_area'/>
+		<textarea cols='60' rows='30' id='edit_area'/>
+	</form>
+	<input type='button' value='Save Post' onclick='save_post()'/>
+	<input type='button' value='Save Post' onclick='new_post()'/>
+</div>
+}}}
+
+Now log in as admin an navigate to the Blog application.
+
+== Part 3: Showing your posts to the public ==
+
+=== Add render Method to View ===
+
+{{{
+class BlogPublicView(Page):
+
+    docFactory = loaders.xmlfile('blog/themes/base/blog-public.html')
+
+    def __init__(self, original):
+        Page.__init__(self)
+        self.original = original
+
+    def customizeFor(self, avatar):
+        return self
+
+    def render_posts(self, context, data):
+        # Get admin@localhost's store, where his blog posts are
+        # There's certainly a better way for this!
+        from axiom.store import Store
+        store = Store('blogtut.axiom/files/account/localhost/admin.axiom')
+            
+        # format blog posts
+        from blog.blog_model import BlogPost
+        posts = store.query(BlogPost)
+        from nevow import tags
+        post_html = [
+            [
+                tags.Tag('dl')[
+                    tags.dt(style='font-weight:bold')[post.title],
+                    tags.dd[post.body],
+                ]
+            ]
+            for post in posts
+        ]
+        return post_html
+}}}
+
+=== Adapt Template ===
+Change blog-public.html to:
+{{{
+<div xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:nevow='http://nevow.com/ns/nevow/0.1'>
+	<h1>admin@localhost's blog</h1>
+	<nevow:invisible nevow:render='posts' />	
+</div>
+}}}

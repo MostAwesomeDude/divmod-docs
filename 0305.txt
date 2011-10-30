@@ -1,0 +1,43 @@
+= Welcome To the Divmod Community =
+
+You are at http://divmod.org/, the offical open-source outlet for [wiki:DivmodInc Divmod, Inc.] and the Divmod open-source community.  We have a variety of [wiki:PythonLanguage Python] open source projects to share with you.
+
+== Infrastructure ==
+ '''[wiki:DivmodAxiom Divmod Axiom]'''::
+  An object database implemented on top of [wiki:SqLite SQLite].
+ '''[wiki:DivmodNevow Divmod Nevow]'''::
+  A web templating framework that provides LivePage, an automatic AJAX toolkit.
+ '''[wiki:DivmodCombinator Divmod Combinator]'''::
+  A branch-management tool to assist with [wiki:BranchBasedDevelopment branch based development], useful to keep your PYTHONPATH short and avoid having to restart your terminal or log out and log back in when you update your Python path environment.
+ '''[wiki:DivmodEpsilon Divmod Epsilon]'''::
+  A Python utilities package, most famous for its [wiki:ExtimeDotTime Time] class.
+ '''[wiki:DivmodMantissa Divmod Mantissa]'''::
+  An extensible, multi-protocol, multi-user, interactive application server built on top of Axiom and Nevow.
+ '''[wiki:DivmodPyflakes Divmod Pyflakes]'''::
+  A lint-like tool for quickly checking your Python code for sanity.
+ '''[wiki:DivmodReverend Divmod Reverend]'''::
+  A general purpose Bayesian classifier, named after Rev. Thomas Bayes.
+ '''[wiki:DivmodVertex Divmod Vertex]'''::
+  An implementation of the Q2Q protocol, for connecting directly between two endpoints anywhere, even mobile users, or users behind NetworkAddressTranslators.
+
+== Applications ==
+ '''ClickChronicle'''::
+  A click-recording application. You can sign up for the ClickChronicleAlpha ''now''!
+ '''[wiki:DivmodRadical Divmod Radical]'''::
+  A web-based, interactive, 3rd-person, isometric roleplaying game.
+== Third Party Projects ==
+Learn about [wiki:PeopleUsingDivmod other people using Divmod products].
+== Ideas ==
+ * [wiki:DivmodAnvil Anvil] will one day be a task tracker that replaces trac.  Sorry, trac.
+ * [wiki:MantissaIsTheDeploymentTarget Mantissa is the deployment target], the web is not.
+ * Here at divmod we use [wiki:BranchBasedDevelopment branch based development] to ensure quality and freshness of our software at all times.
+ * MantissaUserConfigurationAdministration
+== Ticket Queries ==
+ * [report:7 My Tickets]
+ * [query:?status=new&status=assigned&status=reopened&group=component&order=priority Active Tickets By Component]
+ * ([query:?status=new&status=assigned&status=reopened&group=milestone&component=ClickChronicle&order=priority grouped by milestone])
+ * [query:?status=new&status=assigned&status=reopened&groupdesc=1&group=type&component=Reviews&order=priority Review tickets]
+
+== Old Stuff ==
+ * [wiki:WhitherAtop What happened to Atop?]
+ * [wiki:WhitherQuotient What's happening with Quotient?]

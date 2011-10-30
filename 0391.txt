@@ -1,0 +1,45 @@
+= [wiki:WikiStart Divmod] : Vertex =
+Vertex is an implementation of the Q2Q protocol (sort of like P2P, but one better). There are a few moving parts in Vertex:
+
+  * PTCP: a protocol which is nearly identical to TCP, but which runs over UDP. This lets Q2Q penetrate most NAT configurations.
+  * JUICE ([JU]ice [I]s [C]oncurrent [E]vents): a very simple but immensely flexible protocol which forms the basis of the high-level aspects of Q2Q
+  * vertex: a command line tool which exposes a few features useful in many situations (such as registration and authentication)
+
+Q2Q is a very high-level protocol (alternatively, transport) the goal of which is to make communication over the internet a possibility (if you enjoy setting up tunnels or firewall rules whenever you need to transfer a file between two computers, Q2Q may not be for you). Q2Q endpoints aren't hardware addresses or network addresses. They look a lot like email addresses and they act a lot like instant message addresses. You can hook into yours wherever you can access the internet, and you can be online or offline as you choose (Q2Q supports multiple unrelated protocols, so you also might be online for some services but offline for others). Two people with Q2Q addresses can easily communicate without out-of-band negotiation of their physical locations or the topology of their networks. If Alice wants to talk to Bob, Alice will always just open a connection to bob@divmod.com/chat. If Bob is online anywhere at all, the connection will have an opportunity to succeed (Bob might be busy or not want to talk to Alice, but that is another matter ;). The connection is authenticated in both directions, so if it does succeed Alice knows she is talking to the real Bob and vice versa.
+
+The Q2Q network has some decentralized features (there is no one server or company which can control all Q2Q addresses) and features of centralization (addresses beneath a particular domain are issued by a server for that domain; once issued, some activities require the server to be contacted again, while others do not). Vertex includes an identity server capable of hosting Q2Q addresses. Once you've installed the 0.1 release, you can run it like this:
+{{{
+exarkun@boson:~$ cat > q2q-standalone.tac
+from vertex.q2qstandalone import defaultConfig
+application = defaultConfig()
+exarkun@boson:~$ twistd -noy q2q-standalone.tac 
+2005/10/15 00:12 EDT [-] Log opened.
+2005/10/15 00:12 EDT [-] twistd 2.0.1 (/usr/bin/python2.4 2.4.1) starting up
+2005/10/15 00:12 EDT [-] reactor class: twisted.internet.selectreactor.SelectReactor
+2005/10/15 00:12 EDT [-] Loading q2q-standalone.tac...
+2005/10/15 00:12 EDT [-] Loaded.
+2005/10/15 00:12 EDT [-] vertex.q2q.Q2QService starting on 8788
+2005/10/15 00:12 EDT [-] Starting factory <Q2QService 'service'@-488b6a34>
+2005/10/15 00:12 EDT [-] vertex.ptcp.PTCP starting on 8788
+2005/10/15 00:12 EDT [-] Starting protocol <vertex.ptcp.PTCP instance at 0xb777884c>
+2005/10/15 00:12 EDT [-] Binding PTCP/UDP 8788=8788
+2005/10/15 00:12 EDT [-] vertex.q2q.Q2QBootstrapFactory starting on 8789
+2005/10/15 00:12 EDT [-] Starting factory <vertex.q2q.Q2QBootstrapFactory instance at 0xb77787cc>
+}}}
+You can acquire a new Q2Q address using the vertex command line tool:
+{{{
+exarkun@boson:~$ vertex register exarkun@boson password
+}}}
+boson is a name on my local network, making this address rather useless. On the other hand, no one will be able to pretend to be me by cracking my hopelessly weak password ;) If you set up a Vertex server on a public host, you will be able to register a real, honest-to-goodness Q2Q address beneath its domain (careful - so will anyone else).
+
+vertex also offers a tool for requesting a signed certificate from the server. These certificates can be used to prove ones identity to foreign domains without involving ones home server. Another feature vertex provides is a toy file transfer application. Bob can issue a vertex receive while Alice issues a vertex send pointed at him, and the file will be transferred.
+
+Much of the real power of Q2Q is exposed to developers using two methods: listenQ2Q and connectQ2Q. These work in roughly the same way Twisted's listenTCP and connectTCP work: they offer support for writing servers and clients that operate on the Q2Q network.
+
+== Exits ==
+ * [http://divmod.org/projects/vertex Divmod project page for Vertex]
+ * [http://www.swik.net/vertex Vertex on swik]
+
+== Download ==
+ * Trunk: svn co http://divmod.org/trac/browser/trunk/Vertex Vertex
+ * [http://divmod.org/static/projects/vertex/Vertex-0.1.tar.gz Latest release: 0.1]

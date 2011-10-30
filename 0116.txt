@@ -1,0 +1,5 @@
+Vertex is Divmod's implementation of Q2Q.
+
+Q2Q is a protocol opening authenticated connections, even through NAT, allowing a user to reliably demonstrate their identity (for distributed authentication), to receive real-time data directly from other users, and to provide a mechanism for a user to decide whether they want to expose their IP address to a third party *before* accepting a peer-to-peer connection.
+
+It is byte-stream oriented and application-agnostic.  Any peer-to-peer application can use Q2Q to open connections and deliver messages.

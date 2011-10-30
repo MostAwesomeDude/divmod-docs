@@ -1,0 +1,103 @@
+= Mantissa Wiki Tutorial =
+
+Send comments to: Karl Bartel <karlb@gmx.net>
+
+== Part 1: Creating an Offering and Running it in a Mantissa Server ==
+
+=== Create Project Skeletion ===
+{{{
+$axiomatic project -n wiki
+}}}
+
+=== Set up Database and Mantissa Server ===
+{{{
+$cd Wiki
+$axiomatic -d wikitut.axiom mantissa
+}}}
+
+=== Add a public page ===
+The project skeleton's start page is designed to be viewed only by users who have a login for our mantissa server. We don't want to deal with the login system in this tutorial, so let's change the !WikiStart object to a !PublicPage in wiki/wiki_model.py.
+ * Change ixmantissa.IPublicPage both in the 'implements' call and in the 'installOn' method
+ * Remove the 'getTabs' and 'explode' methods and the registerAdapter line below the class
+ * add the following method:
+{{{
+	def getResource(self):
+	    return WikiView(self)
+}}}
+
+Because WikiStart is defined as powerup in our Offering(xmantissa/wikioff.py), an instance of this class will be added to our application store, when our app is added to the mantissa server.
+
+
+=== Add Project to Mantissa Server ===
+ * Run the mantissa server
+{{{
+axiomatic -d wikitut.axiom start -n
+}}}
+ * Go to http://localhost:8080 and log in as admin
+ * Navigate to Home->Offerings and click on the 'Wiki' offering to install it. If you can't see an offering named 'Wiki', your probably need to get your project dir onto your PYTHONPATH.
+
+From now on our !WikiStart object can be viewed publicly at http://localhost:8080/Wiki. Unfortunately, we haven't written a nice view for our object, yet. This makes the Mantissa server display a nice backtrace.
+
+== Part 2: Adding a View using a Template ==
+
+=== Add a View ===
+Replace your WikiView in wiki/wiki_view.py with
+{{{
+from nevow import loaders
+from nevow.rend import Page
+
+class WikiView(Page):
+
+    docFactory = loaders.xmlfile('wiki/themes/base/wiki-start.html')
+
+    def __init__(self, original):
+        Page.__init__(self)
+        self.original = original
+
+    def customizeFor(self, avatar):
+        return self
+
+    def render_page(self, context, date):
+        return 'test'
+}}}
+Now you can view the rendered version of the wiki/themes/base/wiki-start.html template when you visit http://localhost:8080/Wiki. Well, at least if you restart your mantissa server, so that it can have a look at the changed python files.
+
+=== Write a useful Template ===
+Replace wiki-start.html with a template which let's our view do something. For instance
+{{{
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:nevow='http://nevow.com/ns/nevow/0.1'>
+	<body>
+	    Welcome to the Wiki Application
+		<hr/>
+		<nevow:invisible nevow:render='page' />	
+	</body>
+</html>
+}}}
+This template call out view's render_page function. Currently, it only returns 'test', but that will change soon.
+
+to be continued...
+
+== Part 3: Storing and Retrieving Wiki Pages==
+
+=== Create a New Item Subclass ===
+Add this to your wiki_model.py
+{{{
+class WikiPage(Item):
+    implements(ixmantissa.INavigableElement)
+
+    schemaVersion = 1            # First version of this object.
+    typeName = 'wiki_page'       # Database table name.
+
+    page_name = text()
+    page_content = text()
+    
+registerAdapter(WikiPageView, WikiPage, ixmantissa.INavigableFragment)
+}}}
+
+=== Changing our Application Store from the Python Shell ===
+{{{
+>>> from axiom.store import Store
+>>> s = Store('wiki.axiom/files/app/Wiki.axiom')
+>>> from wiki.wiki_model import WikiPage 
+}}}

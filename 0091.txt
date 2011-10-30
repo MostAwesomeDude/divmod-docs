@@ -1,0 +1,5 @@
+The first publicly-released Divmod application.
+
+It chronicles your clicks.
+
+(Release information soon)

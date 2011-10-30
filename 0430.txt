@@ -1,0 +1,13 @@
+== Roles ==
+
+A Role is the core concept of the permissions system; when we want to find out whether someone has permission to do something, we actually find their Role, and then we ask whether that Role has permission to do whatever it is.
+
+One Role can be a member of another Role; this means it can do do anything that other Role can do, and possibly more.
+
+There are two basic Roles built in.  The first is the 'Everybody' Role, which everyone is a member of -- even anonymous users who don't have an account at all.  If you want to make something totally public, give the Everybody Role permission to access it.
+
+The second basic Role is the 'Authenticated' Role; everyone who has an account is a member of this Role.  If you want something to require that someone is logged in to see it -- you don't care who they are, just so long as they have _some_ sort of account -- then grant the Authenticated Role permission to access it.  The Authenticated Role is a member of the Everybody Role.
+
+Finally, there are per-user Role's -- each user has their own Role, that is theirs and theirs alone.  This is used to grant permissions to particular individuals.  These Roles are members of the Authenticated Role.  (NB: These Role's are created lazily.  If you want to check someone's permissions, just call getPrimaryRole(username); if you want to modify their permissions somehow, e.g. by granting them access to something or giving them another Role, call getPrimaryRole(username, True).  This could perhaps be simplified...)
+
+Arbitrary other Role's can also be created.  These have no special meaning associated with them; that's up to you to define.  They can be granted permissions like any other Role's; and, other Role's can be added to them.  (Which is useful, or no-one would ever have one of these Role's, so granting the Role permissions would be of little practical benefit.)  The simplest case would be to create a new Role and then add various users's Roles to it; this would emulate a traditional unix group.  However, it is more flexible; Mantissa Role's can contain _arbitrary_ other Role's; it is as if you could put one unix group inside another, and then both of them inside a third.
