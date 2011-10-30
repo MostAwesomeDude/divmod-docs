@@ -1,9 +1,0 @@
-= !PyFlakes =
-is a Lint-like tool for Python, like [http://pychecker.sourceforge.net PyChecker].  It is focused on identifying common errors quickly without executing Python code.
-
-Its primary advantage over [http://pychecker.sourceforge.net PyChecker] is that it is ''fast''.  You don't have to sit around for minutes waiting for the checker to run; it runs on most large projects in only a few seconds.
-
-== Links ==
- * [http://www.freshmeat.net/projects/pyflakes Pyflakes on freshmeat]
- * [http://www.swik.net/pyflakes Pyflakes on swik]
- * [http://divmod.org/projects/pyflakes Pyflakes' divmod project page]
