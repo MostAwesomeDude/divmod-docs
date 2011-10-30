@@ -1,5 +1,0 @@
-ClickChronicle is an application and service for recording and indexing your clicks, i.e. URLs that you visit with your web browser.
-
-It's available at http://clickchronicle.com/
-
-See ClickChronicleAlpha for more information.

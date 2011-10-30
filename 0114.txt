@@ -1,3 +1,0 @@
-PyFlakes is a Lint-like tool for Python, like PyChecker.  It is focused on identifying common errors quickly without executing Python code.
-
-Its primary advantage over PyChecker is that it is ''fast''.  You don't have to sit around for minutes waiting for the checker to run; it runs on most large projects in only a few seconds.
