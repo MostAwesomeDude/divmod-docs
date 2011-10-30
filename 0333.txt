@@ -1,7 +1,0 @@
-= ClickChronicle =
-
-Is the first publicly-released Divmod application.  It consists of a DivmodMantissa server and a FirefoxExtension that communicate in order to record web pages you visit and index their content for easy searching.  See ClickChronicleAlpha for signup information.
-
-ClickChronicle also uses DivmodXapwrap and makes extensive use of LivePage.
-
-You can [http://clickchronicle.com try it online], or [http://divmod.org/trac/attachment/wiki/SoftwareReleases/ClickChronicle-0.1.0.tar.gz?format=raw download the most recently released code - 0.1.0!]
