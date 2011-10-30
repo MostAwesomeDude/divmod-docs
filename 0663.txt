@@ -1,1 +1,0 @@
-I've begun work on this and when I post the patch I'll post up a small 'HOW-TO' about how to work this into an application, and what kind of behavior to expect from it.
