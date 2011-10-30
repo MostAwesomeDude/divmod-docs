@@ -1,5 +1,0 @@
-= Powerups =
-A powerup is a type of Axiom plugin. Zero or more powerups (Axiom items) can be registered to another axiom item (as long as it is in the same store) and can be retrieved according to their interface, either by normal adaption of the subject (in which case the highest priority powerup is returned), or as a group (in order of priority) by using the axiom.item.Item.powerupsFor method.
-
-== See Also == 
- * [http://divmod.org/trac/browser/trunk/Axiom/axiom/item.py class axiom.item.Empowered]
