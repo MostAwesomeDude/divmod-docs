@@ -1,8 +1,0 @@
-Demo Blog Feeds
-
-{{{
-#!html
-
-<script src='http://feeds.feedburner.com/Divmod?format=sigpro' type='text/javascript' ></script><noscript><p>Subscribe to RSS headline updates from: <a href='http://feeds.feedburner.com/Divmod'></a><br/>Powered by FeedBurner</p> </noscript>
-
-}}}
