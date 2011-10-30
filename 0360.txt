@@ -1,7 +1,0 @@
- * [http://divmod.org/trac/report/7 My tickets]
- * [http://divmod.org/trac/query?status=new&status=assigned&status=reopened&group=&component=Reviews&order=priority Reviews]
- * [http://divmod.org/trac/query?status=new&status=assigned&status=reopened&group=&owner=glyph&order=priority glyph's tickets]
- * [http://divmod.org/trac/query?status=new&status=assigned&status=reopened&group=&owner=exarkun&order=priority exarkun's tickets]
- * [http://divmod.org/trac/query?status=new&status=assigned&status=reopened&group=&owner=moe&order=priority moe's tickets]
- * [http://divmod.org/trac/query?status=new&status=assigned&status=reopened&group=&owner=washort&order=priority washort's tickets]
- * [http://divmod.org/trac/query?status=new&status=assigned&status=reopened&group=&owner=amir&order=priority amir's tickets]
