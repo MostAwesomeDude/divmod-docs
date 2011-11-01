@@ -6,6 +6,20 @@
 Welcome to Divmod's documentation!
 ==================================
 
+Retired Projects
+================
+
+This is the rest home for Divmod projects that didn't quite make it up the
+evolutionary ladder. These projects are not being developed or maintained.
+
+.. toctree::
+   :maxdepth: 2
+
+   retired/lupy
+   retired/pyndex
+   retired/quotient
+   retired/xapwrap
+
 Biographies
 ===========
 
