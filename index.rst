@@ -6,10 +6,18 @@
 Welcome to Divmod's documentation!
 ==================================
 
-Contents:
+Biographies
+===========
+
+Some background information on the people behind Divmod.
 
 .. toctree::
    :maxdepth: 2
+
+   bios/glyph
+   bios/jp
+   bios/moe
+   bios/oubiwann
 
 Indices and tables
 ==================
