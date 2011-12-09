@@ -6,6 +6,16 @@
 Welcome to Divmod's documentation!
 ==================================
 
+Products
+========
+
+These are things that Divmod produced.
+
+.. toctree::
+   :maxdepth: 2
+
+   products/axiom
+
 Retired Projects
 ================
 
