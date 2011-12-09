@@ -6,8 +6,6 @@ exp = re.compile(
 
 data = open("divmod-wiki-replaced.csv").read()
 
-seen = set()
-
 for m in exp.finditer(data):
     d = m.groupdict()
     f = open("%04d.txt" % int(d["serial"]), "wb")
