@@ -30,6 +30,16 @@ evolutionary ladder. These projects are not being developed or maintained.
    retired/quotient
    retired/xapwrap
 
+Philosophy
+==========
+
+Many writings of various Divmod members are archived here.
+
+.. toctree::
+   :maxdepth: 2
+
+   philosophy/potato
+
 Biographies
 ===========
 

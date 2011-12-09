@@ -6,7 +6,7 @@ Axiom is an object database whose primary goal is to provide an
 object-oriented layer with what we consider to be the key aspects of OO, i.e.
 polymorphism and message dispatch, without hindering the power of an RDBMS.
 It is designed to 'feel Pythonic', without encouraging the typical ORM
-behavior such as :ref:`potato programming`.
+behavior such as :doc:`../philosophy/potato`.
 
 Axiom provides a full interface to the database, which strongly suggests that
 you do not write any SQL of your own. Metaprogramming is difficult and
