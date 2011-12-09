@@ -15,6 +15,7 @@ These are things that Divmod produced.
    :maxdepth: 2
 
    products/axiom
+   products/epsilon
 
 Retired Projects
 ================
