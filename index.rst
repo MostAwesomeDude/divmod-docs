@@ -18,6 +18,7 @@ These are things that Divmod produced.
    products/combinator
    products/epsilon
    products/mantissa
+   products/pyflakes
 
 Retired Projects
 ================
