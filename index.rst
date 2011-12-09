@@ -17,6 +17,7 @@ These are things that Divmod produced.
    products/axiom
    products/combinator
    products/epsilon
+   products/mantissa
 
 Retired Projects
 ================
