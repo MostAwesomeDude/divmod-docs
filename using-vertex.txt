@@ -1,0 +1,251 @@
+[[PageOutline]]
+
+= Using Vertex =
+
+[wiki:DivmodVertex Vertex] is an implementation of the Q2Q (nee [wiki:DivmodQuotient Quotient]-to-Quotient) protocol, which purports to provide NAT traversal and other such unfortunate necessities to your network application.  While the promotional material calls it P2P, it's not so much a swarming/filesharing/serverless framework as it is a protocol that lets everyone be functional network peers.
+
+This document describes Q2Q and walks through the implementation of an application with Vertex that takes full advantage of the protocol.
+
+Other bits of documentation you might be interested in:
+ * [http://twistedmatrix.com/users/moshez/q2q.html Q2Q: Piercing Firewalls for Fun and Profit]
+ * [http://www.divmod.org/users/glyph/q2qpresentation.pdf Python-Powered, Public, Personal Protocol Peers] (PDF of Q2Q presentation slides)
+
+= Q2Q =
+
+''Uh, working on this.''
+
+Q2Q has three parts.
+
+First, Q2Q identity servers are like email and Jabber/XMPP servers.  They provide a well-connected, public host through which Q2Q identities are created and routed.  Anyone can run a Q2Q ID server, so the network can be somewhat decentralized, just like email and instant messaging networks.  Users notify their Q2Q ID servers of their connection state and the Q2Q server provides connection information between users, and may even proxy information.
+
+Second, Q2Q identities...
+
+Q2Q identities look like email addresses: exarkun@boson, alice@notdivmod.com, etc.  They're also associated with an encryption key.
+
+Your ISP might provide one some day, but right now you'll probably run your own.  If you're using Q2Q as a networking protocol for a product, your users might not even know they have one.
+
+Q2Q identity servers do more than just...
+
+= Uses for Vertex =
+
+Ever tried to send a file to a friend using IRC or an instant messaging program?  You can chat with them fine, but file transfers won't work without you both futzing with your respective firewalls?
+
+Instant messages work because when you send the message, it goes to the instant messaging service provider (whether AOL, Yahoo, MSN, Google, your Jabber/XMPP server, etc.) first, and then the service passes it along to your friend.  You are both connected to the service, not each other.
+
+But when your instant messaging program wants to do a file transfer, it skips the service provider and tries to send the file directly to your friend.  In practice, this doesn't work out so well.  Even if you and your friend have your computers plugged directly into your high-speed modems, you're still probably running a firewall on your computer.  This keeps malicious attackers from being able to connect to your machine, but it also prevents your friends from connecting, too.
+
+More likely, you have a router plugged into your high-speed modem, which not only provides its own firewall, but also lets you have more than one computer online at the same time.  To do this, it hides all of your computers from the internet and puts them on a little private network of your own, and when you want to access the internet, it makes a note of what you're doing so when the responses come back from the web sites you're visiting, it can pass them along to you.  When your friend tries to send you a file, it's hitting up against the router, and since your instant messaging program didn't reach out to your friend first, your router doesn't know what to do with that connection, so it ignores it, just like the firewall would have.
+
+Vertex provides a way for you to connect directly to your friend to chat, send files, or whatever sort of stuff your network program needs to do, using the Q2Q protocol.
+
+= Installing Vertex =
+
+First, we assume you have a machine on which you can run a Q2Q identity server.  This machine needs to be on the public internet, well-connected, like a virtual host you rent from a server company, a machine you colocate at an ISP, something like that.  A basic web hosting account that only lets you upload and download HTML pages and PHP scripts won't cut it.
+
+Second, we assume that you know how to program in Python, how to install software on your machine, and that sort of thing.
+
+You can download the latest release of Vertex, 0.2.0, from the SoftwareReleases page.  This version requires Python 2.4+, Twisted 2.4.0+, PyOpenSSL 0.6+, OpenSSL 0.9.7+ (0.9.8 is recommended by the OpenSSL developers), Divmod Epsilon 0.5.0+ and Divmod Axiom 0.5.0+.  You'll also need to download the [source:trunk/Vertex/bin/vertex?format=raw vertex] script, as it was left out of the release.  Save it as `vertexclient.py`.  We'll get to it shortly.
+
+As of Oct 14, 2006 Ubuntu users need to go to the beta release version of Ubuntu called "edgy" to get the needed version of Twisted using only the standard package install software.
+
+
+You can also download Epsilon, Axiom, and Vertex from the Subversion repository:
+
+{{{
+svn co http://divmod.org/svn/Divmod/trunk/Epsilon Epsilon
+svn co http://divmod.org/svn/Divmod/trunk/Axiom Axiom
+svn co http://divmod.org/svn/Divmod/trunk/Vertex Vertex
+}}}
+
+You'll still need all the dependencies listed above, except for Axiom (that's a bug that's been fixed), and obviously you won't have to download the vertex script separately.
+
+If you're running Windows, CombinatorMonad has links for PyOpenSSL and OpenSSL binaries at the bottom of the page that work fine.
+
+For each of Axiom, Epsilon, and Vertex you need to go to that directory and then run:
+{{{
+python setup.py install
+}}}
+
+= Testing your Vertex installation =
+
+Twisted ships with [http://twistedmatrix.com/trac/wiki/TwistedTrial Twisted Trial], a unit testing framework, and Vertex ships with tests for it.  It's a really good idea to run the tests, especially since Vertex doesn't currently pass them on Windows or OS X.  Run them on Linux by just doing:
+
+{{{
+trial vertex
+}}}
+
+On Windows, go to your {{{C:\Python24\Scripts}}} directory and run:
+
+{{{
+trial.py vertex
+}}}
+
+from in there.  Results will be reported on the console, and there will be a {{{_trial_temp}}} directory when the tests are done with a detailed log.
+
+
+= Using the standalone Vertex client =
+
+Start up the twisted deamon using .tac file for Vertex:
+
+{{{
+twistd -y Vertex/doc/q2q-standalone.tac
+}}}
+
+== User registration ==
+
+
+
+{{{
+Vertex/bin/vertex register bob@localhost password1
+Vertex/bin/vertex register alice@localhost password2
+}}}
+
+
+== User authorization ==
+
+{{{
+Vertex/bin/vertex authorize bob@localhost
+}}}
+
+== Tunnelling ==
+
+== Individual file transfers ==
+
+Alice needs to elect to receive files ''first'' by performing:
+
+{{{
+Vertex/bin/vertex receive bob@localhost
+}}}
+
+Then, Bob would send the file by performing:
+
+{{{
+Vertex/bin/vertex send alice@localhost some.file.name
+}}}
+
+= Fixing Vertex on Windows =
+
+Vertex on Windows is wonky, and inconsistently so.  As I've narrowed things down, I've removed a lot of the debugging information, but you can check [http://divmod.org/trac/wiki/UsingVertex?version=11#FixingVertexonWindows a previous version of this page] to see them.
+
+The two tests that fail significantly are in {{{ vertex.test.test_q2q.UDPConnection}}}: '''testChooserGetsThreeChoices''' and '''testListening'''.  When only those two tests get run, {{{ testListening }}} intermittently passes.  Since {{{ testChooserGetsThreeChoices }}} calls {{{ testListening}}}, I've focused my efforts on {{{ testListening}}}.  To run only that test:
+
+{{{
+trial.py vertex.test.test_q2q.UDPConnection.testListening
+}}}
+
+Uncommenting all the debugging prints in {{{ q2q.py }}} and {{{ ptcp.py }}} shows that protocol-level output is identical between Windows and Linux test runs.  The only thing that really changes is near the very end of the test.  If you're following along at home, that should be line 116.  Where [attachment:abbr-vito-lin.txt Linux closes one connection cleanly and then] starts unbinding ports and Q2Q services start losing connections, [attachment:abbr-vito-win.txt Windows closes one connection cleanly, then another], starts unbinding and Q2Q services lose connections out of order compared to Linux, until finally:
+
+{{{
+Failure: twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion.
+}}}
+
+Digging a little deeper into the test, the whole test is actually passing.  All the callbacks get called and at the very end in {{{ _4c}}}, all the asserts match and the answerBox contains the right answer.  But the ''result'' of the test is a failure because the very last connection craps out:
+
+{{{
+self.clientClientService.connectQ2Q(self.fromAddress, self.toAddress, 'pony2', otpcf)
+}}}
+
+That's the whole statement.  There's no callback for that, and surely it's not a blocking operation.  If there's a callback added to it, the test passes!  And fails.  And passes and fails, intermittently.  Do something like:
+
+{{{
+_5 = self.clientClientService.connectQ2Q(self.fromAddress, self.toAddress, 'pony2', otpcf)
+}}}
+
+and then indented under {{{ _4c}}}, something like:
+
+{{{
+def _5c(ignored):
+    print ""
+    print "last test passed again"
+    print ""
+return _5.addCallback(_5c)
+}}}
+
+There's some other minor weirdness, too.  After the tests pass, there's still some PTCP traffic: two packets and three retransmits.  They happen regardless of whether the test passes or fails.  And once in a while I'll get a failure because a socket was still open from the previous test.
+
+I'm thinking maybe something is up with the way Q2Q or PTCP (or maybe even Juice?) handles sockets and/or connections on Windows.  They're not being closed correctly or something.  But this test passes, except for the closing of connections, so I don't think it's a problem with the test.
+
+I started tracing through the test, but that's silly, because the test works fine, it's the protocol/sockets/something.  I think.
+
+So, to close a connection, PTCP, in {{{immediateShutdown}}} eventually sets the current pipe to a timing-out state so it'll shut itself down.  I'm not sure that's working correctly on Windows, but I have no hard evidence, and I'm not sure how to test for it.
+
+So going through PTCP, we see the following differences at the end of the test.  The connections get told to shut down, and Windows has two of these before it starts shutting down like Linux does:
+
+{{{
+0xf54e68 Going from CLOSE_WAIT to LAST_ACK because APP_CLOSE
+}}}
+
+Linux, meanwhile, does, essentially:
+
+{{{
+-0x48821214 Going from FIN_WAIT_1 to FIN_WAIT_2 because ACK
+-0x48821334 Going from ESTABLISHED to FIN_WAIT_1 because APP_CLOSE
+-0x48821334 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+-0x48821214 Going from FIN_WAIT_2 to CLOSED because TIMEOUT
+-0x48821a74 Going from CLOSE_WAIT to CLOSED because TIMEOUT
+-0x4881f4b4 Going from ESTABLISHED to FIN_WAIT_1 because APP_CLOSE
+}}}
+
+Windows is missing that {{{CLOSE_WAIT to CLOSED}}} when it finally gets there.
+
+Then, Linux is nearly done:
+
+{{{
+-0x4881f4b4 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+-0x48824ad4 Going from ESTABLISHED to FIN_WAIT_1 because APP_CLOSE
+-0x48824ad4 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+-0x48821714 Going from CLOSE_WAIT to CLOSED because TIMEOUT
+-0x488216d4 Going from CLOSE_WAIT to CLOSED because TIMEOUT
+-0x48824d34 Going from ESTABLISHED to FIN_WAIT_1 because APP_CLOSE
+-0x48824d34 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+}}}
+
+Windows, however:
+
+{{{
+0xf52238 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+0xf54508 Going from LAST_ACK to CLOSED because TIMEOUT
+0xf512d8 Going from ESTABLISHED to FIN_WAIT_1 because APP_CLOSE
+0xf512d8 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+0xf54fa8 Going from CLOSE_WAIT to CLOSED because TIMEOUT
+0xf6c620 Going from ESTABLISHED to FIN_WAIT_1 because APP_CLOSE
+0xf6c620 Going from FIN_WAIT_1 to CLOSED because TIMEOUT
+0xf54e68 Going from LAST_ACK to CLOSED because TIMEOUT
+}}}
+
+I have no idea what any of that means, other than Linux and Windows definitely aren't closing connections the same way.
+
+= Potential problems with Q2Q identity certificates =
+
+The Vertex standalone Q2Q server, {{{q2q-standalone.py}}}, stores its server certificate and the keys of the users it issues identities to in {{{./q2q-data}}}.  This directory must be preserved between server restarts and upgrades and directory moves, or it will be regenerated.  This will change the server's certificate and cause any previously registered users to no longer be able to connect with an error of:
+
+{{{
+epsilon.sslverify.OpenSSLVerifyError: Peer Certificate Verification Failed: the passed certificate is self-signed and the same certificate cannot be found in the list of trusted certificates. (error code: 18)
+}}}
+
+The server will report:
+
+{{{ 
+Failure: epsilon.sslverify.PeerVerifyError: Peer rejected our certificate for an unknown reason.
+}}}
+
+The Vertex standalone client (what we called {{{vertexclient.py}}} when pulling it from Subversion) stores its certificates in {{{~/.q2qcerts}}} (on Windows, that means {{{C:\Documents and Settings\Your Name\.q2qcerts}}}).  You'll either need to clear that out if the server certificate changes while you're testing things out, or replace the server certificate there with your new one.
+
+= Troubleshooting failing Q2Q connections =
+
+ * Which connection method did it end up using?
+ * What port numbers does it end up allocating?
+ * Is UDP ''supposed'' to work?
+ * What is the network policy in both places?
+ * What platform is each client on?
+ * What platform is the identity server on?
+ * What platform is the router on?
+ * What brand of router?
+ * What ISP?
+
+
+== Swarming file transfers ==
+
+= Fin =
+
+Autogenerated stuff below this line.
