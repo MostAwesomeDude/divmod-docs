@@ -13,6 +13,7 @@ These are things that Divmod produced.
 
 .. toctree::
    :maxdepth: 2
+   :glob:
 
    products/axiom
    products/combinator
