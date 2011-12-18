@@ -17,6 +17,7 @@ Pollenation Forms is both simpler for the beginner and offers powerful features 
 [[Image(Example1.2.png,200,float:right;clear:right;margin-bottom:2px;)]]
 The following example demonstrates and compares the simplest use of Formless / Pollenation Forms. 
 We start with a [attachment:Example1.0.tac basic tac file (src)] containing everything but the form:
+
  * the rend.Page subclass and docFactory
  * a simple list to store news items
  * a data_* method to expose the list of stories to the template
