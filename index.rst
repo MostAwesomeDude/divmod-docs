@@ -18,6 +18,7 @@ These are things that Divmod produced.
    products/combinator
    products/epsilon
    products/mantissa
+   products/nevow
    products/pyflakes
    products/sine
    products/vertex
