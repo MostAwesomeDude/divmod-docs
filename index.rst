@@ -60,6 +60,19 @@ Some background information on the people behind Divmod.
    bios/moe
    bios/oubiwann
 
+Miscellaneous
+=============
+
+Random pages that might not really be needed anymore but shouldn't be
+discarded.
+
+.. toctree::
+   :maxdepth: 2
+
+   misc/python
+   misc/q2q
+   misc/sqlite
+
 Indices and tables
 ==================
 

@@ -1,4 +1,6 @@
-= Python =
+======
+Python
+======
 
 A pretty good programming language.
 
