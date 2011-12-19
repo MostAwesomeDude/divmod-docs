@@ -1,6 +1,6 @@
-====
-Sine
-====
+===========
+Divmod Sine
+===========
 
 A voice over IP application server.
 
