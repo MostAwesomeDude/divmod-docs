@@ -1,7 +1,8 @@
-== Divmod Sine ==
+====
+Sine
+====
 
 A voice over IP application server.
-
 
 Sine provides:
  * SIP Registrar
@@ -11,15 +12,13 @@ Sine provides:
  * Through-the-web configuration
  * [wiki:DivmodMantissa Divmod Mantissa] integration
 
-=== Download ===
+Download
+========
 
  * Release: [http://divmod.org/trac/attachment/wiki/SoftwareReleases/Sine-0.3.0.tar.gz?format=raw Download the latest release - 0.3.0!] (Requires [wiki:DivmodMantissa Mantissa]) ([source:/tags/releases/Sine-0.3.0/NEWS.txt Release Notes])
- * Bleeding Edge: 
-{{{
-#!sh
-% svn co http://divmod.org/svn/Divmod/trunk/Sine Sine
-}}}
+ * Bleeding Edge: svn co http://divmod.org/svn/Divmod/trunk/Sine Sine
 
-=== See Also ===
+See also
+========
 
   * ''Development'' version of the [http://buildbot.divmod.org/apidocs/sine.html Sine API docs]
