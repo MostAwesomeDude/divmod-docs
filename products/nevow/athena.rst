@@ -1,0 +1,70 @@
+=============
+Divmod Athena
+=============
+
+Adding LiveElements to a LivePage on fly tutorial
+=================================================
+
+
+Javascript function `Nevow.Athena.Widget.addChildWidgetFromWidgetInfo
+<http://divmod.org/trac/browser/trunk/Nevow/nevow/js/Nevow/Athena/__init__.js#L897>`_
+can be used to do that.
+
+All you need on the server is to return a LiveElement instance:
+
+
+
+.. code-block:: python
+
+
+    from nevow import athena
+
+    class WhateverElement(athena.LiveElement):
+
+      @athena.expose
+      def getNewLiveElement(self):
+        return SomeOtherLiveElement()
+
+
+Note: you should also call ``setFragmentParent`` on the new LiveElement (see
+`here
+<http://buildbot.divmod.org/apidocs/nevow.athena._LiveMixin.html#setFragmentParent>`_).
+
+On the client, you need some code & a free XML node to append the new element
+to:
+
+
+.. code-block:: javascript
+
+    // import Nevow.Athena
+    // import Divmod.Runtime
+
+    What.Ever = Nevow.Athena.Widget.subclass('What.Ever');
+    What.Ever.methods = (
+
+     function foo(self) {
+       d = self.callRemote('getNewLiveElement');
+
+       d.addCallback(
+
+         function liveElementReceived(le) {
+
+           d2 = self.addChildWidgetFromWidgetInfo(le);
+           d2.addCallback(
+             function childAdded(widget) {
+
+               /* widget is a Nevow.Athena.Widget instance and it
+                * represents a newly created widget for the liveelement
+                * got from the server */
+
+               /* find a node to attach the widget to: */
+               self.nodeById('lastNode').appendChild(widget.node);
+
+               /* you could also use, for example:
+                *
+                * var node = self.nodeById('lastNode');
+                * node.replaceChild(widget.node, node.firstChild);
+                */
+             });
+
+         });
