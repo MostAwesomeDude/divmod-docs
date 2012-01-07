@@ -17,19 +17,19 @@ automatically, and form posts will be validated and input coerced, rendering
 error pages if appropriate. Once a form post has validated successfully, the
 method will be called with the coerced values.
 
-*Athena* - Finally, Nevow includes :doc:`athena`, a two-way bridge between
-Javascript in a browser and Python on the server. :doc:`athena` is compatible
-with  Mozilla, Firefox, Windows Internet Explorer 6, Opera 9 and Camino
-(:doc:`../../misc/fan-club`). Event handlers can be written in pure Python and
-Javascript implementation details are hidden from the programmer, with Nevow
-taking care of routing data to and from the server using `XmlHttpRequest
-<http://www.google.com/search?q=xmlhttprequest>`_.  Athena supports a widget
-authoring framework that simplifies the authoring and management of client side
-widgets that need to communicate with the server.  Multiple widgets can be
-hosted on an Athena page without interfering with each other.  Athena supports
-automatic event binding so that that a DHTML event (onclick,onkeypress,etc) is
-mapped to the appropriate javascript handler (which in turn may call the
-server).
+*Athena* - Finally, Nevow includes :doc:`athena-tutorial`, a two-way bridge
+between Javascript in a browser and Python on the server. :doc:`athena-tutorial`
+is compatible with  Mozilla, Firefox, Windows Internet Explorer 6, Opera 9 and
+Camino (:doc:`../../misc/fan-club`). Event handlers can be written in pure
+Python and Javascript implementation details are hidden from the programmer,
+with Nevow taking care of routing data to and from the server using
+`XmlHttpRequest <http://www.google.com/search?q=xmlhttprequest>`_.  Athena
+supports a widget authoring framework that simplifies the authoring and
+management of client side widgets that need to communicate with the server.
+Multiple widgets can be hosted on an Athena page without interfering with each
+other.  Athena supports automatic event binding so that that a DHTML event
+(onclick,onkeypress,etc) is mapped to the appropriate javascript handler (which
+in turn may call the server).
 
 
 Download
