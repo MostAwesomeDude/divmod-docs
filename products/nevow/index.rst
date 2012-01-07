@@ -99,30 +99,6 @@ Documentation
    * :doc:`context-removal` - Conversion steps for moving from
      ``context``-based Nevow code to ``context``-less code.
 
-
-.. .. toctree::
-..    :maxdepth: 2
-.. 
-..    getting-started
-..    tutorial
-..    error-handling
-..    form-handling
-..    authentication-and-authorization
-..    context-removal
-..    guard
-..    reverse-proxy
-.. 
-..    athena
-..    athena-tutorial
-..    nevow-and-athena-faq
-.. 
-..    demo-newsedit
-..    demo-results
-.. 
-..    storm-and-nevow
-..    storm-approach
-
-
 Examples
 ========
 
@@ -180,3 +156,30 @@ Related Projects
  * `WubWubWub <http://www.inoi.fi/open/trac/wubwubwub>`_: 'Making Twisted.Web
    look like Apache since 2002' A fully featured Twisted based webserver for
    serving multiple twisted.web and Nevow apps.
+
+
+
+Index
+=====
+
+.. toctree::
+   :maxdepth: 2
+
+   getting-started
+   tutorial
+   error-handling
+   form-handling
+   authentication-and-authorization
+   context-removal
+   guard
+   reverse-proxy
+
+   athena
+   athena-tutorial
+   nevow-and-athena-faq
+
+   demo-newsedit
+   demo-results
+
+   storm-and-nevow
+   storm-approach
