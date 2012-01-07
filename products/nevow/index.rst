@@ -169,13 +169,18 @@ Index
    tutorial
    error-handling
    form-handling
+   formless
    authentication-and-authorization
    context-removal
    guard
+   unit-testing
+
+   apache-proxy
    reverse-proxy
 
    athena
    athena-tutorial
+   athena-faq
    nevow-and-athena-faq
 
    demo-newsedit
