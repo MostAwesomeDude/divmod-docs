@@ -2,6 +2,7 @@
 The Divmod Fan Club
 ===================
 
+[[Image(http://divmod.org/tracdocs/fanclub_whtbck.png, right)]]
 
 Do you use Divmod's code?
 

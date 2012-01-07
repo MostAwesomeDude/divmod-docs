@@ -2,6 +2,9 @@
 Divmod Nevow
 ============
 
+[[PageOutline(2-3,Contents)]]
+
+[[Image(http://divmod.org/tracdocs/nevow_whtbck.png, left)]]
 
 *Nevow* - Pronounced as the French 'nouveau', or 'noo-voh', Nevow is a web
 application construction kit written in Python. It is designed to allow the

@@ -2,6 +2,7 @@
 Form Handling (A summary of Nevow form handling techniques)
 ===========================================================
 
+[[PageOutline(2-3,Contents)]]
 
 There is more than one way to correctly handle forms in Nevow. This short
 tutorial demonstrates three Nevow form handling techniques. It includes some
@@ -38,6 +39,12 @@ template.
 
 The Simplest Form - Example 1: A News Item Editor Page
 ======================================================
+
+[[Image(Example1.0.png,200,float:right;clear:right;margin-bottom:2px;)]]
+[[Image(Example1.1.png,200,float:right;clear:right;margin-bottom:2px;)]]
+[[Image(Example1.2.png,200,float:right;clear:right;margin-bottom:2px;)]]
+
+
 
 The following example demonstrates and compares the simplest use of Formless /
 Pollenation Forms.  We start with a `basic tac file (src)
