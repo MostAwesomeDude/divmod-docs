@@ -8,7 +8,7 @@ Note: There is work on integrating Storm with Twisted
 <https://code.launchpad.net/~therve/storm/twisted-integration>`_). Until then,
 the best way is probably to use deferToThread.
 
-(Here is :doc:`nevow-storm-approach`)
+(Here is :doc:`storm-approach`)
 
 Before a tutorial can be written on how to use storm in Nevow, someone needs to
 figure out 'best practices for using Storm in asynchronous codebases.' From a
