@@ -20,6 +20,7 @@ These are things that Divmod produced.
    products/epsilon
    products/mantissa
    products/nevow/index
+   products/nevow/athena/index
    products/pyflakes
    products/sine
    products/vertex

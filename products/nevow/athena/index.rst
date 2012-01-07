@@ -8,7 +8,6 @@ examples <browser:trunk/Nevow/examples/athenademo>`_.  Or make this page better.
 
 :doc:`nevow-and-athena-faq`
 
-=======
 History
 =======
 
@@ -17,11 +16,10 @@ Athena is the best-of-breed approach to developing interactive javascript (AJAX
 / Comet) applications with DivmodNevow.  It should be noted that it *supersedes*
 previous solutions, such as livepage.  These prior solutions should not be used
 with Athena development.  Before using Athena, you may want to check out the
-:doc:`getting-started`.
+:doc:`../getting-started`.
 
 .. todo:: this last link should point towards Nevow tutorial
 
-=======================
 Development Environment
 =======================
 
@@ -109,7 +107,7 @@ And hit http://localhost:8080/.  You now have an extremely simple Athena page.
 
 
 Customizing Behavior
-====================
+--------------------
 
 Add a Twisted plugin which maps your module name onto your JavaScript source
 file:
@@ -182,7 +180,7 @@ subclass:
 
 
 Invoking Code in the Browser
-============================
+----------------------------
 
 
 Add some kind of event source (in this case, a timer, but this is incidental)
@@ -214,7 +212,7 @@ Start up the server again and revisit <http://localhost:8080>.
 
 
 Invoking Code on the Server
-===========================
+---------------------------
 
 
 Add an event source (in this case, a user-interface element, but this is
@@ -266,7 +264,7 @@ Start up the server again and revisit <http://localhost:8080>.
 
 
 Download the files for this tutorial:
-=====================================
+-------------------------------------
 
 
  * `myelement.tac
@@ -285,7 +283,6 @@ Testing
 Visit the :doc:`athena-testing` or `Test Driven Development with Athena
 <http://blackjml.livejournal.com/21602.html>`_
 
-==============
 Implementation
 ==============
 
@@ -296,7 +293,6 @@ before it actually needs to retrieve information from the server.  The server
 does not respond to this request until it has something to tell the browser.  In
 this way, the server can push events to the browser instantly.
 
-=======
 Tickets
 =======
 

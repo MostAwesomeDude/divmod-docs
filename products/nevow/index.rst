@@ -20,8 +20,8 @@ automatically, and form posts will be validated and input coerced, rendering
 error pages if appropriate. Once a form post has validated successfully, the
 method will be called with the coerced values.
 
-*Athena* - Finally, Nevow includes :doc:`athena-tutorial`, a two-way bridge
-between Javascript in a browser and Python on the server. :doc:`athena-tutorial`
+*Athena* - Finally, Nevow includes :doc:`athena/index`, a two-way bridge
+between Javascript in a browser and Python on the server. :doc:`athena/index`
 is compatible with  Mozilla, Firefox, Windows Internet Explorer 6, Opera 9 and
 Camino (:doc:`../../misc/fan-club`). Event handlers can be written in pure
 Python and Javascript implementation details are hidden from the programmer,
@@ -92,7 +92,7 @@ Documentation
    and
    `dynamic <http://oubiwann.blogspot.com/2008/03/genshi-on-nevow-revisited.html>`_
  * :doc:`storm-and-nevow`
- * :doc:`nevow-and-athena-faq`
+ * :doc:`athena/nevow-and-athena-faq`
 
  *Bleeding Docs* -
  **SURGEON GENERAL’S WARNING**: Reading the docs listed below pertain to code
@@ -181,10 +181,10 @@ Index of Nevow documents
    apache-proxy
    reverse-proxy
 
-   athena-tutorial
-   athena-tips
-   athena-faq
-   nevow-and-athena-faq
+   athena/index
+   athena/athena-tips
+   athena/athena-faq
+   athena/nevow-and-athena-faq
 
    demo-newsedit
    demo-results
