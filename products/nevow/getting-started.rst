@@ -19,7 +19,6 @@ We will construct a page that returns 'Hello world!', and propose some
 structural alternatives.
 
 
-
 .. code-block:: python
 
     from nevow import rend, loaders, tags
@@ -27,13 +26,12 @@ structural alternatives.
     class APage(rend.Page):
         docFactory = loaders.stan(tags.html[
             tags.head[
-                tags.title:ref:`World Example'`
+                tags.title['Hello World Example']
             ],
             tags.body[
-                tags.div(id='hello', _class='helloicator'):ref:`World!'`
+                tags.div(id='hello', _class='helloicator')['Hello World!']
             ]
         ])
-
 
 This page uses Stan to construct an object-like representation which is
 flattened into XHTML.
@@ -50,7 +48,7 @@ specials.
     class APage(rend.Page):
         docFactory = loaders.stan(tags.html[
             tags.head[
-                tags.title:ref:`World Example'`
+                tags.title['Hello World Example']
             ],
             tags.body[
                 tags.div(render=tags.directive('hi'))
@@ -58,7 +56,7 @@ specials.
         ])
 
         def render_hi(self, ctx, data):
-            return ctx.tag[ tags.div(id='hello', _class='helloicator'):ref:`World'`]
+            return ctx.tag[ tags.div(id='hello', _class='helloicator')['Hello World']]
 
 
 
@@ -86,7 +84,7 @@ A compact example of a boiler plate Nevow application could look like this
 
         docFactory = loaders.stan(tags.html[
             tags.head[
-                tags.title:ref:`World Example'`
+                tags.title['Hello World Example']
             ],
             tags.body[
                 tags.div(render=tags.directive('hi'))
@@ -94,7 +92,7 @@ A compact example of a boiler plate Nevow application could look like this
         ])
 
         def render_hi(self, ctx, data):
-            return ctx.tag[ tags.div(id='hello', _class='helloicator'):ref:`World'`]
+            return ctx.tag[ tags.div(id='hello', _class='helloicator')['Hello World']]
 
 
     siteRoot = APage() # Set our page as the site root
@@ -108,8 +106,6 @@ A compact example of a boiler plate Nevow application could look like this
 
 It's common to encapsulate the specific service in a deployment function as
 follows
-
-
 
 .. code-block:: python
 
@@ -125,7 +121,7 @@ follows
 
         docFactory = loaders.stan(tags.html[
             tags.head[
-                tags.title:ref:`World Example'`
+                tags.title['Hello World Example']
             ],
             tags.body[
                 tags.div(render=tags.directive('hi'))
@@ -133,7 +129,7 @@ follows
         ])
 
         def render_hi(self, ctx, data):
-            return ctx.tag[ tags.div(id='hello', _class='helloicator'):ref:`World'`]
+            return ctx.tag[ tags.div(id='hello', _class='helloicator')['Hello World']]
 
     def deployApp():
         siteRoot = APage() # Set our page as the site root
@@ -144,7 +140,6 @@ follows
 
     application = service.Application('demo')
     demo.setServiceParent(application)
-
 
 
 The server can be started by issuing the command ``twistd -ny simple.py``.
