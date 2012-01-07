@@ -50,40 +50,40 @@ The following example demonstrates and compares the simplest use of Formless /
 Pollenation Forms.  We start with a `basic tac file (src)
 <attachment:Example1.0.tac>`_ containing everything but the form:
 
- * the rend.Page subclass and docFactory
- * a simple list to store news items
- * a data_* method to expose the list of stories to the template
- * a method to save new items to the database which redirects to a completion
-   page on success
+* the rend.Page subclass and docFactory
+* a simple list to store news items
+* a data_* method to expose the list of stories to the template
+* a method to save new items to the database which redirects to a completion
+  page on success
 
- * `Formless Recipe (src): <attachment:Example1.1.tac.py>`_ To expose the
-   method (saveNewsItem) in our web page with Formless we:
+* `Formless Recipe (src): <attachment:Example1.1.tac.py>`_ To expose the
+  method (saveNewsItem) in our web page with Formless we:
 
-   * import `annotate <source:trunk/Nevow/formless/annotate.py>`_ and
-     `webform <source:trunk/Nevow/formless/webform.py>`_
-   * update the template to include form layout css and a placeholder
-     (<n:invisible />) for our form renderer
-   * add the Formless standard css file as a `static.File
-     <source:trunk/Nevow/nevow/static.py#L144>`_ child resource * define a
-     corresponding bind_saveNewsItem method whose job is to return a description
-     of the saveNewsItem method arguments
-   * define a custom renderer which adds the results of webform.renderForms() to
-     the page output.
+  * import `annotate <source:trunk/Nevow/formless/annotate.py>`_ and
+    `webform <source:trunk/Nevow/formless/webform.py>`_
+  * update the template to include form layout css and a placeholder
+    (<n:invisible />) for our form renderer
+  * add the Formless standard css file as a `static.File
+    <source:trunk/Nevow/nevow/static.py#L144>`_ child resource * define a
+    corresponding bind_saveNewsItem method whose job is to return a description
+    of the saveNewsItem method arguments
+  * define a custom renderer which adds the results of webform.renderForms() to
+    the page output.
 
-* *`Pollenation Forms Recipe (src): <attachment:Example1.2.tac.py>`_* With
+* `Pollenation Forms Recipe (src): <attachment:Example1.2.tac.py>`_ With
   Pollenation Forms we:
 
-   * import
-     `forms <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/__init__.py>`_
-   * mixin the `forms.ResourceMixin
-     <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/form.py#L303>`_
-     to our rend.Page subclass.
-   * update the template to include form layout css and a placeholder for our
-     form renderer (forms.ResourceMixin defines its own render_form method so we
-     use that)
-   * update our saveNewsItem method to accommodate the extra args that forms
-     will pass to it.
-   * define a special form_* method which builds and returns the form.
+  * import
+    `forms <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/__init__.py>`_
+  * mixin the `forms.ResourceMixin
+    <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/form.py#L303>`_
+    to our rend.Page subclass.
+  * update the template to include form layout css and a placeholder for our
+    form renderer (forms.ResourceMixin defines its own render_form method so we
+    use that)
+  * update our saveNewsItem method to accommodate the extra args that forms
+    will pass to it.
+  * define a special form_* method which builds and returns the form.
 
 A comparison of the two recipes:
  * Pollenation Forms API is more transparent (subjective of course, but

@@ -17,12 +17,12 @@ Nevow.rend.Page, the developer could present a web UI. Elsewhere the same
 TypedInterface could be implemented to provide a gtk UI for example. In
 practice though, only the web form rendering code was maintained.
 
- * see the Formless section of `this 2004 paper by Donovan Preston, the original
-   author of Nevow and Formless
-   <http://www.python.org/pycon/dc2004/papers/60/context>`_
+* see the Formless section of `this 2004 paper by Donovan Preston, the original
+  author of Nevow and Formless
+  <http://www.python.org/pycon/dc2004/papers/60/context>`_
 
 Recently *TypedInterface has been deprecated in favour of the newer and simpler
-bind_* syntax*. (see `Nevow Changelog 2005-07-12
+`bind_*` syntax*. (see `Nevow Changelog 2005-07-12
 <source:trunk/Nevow/ChangeLog>`_) Confusingly for the beginner, most of the
 Nevow examples still use TypedInterfaces, but hopefully these will be updated
 in due course.

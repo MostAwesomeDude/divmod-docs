@@ -162,16 +162,16 @@ Related Projects
 
 
 
-Index
-=====
+Index of Nevow documents
+========================
 
 .. toctree::
    :maxdepth: 2
 
    getting-started
-   tutorial
-   error-handling
+   tutorial-4
    form-handling
+   error-handling
    formless
    authentication-and-authorization
    context-removal
@@ -181,8 +181,8 @@ Index
    apache-proxy
    reverse-proxy
 
-   athena
    athena-tutorial
+   athena-tips
    athena-faq
    nevow-and-athena-faq
 

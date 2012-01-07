@@ -31,7 +31,7 @@ Step 2
 *Change ``child_`` Class Attributes*
 
 Class ``child_*`` class attributes change in that the prefix is no longer needed
-and all ``child_``s are stored together in a ``dict``.
+and all ``child_``\ s are stored together in a ``dict``.
 
 *From:*
 

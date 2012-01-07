@@ -1,6 +1,6 @@
-=======================
-Divmod : Nevow : Athena
-=======================
+=============
+Divmod Athena
+=============
 
 
 Athena is a two-way communication channel for Nevow applications.  Peruse `the
@@ -17,7 +17,9 @@ Athena is the best-of-breed approach to developing interactive javascript (AJAX
 / Comet) applications with DivmodNevow.  It should be noted that it *supersedes*
 previous solutions, such as livepage.  These prior solutions should not be used
 with Athena development.  Before using Athena, you may want to check out the
-:doc:`tutorial`.
+:doc:`getting-started`.
+
+.. todo:: this last link should point towards Nevow tutorial
 
 =======================
 Development Environment
