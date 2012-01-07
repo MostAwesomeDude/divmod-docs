@@ -26,13 +26,13 @@ javascript is already loaded and not to load it twice.
 Q) Why doesn't Athena support Safari?
 
 A) Safari has a broken JS implementation that throws an error when a nested
-'named' function is encountered, e.g. 
+'named' function is encountered, e.g.
 
 
 ::
-    
+
     methods(function foo(self) {},function bar(self) {});
-    
+
 
 
 
@@ -42,6 +42,6 @@ runtime.js to support Safari.
 
 Q) How can I unit-test javascript code using Athena?
 
-A) The same way you unit-test your ordinary :ref:`Twisted` or :ref:`Divmod`
-software: by using :ref:`trial`. You can find :ref:`athena-testing`. Have a look
-at :ref:`nevow.test.test_javascript` to see, how tests are prepared and run.
+A) The same way you unit-test your ordinary `Twisted` or `Divmod` software: by
+usingi `trial`. You can find :doc:`athena-testing`. Have a look at
+`nevow.test.test_javascript` to see, how tests are prepared and run.

@@ -34,16 +34,13 @@ In the rest of this document we will use only the new bind_* syntax.
 More on Standard Form Controls and Input Types
 ==============================================
 
-TODO
- * Review the input types and widget types available
+.. todo:: Review the input types and widget types available
 
 
 Custom Form Controls and Input Types
 ====================================
 
-TODO
- * 
- * Describe how to create a simple captcha widget
+.. todo:: Describe how to create a simple captcha widget
 
 
 Customising Form Layout

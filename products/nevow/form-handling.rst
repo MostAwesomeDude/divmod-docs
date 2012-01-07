@@ -49,10 +49,11 @@ Pollenation Forms.  We start with a `basic tac file (src)
  * a method to save new items to the database which redirects to a completion
    page on success
 
- * *`Formless Recipe (src): <attachment:Example1.1.tac.py>`_* To expose the
+ * `Formless Recipe (src): <attachment:Example1.1.tac.py>`_ To expose the
    method (saveNewsItem) in our web page with Formless we:
-   * import `annotate <source:trunk/Nevow/formless/annotate.py>`_ and `webform
-     <source:trunk/Nevow/formless/webform.py>`_
+
+   * import `annotate <source:trunk/Nevow/formless/annotate.py>`_ and
+     `webform <source:trunk/Nevow/formless/webform.py>`_
    * update the template to include form layout css and a placeholder
      (<n:invisible />) for our form renderer
    * add the Formless standard css file as a `static.File
@@ -60,10 +61,13 @@ Pollenation Forms.  We start with a `basic tac file (src)
      corresponding bind_saveNewsItem method whose job is to return a description
      of the saveNewsItem method arguments
    * define a custom renderer which adds the results of webform.renderForms() to
-     the page output.  * *`Pollenation Forms Recipe (src):
-     <attachment:Example1.2.tac.py>`_* With Pollenation Forms we:
-   * import `forms
-     <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/__init__.py>`_
+     the page output.
+
+* *`Pollenation Forms Recipe (src): <attachment:Example1.2.tac.py>`_* With
+  Pollenation Forms we:
+
+   * import
+     `forms <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/__init__.py>`_
    * mixin the `forms.ResourceMixin
      <http://forms-project.pollenation.net/cgi-bin/trac.cgi/browser/trunk/forms/form.py#L303>`_
      to our rend.Page subclass.
@@ -105,7 +109,9 @@ Sometimes a form is so simple that it is easiest to write the form html by hand
 and handle the result manually. The following code demonstrates a  form with
 which the user can choose his preferred number of items per page in a datagrid.
 
-.. include:: ManualFormHandlingExample.tac.py
+.. todo:: find ManualFormHandlingExample.tac.py file
+
+.. .. include:: ManualFormHandlingExample.tac.py
 
 The <select> tag has a javascript onchange handler to automatically submit its
 parent form and is presented inline with the content of its parent <p> tag. To

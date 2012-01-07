@@ -132,14 +132,13 @@ To run the examples yourself (Source in [source:trunk/Nevow/examples]):
 
     richard@lazar:/tmp$ cd Nevow/examples/
     richard@lazar:/tmp/Nevow/examples$ twistd -noy examples.tac
-    2005/11/02 15:18 GMT :doc:`Log opened.
-    2005/11/02 15:18 GMT [-` twistd SVN-Trunk (/usr/bin/python 2.4.2) starting up
-    2005/11/02 15:18 GMT :doc:`reactor class: twisted.internet.selectreactor.SelectReactor
-    2005/11/02 15:18 GMT [-` Loading examples.tac...
-    2005/11/02 15:18 GMT :doc:`Loaded.
-    2005/11/02 15:18 GMT [-` nevow.appserver.NevowSite starting on 8080
-    2005/11/02 15:18 GMT :doc:`Starting factory <nevow.appserver.NevowSite instance at 0xb6c8110c>
-
+    2005/11/02 15:18 GMT [-] Log opened.
+    2005/11/02 15:18 GMT [-] twistd SVN-Trunk (/usr/bin/python 2.4.2) starting up
+    2005/11/02 15:18 GMT [-] reactor class: twisted.internet.selectreactor.SelectReactor
+    2005/11/02 15:18 GMT [-] Loading examples.tac...
+    2005/11/02 15:18 GMT [-] Loaded.
+    2005/11/02 15:18 GMT [-] nevow.appserver.NevowSite starting on 8080
+    2005/11/02 15:18 GMT [-] Starting factory <nevow.appserver.NevowSite instance at 0xb6c8110c>
 
 ... visit http://localhost:8080 and you'll begin to appreciate the possibilities!
 
@@ -175,7 +174,7 @@ Related Projects
    <http://forms-project.pollenation.net/cgi-bin/trac.cgi>`_: A fresh take on
    automatic form generation for Nevow, with a simpler interface and more input
    types than Formless.  This project was formerly known as 'forms'.
- * :doc:`../product/mantissa`: An extensible, multi-protocol, multi-user,
+ * :doc:`../../products/mantissa`: An extensible, multi-protocol, multi-user,
    interactive application server built on top of Axiom and Nevow.
  * `Stiq <http://test.stiq.it>`_: A web news system built using Nevow
  * `WubWubWub <http://www.inoi.fi/open/trac/wubwubwub>`_: 'Making Twisted.Web
