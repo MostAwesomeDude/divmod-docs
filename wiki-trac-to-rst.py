@@ -29,17 +29,12 @@ def run(path):
 def process_file(r, w):
     text = r.read()
 
-    text = replace_weird_trac_directives(text)
     text = replace_titles(text)
     text = replace_inlines(text)
     text = replace_links(text)
     text = replace_code_block(text)
 
     w.write(text)
-
-
-def replace_weird_trac_directives(text):
-    return re.sub(r"\[\[.*?\]\]", "", text)
 
 
 def replace_inlines(text):
