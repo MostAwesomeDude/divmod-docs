@@ -1,0 +1,76 @@
+=============
+Demo: results
+=============
+
+.. code-block:: python
+
+    import string
+
+    from twisted.application import service, strports
+    from nevow import appserver, inevow, rend, tags as T, loaders
+
+    class ResultsPage(rend.Page):
+        docFactory = loaders.xmlstr('''
+    <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+               'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+    <html xmlns:n='http://nevow.com/ns/nevow/0.1'>
+        <body>
+            <form action='.'>
+                <table border='1'>
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Letter</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan='2'>
+                                Showing <select
+                                            n:render='itemsPerPageOptions'
+                                            name='itemsPerPage'
+                                            onchange='this.form.submit();' /> items per page
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <tbody n:render='sequence' n:data='alphabet'>
+                        <tr n:pattern='item' n:render='mapping'>
+                            <td><n:slot name='index' /></td>
+                            <td><n:slot name='letter' /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </body>
+    </html>
+    ''')
+        itemsPerPageChoices = range(10, 60, 10)
+
+        def beforeRender(self, ctx):
+            sess = inevow.ISession(ctx)
+            if not hasattr(sess, 'pagerPrefs'):
+                sess.pagerPrefs = dict(itemsPerPage = self.itemsPerPageChoices[0])
+
+            try:
+                itemsPerPage = abs(int(ctx.arg('itemsPerPage', 0)))
+            except ValueError: #when the submitted value can't be converted to int
+                itemsPerPage = 0
+
+            if itemsPerPage > 0 and itemsPerPage in self.itemsPerPageChoices:
+                sess.pagerPrefs['itemsPerPage'] = itemsPerPage
+
+        def render_itemsPerPageOptions(self, ctx, data):
+            options = [T.option(value=i)[i] for i in self.itemsPerPageChoices]
+            default = inevow.ISession(ctx).pagerPrefs.get('itemsPerPage')
+            #extract the default option tag and set it's selected attribute
+            options[self.itemsPerPageChoices.index(default)](selected='selected')
+            return ctx.tag.clear()[options]
+
+        def data_alphabet(self, ctx, name):
+            alphabet = string.ascii_lowercase
+            #a dummy dataset, in real life this might come from a DB.
+            data = [dict(index=i, letter=alphabet[i]) for i in range(len(alphabet))]
+            return data[:inevow.ISession(ctx).pagerPrefs.get('itemsPerPage')]
+
+    application = service.Application('items per page')
+    strports.service('8080', appserver.NevowSite(ResultsPage())).setServiceParent(application)

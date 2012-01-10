@@ -13,12 +13,14 @@ These are things that Divmod produced.
 
 .. toctree::
    :maxdepth: 2
+   :glob:
 
    products/axiom
    products/combinator
    products/epsilon
    products/mantissa
-   products/nevow
+   products/nevow/index
+   products/nevow/athena/index
    products/pyflakes
    products/sine
    products/vertex
@@ -72,6 +74,7 @@ discarded.
    misc/python
    misc/q2q
    misc/sqlite
+   misc/fan-club
 
 Indices and tables
 ==================
