@@ -13,7 +13,7 @@ along with those projects.
 
 It is mainly of interest if you are checking code out of SVN: users of installed versions of Divmod software can probably ignore this project (for now).
 
-.. _note: Combinator does not currently work with SVN version 1.2 due to
+.. note:: Combinator does not currently work with SVN version 1.2 due to
    changes in the way SVN stores its local repository. See #2144 for details.
 
 Rationale
@@ -58,7 +58,7 @@ Use
 Start with [source:trunk/Combinator/README.txt README.txt] to get your
 environment set up.
 
-.. _note: If you follow the UNIX setup instructions and an exception is raised
+.. note:: If you follow the UNIX setup instructions and an exception is raised
    along the lines of `OSError: [Errno 2] No such file or directory:
    '/home/YOURNAME/.local/lib/python2.4/site-packages'`, you should update to
    the latest trunk revision of Combinator - this bug has been fixed!

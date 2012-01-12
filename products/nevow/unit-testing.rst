@@ -3,15 +3,18 @@ Unit Testing
 ============
 
 
-**Note: Much of this page documents the current development version of Nevow's
-testing features, not the current release version.  Make sure you are using the
-right version of the code if you attempt to make use of this documentation.**
+.. note:: Much of this page documents the current development version of Nevow's
+    testing features, not the current release version.  Make sure you are using
+    the right version of the code if you attempt to make use of this
+    documentation.
 
 Divmod uses the stand-alone JavaScript interpreter `SpiderMonkey
 <http://www.mozilla.org/js/spidermonkey/>`_ to run unit tests on some portions
-of our !JavaScript sources.  You can find `several
-<browser:trunk/Nevow/nevow/test/test_object.js>`_ `examples
-<browser:trunk/Nevow/nevow/test/test_deferred.js>`_ in the Divmod repository.
+of our JavaScript sources.  You can find `several`__ `examples`__ in the Divmod
+repository.
+
+__ browser:trunk/Nevow/nevow/test/test_object.js
+__ browser:trunk/Nevow/nevow/test/test_deferred.js
 
 These unit tests are valuable: they reveal simple errors, provide a kind of
 documentation as to the purpose of various functions, and ensure that the code
@@ -29,11 +32,12 @@ Functional Testing
 
 To account for this, Nevow provides ``nit``, a runner for tests which are
 designed to be run by an actual browser.  Nit tests are placed in Python source
-files named with the ``livetest_`` prefix.  There are `several
-<browser:trunk/Nevow/nevow/test/livetest_athena.py>`_ `examples
-<browser:trunk/Mantissa/xmantissa/test/livetest_forms.py>`_ `of this
-<browser:trunk/Mantissa/xmantissa/test/livetest_people.py>`_ kind of test in the
-Divmod repository as well.
+files named with the ``livetest_`` prefix.  There are `several`__ `examples`__
+`of this`__ kind of test in the Divmod repository as well.
+
+__ browser:trunk/Nevow/nevow/test/livetest_athena.py
+__ browser:trunk/Mantissa/xmantissa/test/livetest_forms.py
+__ browser:trunk/Mantissa/xmantissa/test/livetest_people.py
 
 If you are familiar with `XUnit <http://en.wikipedia.org/wiki/XUnit>`_, the API
 presented by nit should present few surprises.  The primary interface of
