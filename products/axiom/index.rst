@@ -68,3 +68,4 @@ Index
     axiom-example-shop
     axiom-transition
     axiom-glossary
+    change-your-schema
