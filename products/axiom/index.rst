@@ -69,3 +69,4 @@ Index
     axiom-transition
     axiom-glossary
     change-your-schema
+    dynamic-typing
