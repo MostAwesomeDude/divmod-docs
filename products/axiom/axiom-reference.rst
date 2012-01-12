@@ -3,6 +3,8 @@ Reference
 =========
 
 
+.. _axiom-reference-item:
+
 `item.Item(store=store.Store, **kw) <source:trunk/Axiom/axiom/item.py>`_
 ========================================================================
 
@@ -43,6 +45,8 @@ Limitations
   write a subclass of the ShopProduct class above. This is by design, and you
   are encouraged to explore object composition and adaption instead.
 
+
+.. _axiom-reference-store:
 
 `store.Store([dbdir=None[, debug=False[, parent=None[, idInParent=None]]]]) <source:trunk/Axiom/axiom/store.py>`_
 =================================================================================================================
@@ -169,6 +173,8 @@ Retrieve Items from the Store
   joins behind the scenes. For more complete examples see :doc:`axiom-examples`.
 
 
+.. _axiom-reference-sub-store:
+
 Substore
 ========
 
@@ -176,6 +182,8 @@ A Store that also exists as an Item in a parent Store.
 
 * `class axiom.substore.SubStore <source:trunk/Axiom/axiom/substore.py>`_
 
+
+.. _axiom-reference-powerups:
 
 Powerups
 ========

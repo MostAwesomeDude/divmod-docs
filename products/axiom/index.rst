@@ -67,3 +67,4 @@ Index
     axiom-reference
     axiom-example-shop
     axiom-transition
+    axiom-glossary

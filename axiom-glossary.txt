@@ -1,9 +1,0 @@
-= DivmodAxiom : Glossary =
- [wiki:DivmodAxiom/Reference#Item Item]::
-  An object in an Axiom Store.
- [wiki:DivmodAxiom/Reference#Powerups Powerup]::
-  An Axiom Item that acts as a type of Axiom plugin.
- [wiki:DivmodAxiom/Reference#Store Store]::
-  A database that Axiom Items can be stored in.
- [wiki:DivmodAxiom/Reference#SubStore SubStore]::
-  A Store that also exists as an Item in a parent Store.
