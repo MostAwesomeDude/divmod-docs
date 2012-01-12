@@ -1,0 +1,197 @@
+=========
+Reference
+=========
+
+
+`item.Item(store=store.Store, **kw) <source:trunk/Axiom/axiom/item.py>`_
+========================================================================
+
+A class describing an object in an Axiom Store. Your subclass of
+``axiom.item.Item`` must define the following attributes:
+
+* ``typeName``: A string uniquely identifying this class schema in the store.
+* ``schemaVersion``: An integer denoting the schema version. See
+  :ref:`axiom-reference-upgraders`.
+
+You will also want to define other attributes and these must be special Axiom
+class attributes. A selection of standard types are already defined in the
+`axiom.attributes <source:trunk/Axiom/axiom/attributes.py>`_ module.
+
+A simple example:
+
+
+.. code-block:: python
+
+    from axiom import item, attributes
+
+    class ShopProduct(item.Item):
+        typeName = 'ShopProduct'
+        schemaVersion = 1
+
+        name = attributes.text(allowNone=False)
+        price = attributes.integer(allowNone=False)
+        stock = attributes.integer(default=0)
+
+        def __repr__(self):
+            return '<ShopProduct name='%s' price='%d' stock='%d'>' % (self.name, self.price, self.stock)
+
+
+Limitations
+-----------
+
+* Axiom Items only support one level of inheritance. You could not for example
+  write a subclass of the ShopProduct class above. This is by design, and you
+  are encouraged to explore object composition and adaption instead.
+
+
+`store.Store([dbdir=None[, debug=False[, parent=None[, idInParent=None]]]]) <source:trunk/Axiom/axiom/store.py>`_
+=================================================================================================================
+
+A database in which Axiom Items can be stored. An Axiom Store can be
+instantiated with a dbdir parameter, in which case it will be persisted to the
+filesystem at the given path. Alternatively, if instantiated without a dbdir
+parameter, the store will exist inmemory only for the lifetime of the python
+process.
+
+
+.. code-block:: python
+
+    from axiom import store
+
+    s = store.Store('/tmp/example.axiom')
+    s = store.Store() # An inmemory store
+
+If ``debug=True``, the store will print out all SQL commands as they are issued
+to the underlying Sqlite database.
+
+
+
+Add Items to the Store
+----------------------
+
+.. code-block:: python
+
+    p = ShopProduct(store=s, name=u'Tea Bags', price=2)
+
+That's all there is to it. The returned item can be treated just like any other
+python object. Changes made to it are automatically persisted to the store.
+
+
+.. code-block:: python
+
+    >>> p.name
+    u'Tea Bags'
+    >>> p.stock
+    0
+    >>> p.stock += 20
+    >>> p.stock
+    20
+
+If you want to avoid duplicate items you can instead use the findOrCreate method
+(see below)
+
+
+Retrieve Items from the Store
+-----------------------------
+
+* ``getItemByID(storeID[, default=_noItem])``:
+
+  Returns the item with the given 'storeID'. If no matching item raises KeyError
+  or 'default' if given. Every item in the store has a unique 'storeID'
+  attribute.
+
+* ``findFirst'''(userItemClass[, **attrs])``:
+
+  Returns the first item of class 'userItemClass' or None. The query can be
+  further narrowed by specifying 'attrs', eg
+
+
+  .. code-block:: python
+
+      >>> s.findFirst(ShopProduct, name=u'Tea Bags')
+      <ShopProduct name='Tea Bags' price='2' stock='20'>
+
+* ``findOrCreate(userItemClass[, **attrs])``:
+
+  Returns the first item of class 'userItemClass' or creates it if it doesn't
+  already exist. eg.
+
+
+  .. code-block:: python
+
+      >>> s.findOrCreate(ShopProduct, name=u'Pot Noodle')
+      TypeError: attribute `= integer() <ShopProduct.price>`_ must not be None
+
+  but we must give all attributes required to create the new item
+
+
+  .. code-block:: python
+
+      >>> s.findOrCreate(ShopProduct, name=u'Pot Noodle', price=3)
+      <ShopProduct name='Pot Noodle' price='3' stock='0'>
+
+* ``query(tableClass[, comparison=None[, limit=None[, offset=None[, sort=None[,
+  justCount=False[, sumAttribute=None]]]]]])``:
+
+  Return generator of items matching class 'tableClass' and 'comparison'.
+  Limited to length 'limit' beyond 'offset'. Sorted by attribute 'sort'.
+  Examples:
+
+
+  .. code-block:: python
+
+      >>> 'All products'
+      >>> [x.name for x in s.query(ShopProduct)]
+      [u'Tea Bags', u'Pot Noodle']
+      >>> 'Products in stock'
+      >>> [x.name for x in s.query(ShopProduct, ShopProduct.stock > 0)]
+      [u'Tea Bags']
+      >>> 'Products in stock AND which cost less than 5'
+      >>> from axiom.attributes import AND, OR
+      >>> [x.name for x in s.query(ShopProduct, AND(ShopProduct.stock > 0, ShopProduct.price < 5))]
+      [u'Tea Bags']
+
+  You get the idea. Try turning on store debugging and you will get an idea of
+  what is going on behind the scenes.
+
+
+  .. code-block:: python
+
+      >>> s.debug = True
+      >>> [x.name for x in s.query(ShopProduct, sort=ShopProduct.stock.ascending)]
+      ** SELECT item_ShopProduct_v1 .oid, item_ShopProduct_v1 .* FROM item_ShopProduct_v1 ORDER BY item_ShopProduct_v1.`ASC --
+      ********** COMMIT **********
+        lastrow: None
+        result: [(4, u'Pot Noodle', 3, 0), (3, u'Tea Bags', 2, 20) <stock]>`_
+      [u'Pot Noodle', u'Tea Bags']
+
+  Axiom is also capable of constructing more complex queries involving table
+  joins behind the scenes. For more complete examples see :doc:`axiom-examples`.
+
+
+Substore
+========
+
+A Store that also exists as an Item in a parent Store.
+
+* `class axiom.substore.SubStore <source:trunk/Axiom/axiom/substore.py>`_
+
+
+Powerups
+========
+
+A powerup is a type of Axiom plugin. Zero or more powerups (Axiom items) can be
+registered to another axiom item (as long as it is in the same store) and can be
+retrieved according to their interface, either by normal adaption of the subject
+(in which case the highest priority powerup is returned), or as a group (in
+order of priority) by using the axiom.item.Item.powerupsFor method.
+
+* `class axiom.item.Empowered <source:trunk/Axiom/axiom/item.py>`_
+
+
+.. _axiom-reference-upgraders:
+
+Upgraders
+=========
+
+?
