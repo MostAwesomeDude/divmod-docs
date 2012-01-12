@@ -65,3 +65,4 @@ Index
     axiom-why-axiom
     axiom-powerups
     axiom-reference
+    axiom-example-shop
