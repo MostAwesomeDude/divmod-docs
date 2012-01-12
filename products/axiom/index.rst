@@ -47,7 +47,7 @@ See Also
 * :doc:`axiom-examples`
 * `Axiom tickets <query:?status=new&status=assigned&status=reopened&groupdesc=1&group=type&component=Axiom&order=priority>`_
 * :doc:`axiomatic`
-* :doc:`axiom-dependency-transition`: How to transition from pre-``axiom.dependency`` code.
+* :doc:`axiom-transition`: How to transition from pre-``axiom.dependency`` code.
 * :doc:`axiom-powerups`
 * WritingUpgradeTests: writing stubloader tests for schema upgrades.
 * :doc:`axiom-files`
@@ -66,3 +66,4 @@ Index
     axiom-powerups
     axiom-reference
     axiom-example-shop
+    axiom-transition
