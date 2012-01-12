@@ -40,7 +40,7 @@ Download
 See Also
 ========
 
-* :doc:`axiom-tutorial`: Short, sharp Axiom/Mantissa tips and tricks.
+* :doc:`axiom-tutorial-linkfarm`: Short, sharp Axiom/Mantissa tips and tricks.
 * :doc:`axiom-why-axiom`: Glyph writes about the advantages of Axiom over other RDBMS and ORM alternatives.
 * :doc:`axiom-reference`: A reference to the Axiom public API. (Incomplete but evolving!)
 * **Development** version of the `Axiom API docs <http://buildbot.divmod.org/apidocs/axiom.html>`_
@@ -61,3 +61,4 @@ Index
     :glob:
 
     axiom-concurrency-scalability
+    axiom-tutorial-linkfarm
