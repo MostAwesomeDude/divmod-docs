@@ -15,7 +15,7 @@ These are things that Divmod produced.
    :maxdepth: 2
    :glob:
 
-   products/axiom
+   products/axiom/index
    products/combinator
    products/epsilon
    products/mantissa
