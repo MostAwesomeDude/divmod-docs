@@ -153,7 +153,7 @@ Related Projects
    <http://forms-project.pollenation.net/cgi-bin/trac.cgi>`_: A fresh take on
    automatic form generation for Nevow, with a simpler interface and more input
    types than Formless.  This project was formerly known as 'forms'.
- * :doc:`../../products/mantissa`: An extensible, multi-protocol, multi-user,
+ * :doc:`../mantissa/index`: An extensible, multi-protocol, multi-user,
    interactive application server built on top of Axiom and Nevow.
  * `Stiq <http://test.stiq.it>`_: A web news system built using Nevow
  * `WubWubWub <http://www.inoi.fi/open/trac/wubwubwub>`_: 'Making Twisted.Web

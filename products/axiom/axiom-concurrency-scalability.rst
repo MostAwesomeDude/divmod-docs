@@ -31,8 +31,8 @@ Stores, even backed by the same SQLite database, is fine.
 But how do you achieve scalability then?
 ========================================
 
-Use multiple databases. For example, :doc:`/products/mantissa` has per-user
-and per-application stores.
+Use multiple databases. For example, :doc:`/products/mantissa/index` has
+per-user and per-application stores.
 
 
 What if that isn't good enough?

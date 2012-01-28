@@ -18,7 +18,7 @@ These are things that Divmod produced.
    products/axiom/index
    products/combinator
    products/epsilon
-   products/mantissa
+   products/mantissa/index
    products/nevow/index
    products/nevow/athena/index
    products/pyflakes

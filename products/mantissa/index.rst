@@ -3,11 +3,11 @@ Divmod Mantissa
 ===============
 
 Mantissa is an application server. It provides integration between the
-:doc:`axiom/index` 'smart' object database, the :doc:`nevow/index` web
+:doc:`../axiom/index` 'smart' object database, the :doc:`../nevow/index` web
 templating/AJAX/COMET framework and the `Twisted`_ framework.
 
-Read more about Mantissa's [MantissaIsTheDeploymentTarget philosophy and
-motivation].
+Read more about Mantissa's philosophy and motivation:
+:doc:`mantissa-is-the-target`.
 
 The goal of Mantissa is to provide a common platform that open-source
 contributors can use to help us build customized additions to the Divmod
@@ -38,3 +38,12 @@ See Also
  * Several of the Axiom docs on the DivmodAxiom page are also Mantissa docs.
  * [wiki:DivmodMantissa/Sharing /Sharing]: description of sharing functionality
  * [wiki:DivmodMantissa/Concepts /Concepts]: other concepts with which Mantissa users should be familiar
+
+Index
+=====
+
+.. toctree::
+    :maxdepth: 2
+    :glob:
+
+    mantissa-is-the-target
