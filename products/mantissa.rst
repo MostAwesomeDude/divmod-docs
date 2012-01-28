@@ -3,8 +3,8 @@ Divmod Mantissa
 ===============
 
 Mantissa is an application server. It provides integration between the
-:doc:`axiom` 'smart' object database, the [wiki:DivmodNevow Nevow]
-web templating/AJAX/COMET framework and the TwistedFramework.
+:doc:`axiom/index` 'smart' object database, the :doc:`nevow/index` web
+templating/AJAX/COMET framework and the `Twisted`_ framework.
 
 Read more about Mantissa's [MantissaIsTheDeploymentTarget philosophy and
 motivation].
@@ -14,6 +14,8 @@ contributors can use to help us build customized additions to the Divmod
 service.  Divmod is going to offer a variety of different services, and if you
 want to write something that hooks into our network, Mantissa is how you do
 it.
+
+.. _`Twisted`: http://twistedmatrix.com/
 
 Download
 ========
