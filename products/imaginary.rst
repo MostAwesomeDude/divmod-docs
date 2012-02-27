@@ -1,4 +1,5 @@
-= Imaginary =
+Imaginary
+=========
 
 Imaginary numbers are so named not because they are fictitious, but because
 they are along a different axis from real numbers.
@@ -10,8 +11,8 @@ than is generally available from existing systems.
 
 Status: Imaginary is currently on the back of some peoples' minds.
 
- * [browser:trunk/Imaginary/imaginary Browse the source]. 
- * [query:status=new|assigned|reopened&component=Imaginary View the tickets].
+ - `Project Home Page <https://launchpad.net/imaginary>`_
+ - `Browse the source <http://bazaar.launchpad.net/~divmod-dev/divmod.org/trunk/files/head:/Imaginary/>`_
+ - `View the tickets <https://bugs.launchpad.net/imaginary>`_
 
-
-Instructions for starting an Imaginary server are here: [source:/trunk/Imaginary/README.txt?format=txt README.txt]
+See also `instructions for starting an Imaginary server <http://bazaar.launchpad.net/~divmod-dev/divmod.org/trunk/files/head:/Imaginary/README.txt>`_.
