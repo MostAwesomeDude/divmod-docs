@@ -24,6 +24,7 @@ These are things that Divmod produced.
    products/pyflakes
    products/sine
    products/vertex
+   products/imaginary
 
 Retired Projects
 ================
